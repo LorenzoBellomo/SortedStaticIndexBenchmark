@@ -1,0 +1,18 @@
+[submodule "benchmark"]
+	path = benchmark
+	url = https://github.com/google/benchmark
+[submodule "indices/RMI"]
+	path = indices/RMI
+	url = https://github.com/learnedsystems/RMI.git
+[submodule "indices/sdsl-lite"]
+	path = indices/sdsl-lite
+	url = https://github.com/simongog/sdsl-lite.git
+[submodule "indices/la_vector"]
+	path = indices/la_vector
+	url = https://github.com/gvinciguerra/la_vector.git
+[submodule "indices/PLEX"]
+	path = indices/PLEX
+	url = https://github.com/stoianmihail/PLEX.git
+[submodule "indices/CSS-tree"]
+	path = indices/CSS-tree
+	url = https://github.com/gvinciguerra/CSS-tree.git
