@@ -1,0 +1,84 @@
+{
+    "configs": [
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 16777216,
+            "namespace": "wiki_100M_uint32_0",
+            "size": 402653200,
+            "average log2 error": 4.043277102928063,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 8388608,
+            "namespace": "wiki_100M_uint32_1",
+            "size": 201326608,
+            "average log2 error": 4.212607863307154,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 4194304,
+            "namespace": "wiki_100M_uint32_2",
+            "size": 100663312,
+            "average log2 error": 4.434803731882249,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 1048576,
+            "namespace": "wiki_100M_uint32_3",
+            "size": 25165840,
+            "average log2 error": 5.021733132942575,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 524288,
+            "namespace": "wiki_100M_uint32_4",
+            "size": 12582928,
+            "average log2 error": 5.403272630905716,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 262144,
+            "namespace": "wiki_100M_uint32_5",
+            "size": 6291472,
+            "average log2 error": 5.873064532484191,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 131072,
+            "namespace": "wiki_100M_uint32_6",
+            "size": 3145744,
+            "average log2 error": 6.450532086385704,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 32768,
+            "namespace": "wiki_100M_uint32_7",
+            "size": 786448,
+            "average log2 error": 8.122165973384265,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 1024,
+            "namespace": "wiki_100M_uint32_8",
+            "size": 24592,
+            "average log2 error": 13.97184013088873,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 128,
+            "namespace": "wiki_100M_uint32_9",
+            "size": 3088,
+            "average log2 error": 15.802151783098323,
+            "binary": true
+        }
+    ]
+}

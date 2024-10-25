@@ -1,3 +1,9 @@
+# Creating necessary folders
+mkdir benchmark_raw_output
+mkdir benchmark_raw_output/existing
+mkdir benchmark_raw_output/missing
+mkdir benchmark_raw_output/buildtime
+mkdir benchmark_raw_output/scan_neighbors
 
 # GOOGLE BENCHMARK
 echo "Installing Google Benchmark"
@@ -21,4 +27,4 @@ cd indices/sdsl-lite
 ./install ../../lib
 cd ../..
 
-# TODO MANCA DS2I e roba per rmi
+# TODO MANCA DS2I, roba per rmi, matplotlib
