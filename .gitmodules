@@ -16,6 +16,6 @@
 [submodule "indices/CSS-tree"]
 	path = indices/CSS-tree
 	url = https://github.com/gvinciguerra/CSS-tree.git
-[submodule "PGM-index"]
-	path = PGM-index
+[submodule "indices/PGM-index"]
+	path = indices/PGM-index
 	url = https://github.com/gvinciguerra/PGM-index.git

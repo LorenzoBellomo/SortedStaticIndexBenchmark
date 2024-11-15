@@ -29,7 +29,7 @@
 #include <vector>
 
 #include <iostream>
-namespace pgm {
+namespace pgmpp {
 
 #define PGM_SUB_EPS(x, epsilon) ((x) <= (epsilon) ? 0 : ((x) - (epsilon)))
 #define PGM_ADD_EPS(x, epsilon, size) ((x) + (epsilon) + 2 >= (size) ? (size) : (x) + (epsilon) + 2)

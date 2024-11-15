@@ -14,19 +14,16 @@ find_package(Boost)
 
 # Include directories
 include_directories(
-    ../indices/CSS-tree/include
-    /home/sadas/include
-    ../indices/CSS-tree/include
-    rmi_source_files
-    ../indices/PLEX
-    ../compressed_vectors/la_vector/include
-    ../compressed_vectors/la_vector/lib/sdsl-lite/include
-    benchmark/include
-    ../indices/PGMPP
-    .
-    ../compressed_vectors/ds2i
-    ../indices/ALEX/src
-    ../indices/ALEX/src/core
+    benchmark/include # Google Benchmark 
+    indices/CSS-tree/include # Css Btree
+    rmi_source_files # RMI
+    indices/PLEX/include # PLEX
+    indices/la_vector/include # LA Vector
+    indices/sdsl-lite/include # RRR vector, gamma and delta code, EliasFano
+    indices/pgm++ # PGM plus plus
+    indices/PGM-index/include # regular PGM
+    indices/ALEX # ALEX
+    indices/ # SIMD (sampled) btree
 )
 
 # You can add CPM.cmake like so:

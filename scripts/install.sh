@@ -1,3 +1,5 @@
+cd ..
+
 # Creating necessary folders
 mkdir benchmark_raw_output
 mkdir benchmark_raw_output/existing
@@ -22,7 +24,7 @@ wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/d
 cd ..
 
 # SDSL
-mkdir lib
+mkdir -p lib
 cd indices/sdsl-lite
 ./install ../../lib
 cd ../..
