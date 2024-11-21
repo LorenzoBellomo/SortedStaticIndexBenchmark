@@ -2,36 +2,36 @@
 cd indices/RMI
 
 echo "Books uint32"
-cargo run --release -- ../../data/books_100M_uint32 books_compact linear_spline,linear 262144
-cargo run --release -- ../../data/books_100M_uint32 books_large linear_spline,linear 16777216
+cargo run --release -- ../../data/books_200M_uint32 books_compact linear,linear 262144
+cargo run --release -- ../../data/books_200M_uint32 books_large linear,linear 16777216
 
-echo "Alba uint32"
-cargo run --release -- ../../data/alba_uint32 alba_compact linear_spline,linear 262144
-cargo run --release -- ../../data/alba_uint32 alba_large linear_spline,linear 16777216
+echo "CompanyNet uint32"
+cargo run --release -- ../../data/companynet_uint32 companynet_compact linear_spline,linear 262144
+cargo run --release -- ../../data/companynet_uint32 companynet_large linear_spline,linear 16777216
 
 echo "Friendster uint32"
 cargo run --release -- ../../data/friendster_50M_uint32 friendster_compact linear_spline,linear 262144
 cargo run --release -- ../../data/friendster_50M_uint32 friendster_large linear_spline,linear 16777216
 
 echo "Wiki uint32"
-cargo run --release -- ../../data/wiki_100M_uint32 wiki_compact linear_spline,linear 262144
-cargo run --release -- ../../data/wiki_100M_uint32 wiki_large linear_spline,linear 16777216
+cargo run --release -- ../../data/wiki_ts_200M_uint32 wiki_compact linear_spline,linear 262144
+cargo run --release -- ../../data/wiki_ts_200M_uint32 wiki_large linear_spline,linear 16777216
 
 echo "exponential uint32"
-cargo run --release -- ../../data/exponential_uint32 exponential_compact radix,linear 262144
+cargo run --release -- ../../data/exponential_uint32 exponential_compact linear_spline,linear 262144
 cargo run --release -- ../../data/exponential_uint32 exponential_large radix,linear 16777216
 
 echo "zipf uint32"
-cargo run --release -- ../../data/zipf_uint32 exponential_compact radix,linear 262144
-cargo run --release -- ../../data/zipf_uint32 exponential_large radix,linear 16777216
+cargo run --release -- ../../data/zipf_uint32 zipf_compact linear_spline,linear 262144
+cargo run --release -- ../../data/zipf_uint32 zipf_large radix,linear 16777216
 
 echo "normal uint32"
-cargo run --release -- ../../data/normal_uint32 normal_compact radix,linear 262144
+cargo run --release -- ../../data/normal_uint32 normal_compact linear_spline,linear 262144
 cargo run --release -- ../../data/normal_uint32 normal_large linear_spline,linear 16777216
 
 echo "lognormal uint32"
-cargo run --release -- ../../data/lognormal_uint32 lognormal_compact cubic,linear 262144
-cargo run --release -- ../../data/lognormal_uint32 lognormal_large cubic,linear 16777216
+cargo run --release -- ../../data/lognormal_uint32 lognormal_compact linear_spline,linear 262144
+cargo run --release -- ../../data/lognormal_uint32 lognormal_large linear_spline,linear 16777216
 
 echo "Books uint64"
 cargo run --release -- ../../data/books_800M_uint64 books64_compact linear_spline,linear 262144

@@ -5,15 +5,15 @@
             "branching factor": 16777216,
             "namespace": "exponential_uint32_0",
             "size": 402653200,
-            "average log2 error": 2.982016767572554,
+            "average log2 error": 3.107456316810847,
             "binary": true
         },
         {
-            "layers": "radix,linear",
+            "layers": "linear_spline,linear",
             "branching factor": 8388608,
             "namespace": "exponential_uint32_1",
             "size": 201326608,
-            "average log2 error": 3.1135523656856485,
+            "average log2 error": 3.285110325535525,
             "binary": true
         },
         {
@@ -21,7 +21,7 @@
             "branching factor": 4194304,
             "namespace": "exponential_uint32_2",
             "size": 100663312,
-            "average log2 error": 3.300426698148028,
+            "average log2 error": 3.517030471044829,
             "binary": true
         },
         {
@@ -29,7 +29,7 @@
             "branching factor": 1048576,
             "namespace": "exponential_uint32_3",
             "size": 41943040,
-            "average log2 error": 3.72804351909774,
+            "average log2 error": 3.7943347063305294,
             "binary": true
         },
         {
@@ -37,15 +37,15 @@
             "branching factor": 524288,
             "namespace": "exponential_uint32_4",
             "size": 12582928,
-            "average log2 error": 4.20687899982026,
+            "average log2 error": 4.483786082142965,
             "binary": true
         },
         {
-            "layers": "radix,linear",
+            "layers": "linear_spline,linear",
             "branching factor": 262144,
             "namespace": "exponential_uint32_5",
             "size": 6291472,
-            "average log2 error": 4.592287896360057,
+            "average log2 error": 4.881616405808422,
             "binary": true
         },
         {
@@ -53,31 +53,31 @@
             "branching factor": 32768,
             "namespace": "exponential_uint32_6",
             "size": 1835008,
-            "average log2 error": 5.7483934584049038,
+            "average log2 error": 5.772760486604389,
             "binary": true
         },
         {
-            "layers": "radix,linear",
+            "layers": "linear_spline,linear",
             "branching factor": 32768,
             "namespace": "exponential_uint32_7",
             "size": 786448,
-            "average log2 error": 5.8981885332168,
+            "average log2 error": 6.204488160546757,
             "binary": true
         },
         {
-            "layers": "radix,linear",
+            "layers": "linear_spline,linear",
             "branching factor": 1024,
             "namespace": "exponential_uint32_8",
             "size": 24592,
-            "average log2 error": 8.329189825586882,
+            "average log2 error": 8.721614609111063,
             "binary": true
         },
         {
-            "layers": "radix,linear",
+            "layers": "robust_linear,linear",
             "branching factor": 128,
             "namespace": "exponential_uint32_9",
             "size": 3088,
-            "average log2 error": 10.97861110393516,
+            "average log2 error": 12.111522481219412,
             "binary": true
         }
     ]

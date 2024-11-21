@@ -8,22 +8,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 SET(COMPILE "existing" CACHE STRING "existing")
 
 # Compiler flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fopenmp -ltbb -L~/sdb/libs/tbb/build -march=native -O2")
-
-find_package(Boost)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -fopenmp -ltbb -L~/sdb/libs/tbb/build -march=native") #-O2")
 
 # Include directories
 include_directories(
     benchmark/include # Google Benchmark 
-    indices/CSS-tree/include # Css Btree
+    benchmark/build/src # Google Benchmark 
+    indices/CSS-tree/include # CSS Btree
     rmi_source_files # RMI
     indices/PLEX/include # PLEX
     indices/la_vector/include # LA Vector
-    indices/sdsl-lite/include # RRR vector, gamma and delta code, EliasFano
+    lib/include # SDSL -> RRR vector, gamma and delta code, EliasFano
+    lib/lib # all required for sdsl
     indices/pgm++ # PGM plus plus
     indices/PGM-index/include # regular PGM
     indices/ALEX # ALEX
-    indices/ # SIMD (sampled) btree
+    indices/simdstructures # SIMD (sampled) btree
 )
 
 # You can add CPM.cmake like so:
@@ -38,18 +38,15 @@ CPMAddPackage(
 )
 
 # Linker flags
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}-pthread -L/home/sadas/lorenzo/nuovi_esperimenti/benchmark/build/src -lbenchmark -L/home/sadas/lib -lsdsl -ldivsufsort -ldivsufsort64")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}-pthread -lbenchmark -lsdsl -ldivsufsort -ldivsufsort64")
 
 # Source files
-set(RMI_SOURCE_FILES rmi_source_files/rmi.cpp)
-#set(ZIPF_GEN zipf_gen.cpp)
+file(GLOB_RECURSE RMI_SOURCE_FILES "rmi_source_files/*.cpp")
 
-file(GLOB EXISTING "existing/*.cpp")
-file(GLOB MISSING "missing/*.cpp")
-file(GLOB BUILDTIME "build_time/*.cpp")
-file(GLOB SCAN "scan_neighbors/*.cpp")
-
-add_executable(dataset_generator dataset_generator.cpp)
+file(GLOB EXISTING "src/existing/*.cpp")
+file(GLOB MISSING "src/missing/*.cpp")
+file(GLOB BUILDTIME "src/build_time/*.cpp")
+file(GLOB SCAN "src/scan_neighbors/*.cpp")
 
 if (COMPILE STREQUAL "existing")
     message("QUERIES OF EXISTING ITEMS")

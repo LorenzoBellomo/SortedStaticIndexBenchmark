@@ -3,81 +3,81 @@
         {
             "layers": "linear_spline,linear",
             "branching factor": 16777216,
-            "namespace": "wiki_100M_uint32_0",
+            "namespace": "friendster_50M_uint32_0",
             "size": 402653200,
-            "average log2 error": 4.043277102928063,
+            "average log2 error": 3.0944537464834225,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 8388608,
-            "namespace": "wiki_100M_uint32_1",
+            "namespace": "friendster_50M_uint32_1",
             "size": 201326608,
-            "average log2 error": 4.212607863307154,
+            "average log2 error": 3.349395735332987,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 4194304,
-            "namespace": "wiki_100M_uint32_2",
+            "namespace": "friendster_50M_uint32_2",
             "size": 100663312,
-            "average log2 error": 4.434803731882249,
+            "average log2 error": 3.7802835128728939,
             "binary": true
         },
         {
-            "layers": "linear_spline,linear",
+            "layers": "radix22,linear",
             "branching factor": 1048576,
-            "namespace": "wiki_100M_uint32_3",
-            "size": 25165840,
-            "average log2 error": 5.021733132942575,
+            "namespace": "friendster_50M_uint32_3",
+            "size": 41943040,
+            "average log2 error": 4.813639333768845,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 524288,
-            "namespace": "wiki_100M_uint32_4",
+            "namespace": "friendster_50M_uint32_4",
             "size": 12582928,
-            "average log2 error": 5.403272630905716,
+            "average log2 error": 6.105389167953334,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 262144,
-            "namespace": "wiki_100M_uint32_5",
+            "namespace": "friendster_50M_uint32_5",
             "size": 6291472,
-            "average log2 error": 5.873064532484191,
+            "average log2 error": 6.740022056368692,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 131072,
-            "namespace": "wiki_100M_uint32_6",
+            "namespace": "friendster_50M_uint32_6",
             "size": 3145744,
-            "average log2 error": 6.450532086385704,
+            "average log2 error": 7.413707045886929,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 32768,
-            "namespace": "wiki_100M_uint32_7",
+            "namespace": "friendster_50M_uint32_7",
             "size": 786448,
-            "average log2 error": 8.122165973384265,
+            "average log2 error": 8.887595781141192,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 1024,
-            "namespace": "wiki_100M_uint32_8",
+            "namespace": "friendster_50M_uint32_8",
             "size": 24592,
-            "average log2 error": 13.97184013088873,
+            "average log2 error": 12.600353058806272,
             "binary": true
         },
         {
             "layers": "linear_spline,linear",
             "branching factor": 128,
-            "namespace": "wiki_100M_uint32_9",
+            "namespace": "friendster_50M_uint32_9",
             "size": 3088,
-            "average log2 error": 15.802151783098323,
+            "average log2 error": 14.75895377804248,
             "binary": true
         }
     ]

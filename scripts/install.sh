@@ -1,11 +1,10 @@
-cd ..
 
 # Creating necessary folders
-mkdir benchmark_raw_output
-mkdir benchmark_raw_output/existing
-mkdir benchmark_raw_output/missing
-mkdir benchmark_raw_output/buildtime
-mkdir benchmark_raw_output/scan_neighbors
+mkdir -p output/existing
+mkdir -p output/missing
+mkdir -p output/buildtime
+mkdir -p output/scan_neighbors
+mkdir -p output/index_sizes
 
 # GOOGLE BENCHMARK
 echo "Installing Google Benchmark"
@@ -17,7 +16,7 @@ cd ..
 
 # for roaring (used through cmake)
 echo "Installing required tool for using Roaring through CMake"
-mkdir build 
+mkdir -p build 
 cd build 
 mkdir -p cmake
 wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/get_cpm.cmake
@@ -26,7 +25,7 @@ cd ..
 # SDSL
 mkdir -p lib
 cd indices/sdsl-lite
-./install ../../lib
+./install.sh ../../lib
 cd ../..
 
-# TODO MANCA DS2I, roba per rmi, matplotlib
+echo "Done"

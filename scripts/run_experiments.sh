@@ -93,5 +93,9 @@ for dataset in "${datasets64[@]}"; do
     done
     echo "" >> "$output_file"
 done
-
 make clean
+
+cd ../..
+echo "Plotting"
+python3 -m pip install -r requirements.txt
+python3 plotter.py
