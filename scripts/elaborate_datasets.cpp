@@ -269,7 +269,7 @@ int main() {
 
     data64 = read_bin64_file("../data/fb_200M_uint64");
     lookups64 = generate_missing_lookups(data64, M1);
-    write_bin64_file("../data/lookups/fb63", lookups64);
+    write_bin64_file("../data/lookups/fb64", lookups64);
     std::cout << "FACEBOOK 64" << std::endl;
     print_stats(data64);
 
