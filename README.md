@@ -3,6 +3,11 @@
 This repository contains the benchmark on Sorted Integers for standard, learned, and compressed indices. 
 
 ## Requirements
-- CMake (used in install.sh and run_esperiments for building all the projects)
-- RUST (ised in run_rmi.sh and run_rmi_optimizers.sh for running the RMI models)
-- Python3 (used in install.sh to install the matplotlib library and in run_esperiments.sh for plotting purposes)
+On vanilla Ubuntu 20.04 LTS:
+```
+sudo apt -y update 
+sudo apt -y install zstd python3-pip cmake clang
+pip3 install --user numpy scipy matplotlib pandas tabulate
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+```
