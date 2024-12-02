@@ -20,7 +20,7 @@ include_directories(
     indices/la_vector/include # LA Vector
     lib/include # SDSL -> RRR vector, gamma and delta code, EliasFano
     lib/lib # all required for sdsl
-    indices/pgm++ # PGM plus plus
+    indices # PGM plus plus (pgmpp/pgm_index.h)
     indices/PGM-index/include # regular PGM
     indices/ALEX # ALEX
     indices/simdstructures # SIMD (sampled) btree

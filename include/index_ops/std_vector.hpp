@@ -3,27 +3,33 @@
 
 #include "index_interface.hpp"
 
-class StdVector : public IndexInterface {
+template <typename T>
+class StdVectorInterface : public IndexInterface<T> {
 private:
-    std::vector<uint32_t> data32;
-    std::vector<uint64_t> data64;
+    std::vector<T> data;
 
 public:
-    void build(const std::vector<uint32_t>& data) override {
-        data32 = data;
+    void build(const std::vector<T>& data_) override {
+        data = data_;
     }
 
-    void build(const std::vector<uint64_t>& data) override {
-        data64 = data;
+    T access(size_t idx) const override {
+        return data[idx];
     }
 
-    uint32_t access32(size_t idx) const override {
-        return data32[idx];
+    std::pair<bool, T> next_geq(T q) const override {
+        auto lb = std::lower_bound(data.begin(), data.end(), q);
+        if (lb == data.end())
+            return std::pair(false, 0);
+        return std::pair(true, *lb);
     }
 
-    uint64_t access64(size_t idx) const override {
-        return data64[idx];
+    size_t size_in_bytes() const override {
+        return (sizeof(T) * data.size());
     }
+
+    static std::string index_name() const override;
+    static std::string parameters_stringified() const override;
 };
 
 #endif // STD_VECTOR_HPP

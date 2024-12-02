@@ -5,15 +5,13 @@
 #include <cstdint>
 #include <stdio.h>
 
+template<typename T>
 class IndexInterface {
 public:
     virtual ~IndexInterface() = default;
 
-    virtual void build(const std::vector<uint32_t>& data) = 0;
-    virtual void build(const std::vector<uint64_t>& data) = 0;
-
-    virtual uint32_t access32(size_t idx) const = 0;
-    virtual uint64_t access64(size_t idx) const = 0;
+    virtual static std::string index_name() const = 0;
+    virtual static std::string parameters_stringified() const = 0;
 };
 
 #endif // INDEX_INTERFACE_HPP
