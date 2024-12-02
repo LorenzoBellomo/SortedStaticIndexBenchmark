@@ -5,7 +5,7 @@
 #include <pgm/pgm_index.hpp>
 
 template<typename T, size_t eps>
-class PGMinterface : public IndexInterface<T> {
+class PGMInterface : public IndexInterface {
 private:
     std::vector<T> data;
     pgm::PGMIndex<T, eps> pgm_idx;
@@ -26,6 +26,14 @@ public:
 
     size_t size_in_bytes() const override {
         return pgm_idx.size_in_bytes();
+    }
+
+    std::string name() const override {
+        return "pgm-index";
+    }
+
+    std::string parameters() const override {
+        return std::to_string(eps);
     }
 };
 

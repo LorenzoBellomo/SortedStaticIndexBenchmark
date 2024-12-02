@@ -1,17 +1,9 @@
-#ifndef INDEX_INTERFACE_HPP
-#define INDEX_INTERFACE_HPP
+#pragma once
+#include <string>
 
-#include <vector>
-#include <cstdint>
-#include <stdio.h>
-
-template<typename T>
 class IndexInterface {
-public:
-    virtual ~IndexInterface() = default;
+ public:
+    std::string name() const { return "";}
 
-    virtual static std::string index_name() const = 0;
-    virtual static std::string parameters_stringified() const = 0;
+    std::string parameters() const { return ""; }
 };
-
-#endif // INDEX_INTERFACE_HPP

@@ -4,7 +4,7 @@
 #include "index_interface.hpp"
 
 template <typename T>
-class StdVectorInterface : public IndexInterface<T> {
+class StdVectorInterface : public IndexInterface {
 private:
     std::vector<T> data;
 
@@ -28,8 +28,9 @@ public:
         return (sizeof(T) * data.size());
     }
 
-    static std::string index_name() const override;
-    static std::string parameters_stringified() const override;
+    std::string name() const override {
+        return "std_vector";
+    }
 };
 
 #endif // STD_VECTOR_HPP
