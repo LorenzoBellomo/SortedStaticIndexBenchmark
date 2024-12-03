@@ -9,28 +9,28 @@ private:
     std::vector<T> data;
 
 public:
-    void build(const std::vector<T>& data_) override {
+    void build(const std::vector<T>& data_) {
         data = data_;
     }
 
-    T access(size_t idx) const override {
+    T access(size_t idx) {
         return data[idx];
     }
 
-    std::pair<bool, T> next_geq(T q) const override {
+    std::pair<bool, T> next_geq(T q) {
         auto lb = std::lower_bound(data.begin(), data.end(), q);
         if (lb == data.end())
             return std::pair(false, 0);
         return std::pair(true, *lb);
     }
 
-    size_t size_in_bytes() const override {
+    /*size_t size_in_bytes() {
         return (sizeof(T) * data.size());
     }
 
-    std::string name() const override {
+    std::string name() override {
         return "std_vector";
-    }
+    }*/
 };
 
 #endif // STD_VECTOR_HPP
