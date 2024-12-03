@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-//#include <distr.h>
 #include <algorithm>
 #include <vector>
 #include <cassert>
@@ -34,6 +33,14 @@ std::vector<uint32_t> read_bin32_file(const std::string& filename) {
 
     std::vector<uint32_t> buf(N);
     ifs.read(reinterpret_cast<char*>(buf.data()), N * sizeof(uint32_t));
+
+    // CHANGING LAST VALUES FROM UINT32_MAX to UINT32_MAX-1 to avoid issues for libraries that use it as "inf".
+    for (auto i = buf.size() - 1; i >= 0; i--) {
+        if (buf[i] == UINT32_MAX)
+            buf[i] = UINT32_MAX - 1;
+        else
+            break;
+    }
     return buf;
 }
 
@@ -45,6 +52,13 @@ std::vector<uint64_t> read_bin64_file(const std::string& filename) {
 
     std::vector<uint64_t> buf(N);
     ifs.read(reinterpret_cast<char*>(buf.data()), N * sizeof(uint64_t));
+    // CHANGING LAST VALUES FROM UINT64_MAX to UINT64_MAX-1 to avoid issues for libraries that use it as "inf".
+    for (auto i = buf.size() - 1; i >= 0; i--) {
+        if (buf[i] == UINT64_MAX)
+            buf[i] = UINT64_MAX - 1;
+        else
+            break;
+    }
     return buf;
 }
 
@@ -233,6 +247,9 @@ int main() {
     print_stats(data);
 
     data = read_bin32_file("../data/books_200M_uint32");
+    // REWRITING THE FILE ON DISK TO REPLACE UINT32_MAX with UINT32_MAX - 1 for safety for some libs
+    std::cout << "Rewriting books_200M_uint32: Updated last item from UINT32_MAX to UINT32_MAX - 1 to avoid issues with some library that use that value as \"inf\"" << std::endl;
+    write_bin32_file("../data/books_200M_uint32", data); 
     lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/books", lookups);
     std::cout << "BOOKS" << std::endl;
@@ -268,6 +285,9 @@ int main() {
     print_stats(data64);
 
     data64 = read_bin64_file("../data/fb_200M_uint64");
+    // REWRITING THE FILE ON DISK TO REPLACE UINT64_MAX with UINT64_MAX - 1 for safety for some libs
+    std::cout << "Rewriting fb_200M_uint64: Updated last item from UINT64_MAX to UINT64_MAX - 1 to avoid issues with some library that use that value as \"inf\"" << std::endl;
+    write_bin64_file("../data/fb_200M_uint64", data64); 
     lookups64 = generate_missing_lookups(data64, M1);
     write_bin64_file("../data/lookups/fb64", lookups64);
     std::cout << "FACEBOOK 64" << std::endl;

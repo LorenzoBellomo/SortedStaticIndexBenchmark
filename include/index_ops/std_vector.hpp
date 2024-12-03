@@ -1,16 +1,20 @@
 #ifndef STD_VECTOR_HPP
 #define STD_VECTOR_HPP
 
-#include "index_interface.hpp"
+#include <iostream>
+#include <vector>
 
 template <typename T>
-class StdVectorInterface : public IndexInterface {
+class StdVectorInterface {
 private:
     std::vector<T> data;
 
 public:
-    void build(const std::vector<T>& data_) {
+    void prepare(const std::vector<T>& data_) {
         data = data_;
+    }
+
+    void build(const std::vector<T>& data_) {
     }
 
     T access(size_t idx) {
@@ -24,13 +28,9 @@ public:
         return std::pair(true, *lb);
     }
 
-    /*size_t size_in_bytes() {
+    size_t size_in_bytes() {
         return (sizeof(T) * data.size());
     }
-
-    std::string name() override {
-        return "std_vector";
-    }*/
 };
 
 #endif // STD_VECTOR_HPP

@@ -75,7 +75,7 @@ function main() {
 
    # GENERATING ALL THE OTHER DATASETS
    cd ../scripts
-   g++ -std=c++11 -I . elaborate_datasets.cpp -o elaborate_datasets
+   g++ -std=c++11 -O3 -I . elaborate_datasets.cpp -o elaborate_datasets
    echo "GENERATING SYNTETHIC DATASETS, AND PRINTING ALL THE STATS"
    ./elaborate_datasets > ../output/dataset_stats.txt
 

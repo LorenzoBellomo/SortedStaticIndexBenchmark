@@ -1,20 +1,22 @@
 #ifndef PGM_HPP
 #define PGM_HPP
 
-#include "index_interface.hpp"
 #include <iostream>
 #include <pgm/pgm_index.hpp>
 
 template<typename T, int eps>
-class PGMInterface : public IndexInterface {
+class PGMInterface {
 private:
     std::vector<T> data;
     pgm::PGMIndex<T, eps> pgm_idx;
 
 public:
-    void build(const std::vector<T>& data_) {
+    void prepare(const std::vector<T>& data_) {
         data = data_;
-        pgm_idx = pgm::PGMIndex<T, eps>(data_);
+    }
+
+    void build(const std::vector<T>& data_) {
+        pgm_idx = pgm::PGMIndex<T, eps>(data_.begin(), data_.end());
     }
 
     std::pair<bool, T> next_geq(T q) {
@@ -28,14 +30,6 @@ public:
     size_t size_in_bytes() {
         return pgm_idx.size_in_bytes();
     }
-
-    /*std::string name() const override {
-        return "pgm-index";
-    }
-
-    std::string parameters() const override {
-        return std::to_string(eps);
-    }*/
 };
 
 #endif // PGM.HPP
