@@ -1,59 +1,61 @@
-NORMAL
+normal_uint32
 SIZE: 50000000
 AVERAGE GAP: 42.9497
 # duplicates: 710309
 ===========================================
-EXPONENTIAL
+exponential_uint32
 SIZE: 50000000
 AVERAGE GAP: 42.9496
 # duplicates: 1009869
 ===========================================
-LOGNORMAL
+lognormal_uint32
 SIZE: 50000000
 AVERAGE GAP: 41.7867
 # duplicates: 919544
 ===========================================
-ZIPF
+zipf_uint32
 SIZE: 50000000
 AVERAGE GAP: 42.9497
 # duplicates: 6311198
 ===========================================
-BOOKS
+Rewriting books_200M_uint32: Updated last item from UINT32_MAX to UINT32_MAX - 1 to avoid issues with some library that use that value as "inf"
+books_200M_uint32
 SIZE: 200000000
 AVERAGE GAP: 21.4748
 # duplicates: 1
 ===========================================
-COMPANYNET
+companynet_uint32
 SIZE: 1000000
 AVERAGE GAP: 2800.63
 # duplicates: 2
 ===========================================
-FRIENDSTER
+friendster_50M_uint32
 SIZE: 50000000
 AVERAGE GAP: 12.9672
 # duplicates: 0
 ===========================================
-WIKI
+wiki_ts_200M_uint64
 SIZE: 200000000
 AVERAGE GAP: 1.18284
 # duplicates: 109562989
 ===========================================
-WIKI 64
+wiki_ts_200M_uint64
 SIZE: 200000000
 AVERAGE GAP: 1.18284
 # duplicates: 109562989
 ===========================================
-FACEBOOK 64
+Rewriting fb_200M_uint64: Updated last item from UINT64_MAX to UINT64_MAX - 1 to avoid issues with some library that use that value as "inf"
+fb_200M_uint64
 SIZE: 200000000
 AVERAGE GAP: 9.22337e+10
 # duplicates: 0
 ===========================================
-BOOKS 64
+books_800M_uint64
 SIZE: 800000000
 AVERAGE GAP: 1.15292e+10
 # duplicates: 0
 ===========================================
-OSM CELLIDS 64
+osm_cellids_800M_uint64
 SIZE: 800000000
 AVERAGE GAP: 1.71441e+10
 # duplicates: 0

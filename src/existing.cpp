@@ -15,11 +15,10 @@ void Benchmark(benchmark::State& state, std::string dataset_name) {
     idx.build(data);
     for (auto _ : state) {
         for (auto q : lookups) {
-            std::pair<bool, T> x = idx.next_geq(q);
+            T x = idx.next_geq(q);
             benchmark::DoNotOptimize(x);
 #ifdef DEBUG
-            assert(x.first);
-            assert(x.second == q);
+            assert(x == q);
 #endif
         }
     }

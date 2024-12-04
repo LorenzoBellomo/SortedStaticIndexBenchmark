@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <limits>
 
 template <typename T>
 class StdVectorInterface {
@@ -20,12 +21,11 @@ public:
         return data[idx];
     }
 
-    std::pair<bool, T> next_geq(T q) {
+    T next_geq(T q) {
         auto lb = std::lower_bound(data.begin(), data.end(), q);
-        auto idx = lb - data.begin();
         if (lb == data.end())
-            return std::pair(false, 0);
-        return std::pair(true, *lb);
+            return std::numeric_limits<T>::max();
+        return *lb;
     }
 
     size_t size_in_bytes() {

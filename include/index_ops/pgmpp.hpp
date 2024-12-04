@@ -19,11 +19,16 @@ public:
         pgmpp_idx = pgmpp::PGMIndex<T, eps, 4, true, 32, float>(data_.begin(), data_.end());
     }
 
-    std::pair<bool, T> next_geq(T q) {
+    T next_geq(T q) {
         auto iter = pgmpp_idx.search_data(data.begin(), q);
         if (iter == data.end())
-            return std::pair(false, 0);
-        return std::pair(true, *iter);
+            return std::numeric_limits<T>::max();
+        if (*iter < q) { // search_data by PGM++ does not actually run the lower bound, but sometimes returns the item before 
+            iter++;
+            if (iter == data.end())
+                return std::numeric_limits<T>::max();
+        }
+        return *iter;
     }
 
     size_t size_in_bytes() {

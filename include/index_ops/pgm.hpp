@@ -19,12 +19,12 @@ public:
         pgm_idx = pgm::PGMIndex<T, eps>(data_.begin(), data_.end());
     }
 
-    std::pair<bool, T> next_geq(T q) {
+    T next_geq(T q) {
         auto range = pgm_idx.search(q);
         auto lb = std::lower_bound(data.begin() + range.lo, data.begin() + range.hi, q);
         if (lb == data.end())
-            return std::pair(false, 0);
-        return std::pair(true, *lb);
+            return std::numeric_limits<T>::max();
+        return *lb;
     }
 
     size_t size_in_bytes() {

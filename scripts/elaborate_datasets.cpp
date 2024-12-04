@@ -79,7 +79,7 @@ void write_bin64_file(std::string fname, std::vector<uint64_t> data) {
 template<typename T>
 std::vector<T> generate_missing_lookups(std::vector<T> data, size_t size_) {
     std::vector<T> lookups(size_ * 10);
-    std::uniform_int_distribution<T> distr(data[0], data[size_-1]);
+    std::uniform_int_distribution<T> distr(data[0] + 1, data[data.size() - 1] - 1);
     std::default_random_engine generator(42);
     for (auto x = 0; x < size_*10; x++) {
         lookups[x] = distr(generator); 
@@ -91,8 +91,14 @@ std::vector<T> generate_missing_lookups(std::vector<T> data, size_t size_) {
     auto curr = data.begin();
     while(curr < data.end() && lookup_iter < lookups.end()) {
         if (*curr == *lookup_iter) {
-            curr++;
-            lookup_iter++;
+            auto prev = *curr;
+            while (prev == *curr) {
+                curr++;
+            } 
+            prev = *lookup_iter;
+            while (prev == *lookup_iter++) {
+                lookup_iter++;
+            } 
         } else if (*lookup_iter < *curr) {
             final_lookups.emplace_back(*lookup_iter);
             lookup_iter++;
@@ -222,28 +228,28 @@ int main() {
     write_bin32_file("../data/normal_uint32", data);
     std::vector<uint32_t> lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/normal_uint32", lookups);
-    std::cout << "NORMAL" << std::endl;
+    std::cout << "normal_uint32" << std::endl;
     print_stats(data);
 
     data = generate_exponential_distr(M50);
     write_bin32_file("../data/exponential_uint32", data);
     lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/exponential_uint32", lookups);
-    std::cout << "EXPONENTIAL" << std::endl;
+    std::cout << "exponential_uint32" << std::endl;
     print_stats(data);
 
     data = generate_lognormal_distr(M50);
     write_bin32_file("../data/lognormal_uint32", data);
     lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/lognormal_uint32", lookups);
-    std::cout << "LOGNORMAL" << std::endl;
+    std::cout << "lognormal_uint32" << std::endl;
     print_stats(data);
 
     data = generate_zipf_distr(M50);
     write_bin32_file("../data/zipf_uint32", data);
     lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/zipf_uint32", lookups);
-    std::cout << "ZIPF" << std::endl;
+    std::cout << "zipf_uint32" << std::endl;
     print_stats(data);
 
     data = read_bin32_file("../data/books_200M_uint32");
@@ -252,19 +258,19 @@ int main() {
     write_bin32_file("../data/books_200M_uint32", data); 
     lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/books_200M_uint32", lookups);
-    std::cout << "BOOKS" << std::endl;
+    std::cout << "books_200M_uint32" << std::endl;
     print_stats(data);
 
     data = read_bin32_file("../data/companynet_uint32");
     lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/companynet_uint32", lookups);
-    std::cout << "COMPANYNET" << std::endl;
+    std::cout << "companynet_uint32" << std::endl;
     print_stats(data);
 
     data = read_bin32_file("../data/friendster_50M_uint32");
     lookups = generate_missing_lookups(data, M1);
     write_bin32_file("../data/lookups/friendster_50M_uint32", lookups);
-    std::cout << "FRIENDSTER" << std::endl;
+    std::cout << "friendster_50M_uint32" << std::endl;
     print_stats(data);
 
     std::vector<uint64_t> data64 = read_bin64_file("../data/wiki_ts_200M_uint64");
@@ -275,13 +281,13 @@ int main() {
 
     lookups = generate_missing_lookups(wiki_vec, M1);
     write_bin32_file("../data/lookups/wiki_ts_200M_uint32", lookups);
-    std::cout << "WIKI" << std::endl;
+    std::cout << "wiki_ts_200M_uint64" << std::endl;
     print_stats(wiki_vec);  
     write_bin32_file("../data/wiki_ts_200M_uint32", wiki_vec);
 
     std::vector<uint64_t> lookups64 = generate_missing_lookups(data64, M1);
     write_bin64_file("../data/lookups/wiki_ts_200M_uint64", lookups64);
-    std::cout << "WIKI 64" << std::endl;
+    std::cout << "wiki_ts_200M_uint64" << std::endl;
     print_stats(data64);
 
     data64 = read_bin64_file("../data/fb_200M_uint64");
@@ -290,19 +296,19 @@ int main() {
     write_bin64_file("../data/fb_200M_uint64", data64); 
     lookups64 = generate_missing_lookups(data64, M1);
     write_bin64_file("../data/lookups/fb_200M_uint64", lookups64);
-    std::cout << "FACEBOOK 64" << std::endl;
+    std::cout << "fb_200M_uint64" << std::endl;
     print_stats(data64);
 
     data64 = read_bin64_file("../data/books_800M_uint64");
     lookups64 = generate_missing_lookups(data64, M1);
     write_bin64_file("../data/lookups/books_800M_uint64", lookups64);
-    std::cout << "BOOKS 64" << std::endl;
+    std::cout << "books_800M_uint64" << std::endl;
     print_stats(data64);
 
     data64 = read_bin64_file("../data/osm_cellids_800M_uint64");
     lookups64 = generate_missing_lookups(data64, M1);
     write_bin64_file("../data/lookups/osm_cellids_800M_uint64", lookups64);
-    std::cout << "OSM CELLIDS 64" << std::endl;
+    std::cout << "osm_cellids_800M_uint64" << std::endl;
     print_stats(data64);
 
     return 0;
