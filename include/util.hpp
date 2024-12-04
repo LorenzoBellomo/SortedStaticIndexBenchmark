@@ -32,7 +32,7 @@ std::vector<T> LoadDataset(const std::string& path_to_file) {
 }
 
 template <typename T>
-std::vector<T> GenerateLookups(const std::vector<T>& data, int seed = 42) {
+std::vector<T> GenerateLookups(std::vector<T> data, int seed = 42) {
     std::vector<T> lookups(data);
     random_unique(lookups.begin(), lookups.end(), M1, seed);
     lookups.resize(M1);

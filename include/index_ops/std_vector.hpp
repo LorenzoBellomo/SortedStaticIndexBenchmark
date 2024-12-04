@@ -10,12 +10,11 @@ private:
     std::vector<T> data;
 
 public:
-    void prepare(const std::vector<T>& data_) {
+    void prepare(std::vector<T> data_) {
         data = data_;
     }
 
-    void build(const std::vector<T>& data_) {
-    }
+    void build(std::vector<T> data_) {}
 
     T access(size_t idx) {
         return data[idx];
@@ -23,6 +22,7 @@ public:
 
     std::pair<bool, T> next_geq(T q) {
         auto lb = std::lower_bound(data.begin(), data.end(), q);
+        auto idx = lb - data.begin();
         if (lb == data.end())
             return std::pair(false, 0);
         return std::pair(true, *lb);
