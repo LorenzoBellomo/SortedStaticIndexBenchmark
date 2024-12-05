@@ -22,19 +22,19 @@ include_directories(
     indices/PGM-index/include # regular PGM
     #indices/ALEX # ALEX
     #indices/simdstructures # SIMD (sampled) btree
-    include # implementations of basic operations for each index + utils
+    include # implementations of basic operations for each index + utils + Wrapper SDSL
 )
 
 # You can add CPM.cmake like so:
 # mkdir -p cmake
 # wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/download/get_cpm.cmake
-#nclude(build/cmake/CPM.cmake)
-#CPMAddPackage(
-#  NAME roaring
-#  GITHUB_REPOSITORY "RoaringBitmap/CRoaring"
-#  GIT_TAG v2.0.4
-#  OPTIONS "BUILD_TESTING OFF"
-#)
+include(build/cmake/CPM.cmake)
+CPMAddPackage(
+  NAME roaring
+  GITHUB_REPOSITORY "RoaringBitmap/CRoaring"
+  GIT_TAG v2.0.4
+  OPTIONS "BUILD_TESTING OFF"
+)
 
 # Linker flags
 #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}-pthread")
@@ -48,5 +48,5 @@ foreach(src_file ${SRC_FILES})
     get_filename_component( filename_ ${src_file} NAME_WE )
     #add_executable( ${filename_} ${src_file} ${RMI_SOURCE_FILES})
     add_executable( ${filename_} ${src_file})
-    target_link_libraries(${filename_} benchmark::benchmark ${CMAKE_SOURCE_DIR}/lib/lib/libsdsl.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort64.a) # roaring::roaring
+    target_link_libraries(${filename_} benchmark::benchmark roaring::roaring ${CMAKE_SOURCE_DIR}/lib/lib/libsdsl.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort64.a)
 endforeach(src_file ${SRC_FILES})
