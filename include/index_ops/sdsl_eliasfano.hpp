@@ -38,6 +38,10 @@ public:
     size_t size_in_bytes() {
         return sdsl::size_in_bytes(ef);
     }
+
+    std::string to_string() {
+        return "EliasFano";
+    }
 };
 
 #endif // SDSLEF_HPP

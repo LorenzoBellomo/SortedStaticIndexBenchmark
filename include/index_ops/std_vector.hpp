@@ -31,6 +31,10 @@ public:
     size_t size_in_bytes() {
         return (sizeof(T) * data.size());
     }
+
+    std::string to_string() {
+        return "std::vector";
+    }
 };
 
 #endif // STD_VECTOR_HPP

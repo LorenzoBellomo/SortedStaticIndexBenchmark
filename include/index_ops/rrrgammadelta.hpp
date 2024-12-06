@@ -32,6 +32,10 @@ public:
     size_t size_in_bytes() {
         return sdsl::size_in_bytes(v_gamma);
     }
+
+    std::string to_string() {
+        return "GammaCode" + std::to_string(dens);
+    }
 };
 
 template <typename T, size_t dens>
@@ -59,6 +63,41 @@ public:
 
     size_t size_in_bytes() {
         return sdsl::size_in_bytes(v_delta);
+    }
+
+    std::string to_string() {
+        return "DeltaCode" + std::to_string(dens);
+    }
+};
+
+template <typename T, size_t block_size>
+class RRRInterface {
+private:
+    wrapper_sdsl<T, sdsl::rrr_vector<block_size>> rrr;
+public:
+    void prepare(std::vector<T> data_) {}
+
+    void build(std::vector<T> data_) {
+        rrr.build(data_);
+    }
+
+    T access(size_t idx) {
+        return rrr.select(idx);
+    }
+
+    T next_geq(T q) {
+        auto rank = rrr.rank(q) + 1;
+        if (rank > rrr.size())
+            return std::numeric_limits<T>::max();
+        return rrr.select(rank);
+    }
+
+    size_t size_in_bytes() {
+        return (rrr.bits_per_element()*rrr.size()) / 8;
+    }
+
+    std::string to_string() {
+        return "RRR-Vector" + std::to_string(block_size);
     }
 };
 

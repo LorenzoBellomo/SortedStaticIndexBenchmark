@@ -32,6 +32,10 @@ public:
     size_t size_in_bytes() {
         return v1.size_in_bytes();
     }
+
+    std::string to_string() {
+        return "LA-vector" + std::to_string(bpc);
+    }
 };
 
 template <typename T>
@@ -59,6 +63,10 @@ public:
 
     size_t size_in_bytes() {
         return v1.size_in_bytes();
+    }
+
+    std::string to_string() {
+        return "LA-vectoropt";
     }
 };
 

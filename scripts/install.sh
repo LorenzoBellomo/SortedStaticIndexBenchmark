@@ -1,11 +1,4 @@
 
-# Creating necessary folders
-mkdir -p output/existing
-mkdir -p output/missing
-mkdir -p output/buildtime
-mkdir -p output/scan_neighbors
-mkdir -p output/index_sizes
-
 # GOOGLE BENCHMARK
 echo "Installing Google Benchmark"
 cd benchmark

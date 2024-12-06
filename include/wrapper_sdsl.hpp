@@ -461,6 +461,9 @@ protected:
     size_t n;
 
 public:
+
+    wrapper_sdsl() = default;
+
     wrapper_sdsl(std::vector<T> &a) {
         n = a.size();
         if constexpr (std::is_same_v<D, sdsl::sd_vector<>>){
@@ -473,6 +476,17 @@ public:
             }
             ds = *new D(bv);
         }
+        sdsl::util::init_support(select_support, &ds);
+        sdsl::util::init_support(rank_support, &ds);
+    }
+
+    inline void build(std::vector<T> &a) {
+        n = a.size();
+        sdsl::bit_vector bv(a.back() + 1, 0);
+        for (auto i = 0; i < a.size(); ++i) {
+            bv[a[i]] = 1;
+        }
+        ds = *new D(bv);
         sdsl::util::init_support(select_support, &ds);
         sdsl::util::init_support(rank_support, &ds);
     }
@@ -504,6 +518,10 @@ public:
         std::vector<T> out(n);
         decode(out.data());
         return out;
+    }
+
+    inline size_t size() const {
+        return n;
     }
 
 };

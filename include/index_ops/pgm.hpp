@@ -30,6 +30,10 @@ public:
     size_t size_in_bytes() {
         return pgm_idx.size_in_bytes();
     }
+
+    std::string to_string() {
+        return "PGM" + std::to_string(eps);
+    }
 };
 
 #endif // PGM.HPP

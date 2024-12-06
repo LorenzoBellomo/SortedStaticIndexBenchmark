@@ -1,0 +1,6 @@
+wiki_ts_200M_uint64 - RRR-Vector15 - 67845835
+wiki_ts_200M_uint64 - RRR-Vector31 - 44444563
+wiki_ts_200M_uint64 - RRR-Vector127 - 23185779
+lognormal_uint32 - RRR-Vector15 - 124786027
+lognormal_uint32 - RRR-Vector31 - 86150099
+lognormal_uint32 - RRR-Vector127 - 53323330

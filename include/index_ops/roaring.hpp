@@ -56,6 +56,10 @@ public:
             return r32.getSizeInBytes();
         return r64.getSizeInBytes();
     }
+
+    std::string to_string() {
+        return "Roaring";
+    }
 };
 
 #endif // ROARINGINTERFACE_HPP
