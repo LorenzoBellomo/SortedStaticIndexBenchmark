@@ -16,7 +16,7 @@ include_directories(
     #indices/CSS-tree/include # CSS Btree
     #rmi_source_files # RMI
     #indices/PLEX/include # PLEX
-    #indices/la_vector/include # LA Vector
+    indices/la_vector/include # LA Vector
     lib/include # SDSL -> RRR vector, gamma and delta code, EliasFano
     indices/pgmpp # PGM plus plus (pgmpp/pgm_index.h)
     indices/PGM-index/include # regular PGM
