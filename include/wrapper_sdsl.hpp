@@ -428,6 +428,8 @@ template<typename V, typename D>
 struct wrapper_sdsl_enc_vector : public V {
     typedef typename D::value_type T;
 
+    wrapper_sdsl_enc_vector() = default;
+
     wrapper_sdsl_enc_vector(const D &data) : V(data) {}
 
     inline double bits_per_element() const {
