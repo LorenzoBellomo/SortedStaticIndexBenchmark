@@ -1,5 +1,5 @@
 cd build
-cmake ..
+cmake -DCMAKE_BUILD_TYPE=Release .. # OR USE DEBUG IF YOU WANT TO RUN THE ASSERTS
 make 
 ./buildtime --benchmark_out=../output/buildtime.json --benchmark_out_format=json
 ./existing --benchmark_out=../output/existing.json --benchmark_out_format=json
