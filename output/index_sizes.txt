@@ -1,7 +1,5 @@
-wiki_ts_200M_uint64 - PLEX8 - 63301600
-wiki_ts_200M_uint64 - PLEX32 - 5086732
-wiki_ts_200M_uint64 - PLEX128 - 1030668
-lognormal_uint32 - PLEX8 - 17334392
-lognormal_uint32 - PLEX32 - 1181924
-lognormal_uint32 - PLEX128 - 76768
-fb_200M_uint64 - PLEX8 - 175153944
+wiki_ts_200M_uint64 - RMI-compact - 6291472
+wiki_ts_200M_uint64 - RMI-large - 402653200
+lognormal_uint32 - RMI-compact - 6291472
+lognormal_uint32 - RMI-large - 402653200
+fb_200M_uint64 - RMI-compact - 6291472

@@ -13,6 +13,7 @@
 #include <index_ops/csstree.hpp>
 #include <index_ops/alex.hpp>
 #include <index_ops/plex.hpp>
+#include <index_ops/rmi.hpp>
 
 static std::ofstream bytesize_file("../output/index_sizes.txt");   
 
@@ -25,6 +26,49 @@ void Benchmark(benchmark::State& state, std::string dataset_name) {
         idx.build(data);
     }
     bytesize_file << dataset_name << " - " << idx.to_string() << " - " << idx.size_in_bytes() << std::endl;
+}
+
+template <typename T>
+void register_RMIs(const std::string &dataset, int num_iter) {
+    if (dataset == "wiki_ts_200M_uint64") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 0, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 0, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "lognormal_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 1, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 1, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "fb_200M_uint64") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 2, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 2, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "companynet_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 3, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 3, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "normal_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 4, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 4, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "wiki_ts_200M_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 5, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 5, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "zipf_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 6, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 6, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "books_800M_uint64") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 7, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 7, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "exponential_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 8, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 8, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "friendster_50M_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 9, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 9, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "osm_cellids_800M_uint64") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 10, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 10, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "books_200M_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 11, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 11, false>, T>, dataset)->Iterations(num_iter);
+    } else {
+        throw std::invalid_argument("Unknown dataset");
+    }
 }
 
 int main(int argc, char** argv) {
@@ -40,12 +84,14 @@ int main(int argc, char** argv) {
 
     // Register benchmarks
     for (auto dataset : datasets) {
+        const char* dataset_char = dataset.c_str();
         // registering benchmarks for different datasets, and all the indexes present in index_ops
         if (dataset.back() == '2')  { // HERE REGISTERING ONLY THE ONES THAT WORK FOR 32 BIT
-            benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
+            register_RMIs<uint32_t>(dataset, num_iter);
+            /*benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
-            /*benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint32_t, 15>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector31", Benchmark<RRRInterface<uint32_t, 31>, uint32_t>, dataset)->Iterations(num_iter);
@@ -69,10 +115,11 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_PGM++32", Benchmark<PGMPPInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++128", Benchmark<PGMPPInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);*/
         } else {
-            benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
+            register_RMIs<uint64_t>(dataset, num_iter);
+            /*benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);
-            /*benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint64_t, 64>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint64_t, 15>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector31", Benchmark<RRRInterface<uint64_t, 31>, uint64_t>, dataset)->Iterations(num_iter);

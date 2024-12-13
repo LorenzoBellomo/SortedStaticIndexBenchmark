@@ -49,6 +49,16 @@ echo "FB uint64"
 cargo run --release -- ../../data/fb_200M_uint64 fb64_compact robust_linear,linear 262144
 cargo run --release -- ../../data/fb_200M_uint64 fb64_large robust_linear,linear 16777216
 
-# Moving every c++ file to the rmi_source_files folder
-mv *.h ../../rmi_source_files
-mv *.cpp ../../rmi_source_files
+# PUTTING ALL .cpp in one whole file (same for _data.h and .h files)
+echo "" > ../../rmi_source_files/rmi.h
+echo "" > ../../rmi_source_files/rmi_data.h
+ls *.h | grep -v 'data\.h$' | xargs -I {} cat {} >> ../../rmi_source_files/rmi.h
+cat *_data.h >> ../../rmi_source_files/rmi_data.h
+
+cat *.cpp >> tmp.cpp
+echo "#include <rmi.h>" > ../../rmi_source_files/rmi.cpp # writing include rmi.h
+echo "#include <rmi_data.h>" >> ../../rmi_source_files/rmi.cpp # writing include rmi_data.h
+grep -v '^#include "' tmp.cpp >> ../../rmi_source_files/rmi.cpp # writing everything but includes with the specific rmi models
+
+rm *.cpp
+rm *.h

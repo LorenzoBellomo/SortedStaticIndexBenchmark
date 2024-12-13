@@ -14,7 +14,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -fopenmp -march=native -O2")
 # Include directories
 include_directories(
     indices/CSS-tree # CSS Btree
-    #rmi_source_files # RMI
+    rmi_source_files # RMI
     indices/PLEX/include # PLEX
     indices/la_vector/include # LA Vector
     lib/include # SDSL -> RRR vector, gamma and delta code, EliasFano
@@ -40,13 +40,12 @@ CPMAddPackage(
 #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}-pthread")
 
 # Source files
-#file(GLOB_RECURSE RMI_SOURCE_FILES "rmi_source_files/*.cpp")
+file(GLOB_RECURSE RMI_SOURCE_FILES "rmi_source_files/*.cpp")
 
 file(GLOB SRC_FILES "src/*.cpp")
 
 foreach(src_file ${SRC_FILES})
     get_filename_component( filename_ ${src_file} NAME_WE )
-    #add_executable( ${filename_} ${src_file} ${RMI_SOURCE_FILES})
-    add_executable( ${filename_} ${src_file})
+    add_executable( ${filename_} ${src_file} ${RMI_SOURCE_FILES})
     target_link_libraries(${filename_} benchmark::benchmark roaring::roaring ${CMAKE_SOURCE_DIR}/lib/lib/libsdsl.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort64.a)
 endforeach(src_file ${SRC_FILES})

@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <benchmark/benchmark.h>
 
 #define M1 1000000
 
