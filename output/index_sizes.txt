@@ -1,2 +1,7 @@
-wiki_ts_200M_uint64 - ALEX - 6210400
-lognormal_uint32 - ALEX - 152256
+wiki_ts_200M_uint64 - PLEX8 - 63301600
+wiki_ts_200M_uint64 - PLEX32 - 5086732
+wiki_ts_200M_uint64 - PLEX128 - 1030668
+lognormal_uint32 - PLEX8 - 17334392
+lognormal_uint32 - PLEX32 - 1181924
+lognormal_uint32 - PLEX128 - 76768
+fb_200M_uint64 - PLEX8 - 175153944
