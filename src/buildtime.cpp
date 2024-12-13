@@ -11,6 +11,7 @@
 #include <index_ops/lavec.hpp>
 #include <index_ops/rrrgammadelta.hpp>
 #include <index_ops/csstree.hpp>
+#include <index_ops/alex.hpp>
 
 static std::ofstream bytesize_file("../output/index_sizes.txt");   
 
@@ -40,8 +41,9 @@ int main(int argc, char** argv) {
     for (auto dataset : datasets) {
         // registering benchmarks for different datasets, and all the indexes present in index_ops
         if (dataset.back() == '2')  { // HERE REGISTERING ONLY THE ONES THAT WORK FOR 32 BIT
-            benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
-            /*benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint32_t, 15>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
+            /*benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint32_t, 15>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector31", Benchmark<RRRInterface<uint32_t, 31>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector127", Benchmark<RRRInterface<uint32_t, 127>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_GammaCode16", Benchmark<GammaInterface<uint32_t, 16>, uint32_t>, dataset)->Iterations(num_iter);
@@ -63,8 +65,9 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_PGM++32", Benchmark<PGMPPInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++128", Benchmark<PGMPPInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);*/
         } else {
-            benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint64_t, 64>, uint64_t>, dataset)->Iterations(num_iter);
-            /*benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint64_t, 15>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
+            /*benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint64_t, 64>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint64_t, 15>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector31", Benchmark<RRRInterface<uint64_t, 31>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_RRR-Vector127", Benchmark<RRRInterface<uint64_t, 127>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_GammaCode16", Benchmark<GammaInterface<uint64_t, 16>, uint64_t>, dataset)->Iterations(num_iter);

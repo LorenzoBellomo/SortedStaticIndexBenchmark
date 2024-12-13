@@ -20,7 +20,7 @@ include_directories(
     lib/include # SDSL -> RRR vector, gamma and delta code, EliasFano
     indices/pgmpp # PGM plus plus (pgmpp/pgm_index.h)
     indices/PGM-index/include # regular PGM
-    #indices/ALEX # ALEX
+    indices/ALEX # ALEX
     #indices/simdstructures # SIMD (sampled) btree
     include # implementations of basic operations for each index + utils + Wrapper SDSL
 )

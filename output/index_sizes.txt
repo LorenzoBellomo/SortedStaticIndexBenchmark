@@ -1,5 +1,2 @@
-wiki_ts_200M_uint64 - CSS-Btree - 200000000
-lognormal_uint32 - CSS-Btree - 25000000
-fb_200M_uint64 - CSS-Btree - 200000000
-companynet_uint32 - CSS-Btree - 500000
-normal_uint32 - CSS-Btree - 25000000
+wiki_ts_200M_uint64 - ALEX - 6210400
+lognormal_uint32 - ALEX - 152256
