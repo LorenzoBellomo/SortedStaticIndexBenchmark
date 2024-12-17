@@ -31,6 +31,10 @@ public:
         return *iter;
     }
 
+    size_t size_in_bytes() {
+        return pgmpp_idx.size_in_bytes();
+    }
+
     std::string to_string() {
         return "PGM++" + std::to_string(eps);
     }
