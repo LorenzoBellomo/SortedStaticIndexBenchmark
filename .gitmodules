@@ -16,3 +16,6 @@
 [submodule "indices/PGM-index"]
 	path = indices/PGM-index
 	url = https://github.com/gvinciguerra/PGM-index.git
+[submodule "indices/SIMD-B-Tree"]
+	path = indices/SIMD-B-Tree
+	url = https://github.com/mattiaodorisio/SIMD-B-Tree
