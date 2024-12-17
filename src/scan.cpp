@@ -7,7 +7,7 @@
 #include <index_ops/sdsl_eliasfano.hpp>
 #include <index_ops/roaring.hpp>
 #include <index_ops/lavec.hpp>
-#include <index_ops/rrrgammadelta.hpp>
+#include <index_ops/gammadelta.hpp>
 
 template <class IDX, typename T>
 void Benchmark(benchmark::State& state, std::string dataset_name, size_t scan_size) {
@@ -47,9 +47,7 @@ int main(int argc, char** argv) {
             // registering benchmarks for different datasets, and all the indexes present in index_ops
             std::string string_base = dataset + "_" + std::to_string(scan_size);
             if (dataset.back() == '2')  { // HERE REGISTERING ONLY THE ONES THAT WORK FOR 32 BIT
-                /*benchmark::RegisterBenchmark(string_base+"_RRR-Vector15", Benchmark<RRRInterface<uint32_t, 15>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
-                benchmark::RegisterBenchmark(string_base+"_RRR-Vector31", Benchmark<RRRInterface<uint32_t, 31>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
-                benchmark::RegisterBenchmark(string_base+"_RRR-Vector127", Benchmark<RRRInterface<uint32_t, 127>, uint32_t>, dataset, scan_size)->Iterations(num_iter);*/
+                //benchmark::RegisterBenchmark(string_base+"_Roaring", Benchmark<RoaringInterface<uint32_t>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_GammaCode16", Benchmark<GammaInterface<uint32_t, 16>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_GammaCode32", Benchmark<GammaInterface<uint32_t, 32>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_DeltaCode16", Benchmark<DeltaInterface<uint32_t, 16>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
@@ -59,13 +57,10 @@ int main(int argc, char** argv) {
                 benchmark::RegisterBenchmark(string_base+"_LA-vector8", Benchmark<LaVectorInterface<uint32_t, 8>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_LA-vector10", Benchmark<LaVectorInterface<uint32_t, 10>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_LA-vector12", Benchmark<LaVectorInterface<uint32_t, 12>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
-                //benchmark::RegisterBenchmark(string_base+"_Roaring", Benchmark<RoaringInterface<uint32_t>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_std::vector", Benchmark<StdVectorInterface<uint32_t>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint32_t>, uint32_t>, dataset, scan_size)->Iterations(num_iter);
             } else {
-                /*benchmark::RegisterBenchmark(string_base+"_RRR-Vector15", Benchmark<RRRInterface<uint64_t, 15>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
-                benchmark::RegisterBenchmark(string_base+"_RRR-Vector31", Benchmark<RRRInterface<uint64_t, 31>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
-                benchmark::RegisterBenchmark(string_base+"_RRR-Vector127", Benchmark<RRRInterface<uint64_t, 127>, uint64_t>, dataset, scan_size)->Iterations(num_iter);*/
+                //benchmark::RegisterBenchmark(string_base+"_Roaring", Benchmark<RoaringInterface<uint64_t>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_GammaCode16", Benchmark<GammaInterface<uint64_t, 16>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_GammaCode32", Benchmark<GammaInterface<uint64_t, 32>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_DeltaCode16", Benchmark<DeltaInterface<uint64_t, 16>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
@@ -75,7 +70,6 @@ int main(int argc, char** argv) {
                 benchmark::RegisterBenchmark(string_base+"_LA-vector8", Benchmark<LaVectorInterface<uint64_t, 8>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_LA-vector10", Benchmark<LaVectorInterface<uint64_t, 10>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_LA-vector12", Benchmark<LaVectorInterface<uint64_t, 12>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
-                //benchmark::RegisterBenchmark(string_base+"_Roaring", Benchmark<RoaringInterface<uint64_t>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint64_t>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
                 benchmark::RegisterBenchmark(string_base+"_std::vector", Benchmark<StdVectorInterface<uint64_t>, uint64_t>, dataset, scan_size)->Iterations(num_iter);
             }

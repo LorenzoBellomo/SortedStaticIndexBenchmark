@@ -9,7 +9,7 @@
 #include <index_ops/sdsl_eliasfano.hpp>
 #include <index_ops/roaring.hpp>
 #include <index_ops/lavec.hpp>
-#include <index_ops/rrrgammadelta.hpp>
+#include <index_ops/gammadelta.hpp>
 #include <index_ops/csstree.hpp>
 #include <index_ops/alex.hpp>
 #include <index_ops/plex.hpp>
@@ -97,9 +97,6 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint32_t, 15>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_RRR-Vector31", Benchmark<RRRInterface<uint32_t, 31>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_RRR-Vector127", Benchmark<RRRInterface<uint32_t, 127>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_GammaCode16", Benchmark<GammaInterface<uint32_t, 16>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_GammaCode32", Benchmark<GammaInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_DeltaCode16", Benchmark<DeltaInterface<uint32_t, 16>, uint32_t>, dataset)->Iterations(num_iter);
@@ -125,9 +122,6 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_CSS-Btree", Benchmark<CSSInterface<uint64_t, 64>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_RRR-Vector15", Benchmark<RRRInterface<uint64_t, 15>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_RRR-Vector31", Benchmark<RRRInterface<uint64_t, 31>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_RRR-Vector127", Benchmark<RRRInterface<uint64_t, 127>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_GammaCode16", Benchmark<GammaInterface<uint64_t, 16>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_GammaCode32", Benchmark<GammaInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_DeltaCode16", Benchmark<DeltaInterface<uint64_t, 16>, uint64_t>, dataset)->Iterations(num_iter);

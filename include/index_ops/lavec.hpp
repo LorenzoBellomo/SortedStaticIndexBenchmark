@@ -20,7 +20,6 @@ public:
 
     T access(size_t idx) {
         return v1[idx];
-        //return v1.select(idx + 1);
     }
 
     T next_geq(T q) {
@@ -52,7 +51,6 @@ public:
     }
 
     T access(size_t idx) {
-        //return v1.select(idx + 1);
         return v1[idx];
     }
 
