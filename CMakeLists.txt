@@ -21,7 +21,7 @@ include_directories(
     indices/pgmpp # PGM plus plus (pgmpp/pgm_index.h)
     indices/PGM-index/include # regular PGM
     indices/ALEX # ALEX
-    #indices/simdstructures # SIMD (sampled) btree
+    indices/SIMD-B-Tree/include # SIMD (sampled) btree
     include # implementations of basic operations for each index + utils + Wrapper SDSL
 )
 

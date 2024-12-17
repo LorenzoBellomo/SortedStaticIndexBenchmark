@@ -1,5 +1,13 @@
 wiki_ts_200M_uint64 - RMI-compact - 6291472
 wiki_ts_200M_uint64 - RMI-large - 402653200
-lognormal_uint32 - RMI-compact - 6291472
-lognormal_uint32 - RMI-large - 402653200
-fb_200M_uint64 - RMI-compact - 6291472
+wiki_ts_200M_uint64 - SIMD-BTree - 40
+wiki_ts_200M_uint64 - SIMD-SampledBTree - 100000104
+wiki_ts_200M_uint64 - PLEX8 - 63301600
+wiki_ts_200M_uint64 - PLEX32 - 5086732
+wiki_ts_200M_uint64 - PLEX128 - 1030668
+wiki_ts_200M_uint64 - ALEX - 6210400
+wiki_ts_200M_uint64 - CSS-Btree - 200000000
+wiki_ts_200M_uint64 - GammaCode16 - 1781555370
+wiki_ts_200M_uint64 - GammaCode32 - 1784279170
+wiki_ts_200M_uint64 - DeltaCode16 - 1112740338
+wiki_ts_200M_uint64 - DeltaCode32 - 1094834882

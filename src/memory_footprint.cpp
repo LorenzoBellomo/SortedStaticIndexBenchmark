@@ -14,6 +14,7 @@
 #include <index_ops/alex.hpp>
 #include <index_ops/plex.hpp>
 #include <index_ops/rmi.hpp>
+#include <index_ops/simdbtree.hpp>
 
 template <class IDX, typename T>
 void build_index(std::string dataset_name) {
@@ -39,6 +40,10 @@ int main(int argc, char *argv[]) {
             build_index<ALEXInterface<uint32_t>, uint32_t>(dataset);
         else if (libr == "CSS-Btree") 
             build_index<CSSInterface<uint32_t, 32>, uint32_t>(dataset);
+        else if (libr == "SIMD-BTree") 
+            build_index<SIMDBTreeInterface<uint32_t>, uint32_t>(dataset);
+        else if (libr == "SIMD-SampledBTree") 
+            build_index<SIMDSampledBTreeInterface<uint32_t>, uint32_t>(dataset);
         else if (libr == "GammaCode16") 
             build_index<GammaInterface<uint32_t, 16>, uint32_t>(dataset);
         else if (libr == "GammaCode32") 
@@ -86,6 +91,10 @@ int main(int argc, char *argv[]) {
             build_index<ALEXInterface<uint64_t>, uint64_t>(dataset);
         else if (libr == "CSS-Btree") 
             build_index<CSSInterface<uint64_t, 32>, uint64_t>(dataset);
+        else if (libr == "SIMD-BTree") 
+            build_index<SIMDBTreeInterface<uint64_t>, uint64_t>(dataset);
+        else if (libr == "SIMD-SampledBTree") 
+            build_index<SIMDSampledBTreeInterface<uint64_t>, uint64_t>(dataset);
         else if (libr == "GammaCode16") 
             build_index<GammaInterface<uint64_t, 16>, uint64_t>(dataset);
         else if (libr == "GammaCode32") 

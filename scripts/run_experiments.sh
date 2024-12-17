@@ -26,7 +26,6 @@ done
 
 make clean
 
-cd ../..
+cd ../
 echo "Plotting"
-python3 -m pip install -r requirements.txt
 python3 plotter.py
