@@ -30,14 +30,12 @@ public:
     }
 
     T access(size_t idx) {
-        if constexpr(sizeof(T) == 4) {
-            auto iter = r32.begin();
-            std::advance(iter, idx);
-            return *iter;
-        }
-        auto iter = r64.begin();
-        std::advance(iter, idx);
-        return *iter;
+        T elem = 0;
+        if constexpr(sizeof(T) == 4) 
+            r32.select(idx, &elem);
+        else 
+            r64.select(idx, &elem);
+        return elem;
     }
 
     T next_geq(T q) {

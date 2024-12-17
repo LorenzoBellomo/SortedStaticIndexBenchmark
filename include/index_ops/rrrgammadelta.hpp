@@ -19,7 +19,7 @@ public:
     }
 
     T access(size_t idx) {
-        return v_gamma.select(idx);
+        return v_gamma.select(idx + 1);
     }
 
     T next_geq(T q) {
@@ -51,7 +51,7 @@ public:
     }
 
     T access(size_t idx) {
-        return v_delta.select(idx);
+        return v_delta.select(idx + 1);
     }
 
     T next_geq(T q) {
@@ -82,7 +82,7 @@ public:
     }
 
     T access(size_t idx) {
-        return rrr.select(idx);
+        return rrr.select(idx + 1);
     }
 
     T next_geq(T q) {

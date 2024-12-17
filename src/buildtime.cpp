@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
         // registering benchmarks for different datasets, and all the indexes present in index_ops
         if (dataset.back() == '2')  { // HERE REGISTERING ONLY THE ONES THAT WORK FOR 32 BIT
             register_RMIs<uint32_t>(dataset, num_iter);
-            /*benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
@@ -113,10 +113,10 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_PGM128", Benchmark<PGMInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++8", Benchmark<PGMPPInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++32", Benchmark<PGMPPInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_PGM++128", Benchmark<PGMPPInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);*/
+            benchmark::RegisterBenchmark(dataset+"_PGM++128", Benchmark<PGMPPInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
         } else {
             register_RMIs<uint64_t>(dataset, num_iter);
-            /*benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_ALEX", Benchmark<ALEXInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
@@ -141,7 +141,7 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_PGM++8", Benchmark<PGMPPInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++32", Benchmark<PGMPPInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++128", Benchmark<PGMPPInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_std::vector", Benchmark<StdVectorInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);*/
+            benchmark::RegisterBenchmark(dataset+"_std::vector", Benchmark<StdVectorInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
         }
     }
     benchmark::Initialize(&argc, argv);
