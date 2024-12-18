@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -fopenmp -march=native -O2")
 
 # Include directories
 include_directories(
-    indices/CSS-Btree # CSS Btree
+    indices/CSS-BTree # CSS Btree
     rmi_source_files # RMI
     indices/PLEX/include # PLEX
     indices/la_vector/include # LA Vector
@@ -35,9 +35,6 @@ CPMAddPackage(
   GIT_TAG v2.0.4
   OPTIONS "BUILD_TESTING OFF"
 )
-
-# Linker flags
-#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}-pthread")
 
 # Source files
 file(GLOB_RECURSE RMI_SOURCE_FILES "rmi_source_files/*.cpp")

@@ -34,7 +34,7 @@ SIZE: 50000000
 AVERAGE GAP: 12.9672
 # duplicates: 0
 ===========================================
-wiki_ts_200M_uint64
+wiki_ts_200M_uint32
 SIZE: 200000000
 AVERAGE GAP: 1.18284
 # duplicates: 109562989

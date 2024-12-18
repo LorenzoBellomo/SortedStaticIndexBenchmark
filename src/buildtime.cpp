@@ -76,6 +76,7 @@ int main(int argc, char** argv) {
     std::vector<std::string> datasets({"wiki_ts_200M_uint64", "lognormal_uint32", "fb_200M_uint64", "companynet_uint32",
     "normal_uint32", "wiki_ts_200M_uint32", "zipf_uint32", "books_800M_uint64", "exponential_uint32", "friendster_50M_uint32", 
     "osm_cellids_800M_uint64", "books_200M_uint32"});
+    std::vector<std::string> no_duplicate_datasets({"fb_200M_uint64", "friendster_50M_uint32", "books_800M_uint64", "osm_cellids_800M_uint64"});
 
 #ifdef DEBUG
     auto num_iter = 1;
@@ -105,7 +106,8 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_LA-vector8", Benchmark<LaVectorInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector10", Benchmark<LaVectorInterface<uint32_t, 10>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector12", Benchmark<LaVectorInterface<uint32_t, 12>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
+            if (std::find(no_duplicate_datasets.begin(), no_duplicate_datasets.end(), dataset) != no_duplicate_datasets.end())
+                benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_std::vector", Benchmark<StdVectorInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM8", Benchmark<PGMInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
@@ -132,7 +134,8 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_LA-vector8", Benchmark<LaVectorInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector10", Benchmark<LaVectorInterface<uint64_t, 10>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector12", Benchmark<LaVectorInterface<uint64_t, 12>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
+            if (std::find(no_duplicate_datasets.begin(), no_duplicate_datasets.end(), dataset) != no_duplicate_datasets.end())
+                benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM8", Benchmark<PGMInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM32", Benchmark<PGMInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);

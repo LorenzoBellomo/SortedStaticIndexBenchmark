@@ -281,7 +281,7 @@ int main() {
 
     lookups = generate_missing_lookups(wiki_vec, M1);
     write_bin32_file("../data/lookups/wiki_ts_200M_uint32", lookups);
-    std::cout << "wiki_ts_200M_uint64" << std::endl;
+    std::cout << "wiki_ts_200M_uint32" << std::endl;
     print_stats(wiki_vec);  
     write_bin32_file("../data/wiki_ts_200M_uint32", wiki_vec);
 
