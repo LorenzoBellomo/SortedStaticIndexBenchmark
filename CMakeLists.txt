@@ -13,7 +13,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -fopenmp -march=native -O2")
 
 # Include directories
 include_directories(
-    indices/CSS-tree # CSS Btree
+    indices/CSS-Btree # CSS Btree
     rmi_source_files # RMI
     indices/PLEX/include # PLEX
     indices/la_vector/include # LA Vector
