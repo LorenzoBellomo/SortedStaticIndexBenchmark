@@ -25,7 +25,3 @@ for dataset in "${datasets[@]}"; do
 done
 
 make clean
-
-cd ../
-echo "Plotting"
-python3 plotter.py

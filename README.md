@@ -34,3 +34,9 @@ The methods to implement are:
 - _access_: **MUST BE IMPLEMENTED only for compressed indexes**, and is used to access the i-th element in the collection;
 - _size\_in\_bytes_: provides the size in bytes of the model.
 - _to\_string_: string version of the index, must be coherent with the one specified when registering a benchmark (e.g., PGM8, std::vector...)
+
+# Contributions
+- Comprehensive analysis of time/space performance of indexing data structures for static integer sets;
+- a highly optimized implementation of a BTree exploiting SIMD instructions;
+- an easily extensible benchmark framework consisting of *TOT* compressed indexes, *TOT* standard indexes, and *TOT* learned indexes, selected among the most well-known and best-performing ones;
+- a new hybrid index deploying compression, SIMD instructions, and learned models, that achieves state-of-the-art performance. 
