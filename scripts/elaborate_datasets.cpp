@@ -76,41 +76,6 @@ void write_bin64_file(std::string fname, std::vector<uint64_t> data) {
     out.write(reinterpret_cast<char*>(data.data()), size * sizeof(uint64_t));
 }
 
-template<typename T>
-std::vector<T> generate_missing_lookups(std::vector<T> data, size_t size_) {
-    std::vector<T> lookups(size_ * 10);
-    std::uniform_int_distribution<T> distr(data[0] + 1, data[data.size() - 1] - 1);
-    std::default_random_engine generator(42);
-    for (auto x = 0; x < size_*10; x++) {
-        lookups[x] = distr(generator); 
-    }
-    std::sort(lookups.begin(), lookups.end());
-    std::vector<T> final_lookups;
-
-    auto lookup_iter = lookups.begin();
-    auto curr = data.begin();
-    while(curr < data.end() && lookup_iter < lookups.end()) {
-        if (*curr == *lookup_iter) {
-            auto prev = *curr;
-            while (prev == *curr) {
-                curr++;
-            } 
-            prev = *lookup_iter;
-            while (prev == *lookup_iter++) {
-                lookup_iter++;
-            } 
-        } else if (*lookup_iter < *curr) {
-            final_lookups.emplace_back(*lookup_iter);
-            lookup_iter++;
-        } else {
-            curr++;
-        }
-    }
-    random_unique(final_lookups.begin(), final_lookups.end(), size_);
-    final_lookups.resize(size_);
-    return final_lookups;
-}
-
 std::vector<uint32_t> generate_uniform_distr(size_t size) {
     std::uniform_int_distribution<uint32_t> distr(0, UINT32_MAX);
     std::default_random_engine generator(0);
@@ -226,29 +191,21 @@ int main() {
 
     std::vector<uint32_t> data = generate_normal_distr(M50);
     write_bin32_file("../data/normal_uint32", data);
-    std::vector<uint32_t> lookups = generate_missing_lookups(data, M1);
-    write_bin32_file("../data/lookups/normal_uint32", lookups);
     std::cout << "normal_uint32" << std::endl;
     print_stats(data);
 
     data = generate_exponential_distr(M50);
     write_bin32_file("../data/exponential_uint32", data);
-    lookups = generate_missing_lookups(data, M1);
-    write_bin32_file("../data/lookups/exponential_uint32", lookups);
     std::cout << "exponential_uint32" << std::endl;
     print_stats(data);
 
     data = generate_lognormal_distr(M50);
     write_bin32_file("../data/lognormal_uint32", data);
-    lookups = generate_missing_lookups(data, M1);
-    write_bin32_file("../data/lookups/lognormal_uint32", lookups);
     std::cout << "lognormal_uint32" << std::endl;
     print_stats(data);
 
     data = generate_zipf_distr(M50);
     write_bin32_file("../data/zipf_uint32", data);
-    lookups = generate_missing_lookups(data, M1);
-    write_bin32_file("../data/lookups/zipf_uint32", lookups);
     std::cout << "zipf_uint32" << std::endl;
     print_stats(data);
 
@@ -256,20 +213,14 @@ int main() {
     // REWRITING THE FILE ON DISK TO REPLACE UINT32_MAX with UINT32_MAX - 1 for safety for some libs
     std::cout << "Rewriting books_200M_uint32: Updated last item from UINT32_MAX to UINT32_MAX - 1 to avoid issues with some library that use that value as \"inf\"" << std::endl;
     write_bin32_file("../data/books_200M_uint32", data); 
-    lookups = generate_missing_lookups(data, M1);
-    write_bin32_file("../data/lookups/books_200M_uint32", lookups);
     std::cout << "books_200M_uint32" << std::endl;
     print_stats(data);
 
     data = read_bin32_file("../data/companynet_uint32");
-    lookups = generate_missing_lookups(data, M1);
-    write_bin32_file("../data/lookups/companynet_uint32", lookups);
     std::cout << "companynet_uint32" << std::endl;
     print_stats(data);
 
     data = read_bin32_file("../data/friendster_50M_uint32");
-    lookups = generate_missing_lookups(data, M1);
-    write_bin32_file("../data/lookups/friendster_50M_uint32", lookups);
     std::cout << "friendster_50M_uint32" << std::endl;
     print_stats(data);
 
@@ -279,14 +230,10 @@ int main() {
     for (auto i = 0; i < data64.size(); i++) 
         wiki_vec[i] = (uint32_t) data64[i];
 
-    lookups = generate_missing_lookups(wiki_vec, M1);
-    write_bin32_file("../data/lookups/wiki_ts_200M_uint32", lookups);
     std::cout << "wiki_ts_200M_uint32" << std::endl;
     print_stats(wiki_vec);  
     write_bin32_file("../data/wiki_ts_200M_uint32", wiki_vec);
 
-    std::vector<uint64_t> lookups64 = generate_missing_lookups(data64, M1);
-    write_bin64_file("../data/lookups/wiki_ts_200M_uint64", lookups64);
     std::cout << "wiki_ts_200M_uint64" << std::endl;
     print_stats(data64);
 
@@ -294,20 +241,14 @@ int main() {
     // REWRITING THE FILE ON DISK TO REPLACE UINT64_MAX with UINT64_MAX - 1 for safety for some libs
     std::cout << "Rewriting fb_200M_uint64: Updated last item from UINT64_MAX to UINT64_MAX - 1 to avoid issues with some library that use that value as \"inf\"" << std::endl;
     write_bin64_file("../data/fb_200M_uint64", data64); 
-    lookups64 = generate_missing_lookups(data64, M1);
-    write_bin64_file("../data/lookups/fb_200M_uint64", lookups64);
     std::cout << "fb_200M_uint64" << std::endl;
     print_stats(data64);
 
     data64 = read_bin64_file("../data/books_800M_uint64");
-    lookups64 = generate_missing_lookups(data64, M1);
-    write_bin64_file("../data/lookups/books_800M_uint64", lookups64);
     std::cout << "books_800M_uint64" << std::endl;
     print_stats(data64);
 
     data64 = read_bin64_file("../data/osm_cellids_800M_uint64");
-    lookups64 = generate_missing_lookups(data64, M1);
-    write_bin64_file("../data/lookups/osm_cellids_800M_uint64", lookups64);
     std::cout << "osm_cellids_800M_uint64" << std::endl;
     print_stats(data64);
 

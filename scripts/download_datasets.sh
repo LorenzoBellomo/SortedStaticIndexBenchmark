@@ -41,7 +41,6 @@ function download_file_zst() {
 function main() {
    echo "downloading data ..."
    mkdir -p data
-   mkdir -p data/lookups
    cd data
 
    # Format: download_file <file_name> <md5_checksum> <url>
