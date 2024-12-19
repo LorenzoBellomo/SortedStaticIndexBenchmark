@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <numeric>
+#include <random>
 
 #define M1 1000000
 
@@ -46,4 +47,40 @@ std::vector<size_t> GenerateScanLookups(std::vector<T> data, size_t scan_size, i
     random_unique(lookups.begin(), lookups.end(), 100000, seed);
     lookups.resize(100000);
     return lookups;
+}
+
+template<typename T>
+std::vector<std::pair<size_t, T>> generate_missing_lookups(std::vector<T> data, size_t size_, int seed = 42) {
+    std::vector<T> lookups(size_ * 10);
+    std::uniform_int_distribution<T> distr(data[0] + 1, data[data.size() - 1] - 1);
+    std::default_random_engine generator(seed);
+    for (auto x = 0; x < size_*10; x++) {
+        lookups[x] = distr(generator); 
+    }
+    std::sort(lookups.begin(), lookups.end());
+    std::vector<std::pair<size_t, T>> final_lookups;
+
+    auto lookup_iter = lookups.begin();
+    auto curr = data.begin();
+    while(curr < data.end() && lookup_iter < lookups.end()) {
+        if (*curr == *lookup_iter) {
+            auto prev = *curr;
+            while (prev == *curr) {
+                curr++;
+            } 
+            prev = *lookup_iter;
+            while (prev == *lookup_iter++) {
+                lookup_iter++;
+            } 
+        } else if (*lookup_iter < *curr) {
+            size_t idx = curr - data.begin();
+            final_lookups.emplace_back(std::make_pair(idx, *lookup_iter));
+            lookup_iter++;
+        } else {
+            curr++;
+        }
+    }
+    random_unique(final_lookups.begin(), final_lookups.end(), size_, seed);
+    final_lookups.resize(size_);
+    return final_lookups;
 }

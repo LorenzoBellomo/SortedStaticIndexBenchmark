@@ -20,15 +20,26 @@ template <class IDX, typename T>
 void Benchmark(benchmark::State& state, std::string dataset_name) {
     auto data = LoadDataset<T>("../data/" + dataset_name);
     IDX idx;
-    auto lookups = LoadDataset<T>("../data/lookups/" + dataset_name);
+    //auto lookups = LoadDataset<T>("../data/lookups/" + dataset_name);
+    auto lookups = generate_missing_lookups(data, M1);
     idx.prepare(data);
     idx.build(data);
     for (auto _ : state) {
         for (auto q : lookups) {
-            T x = idx.next_geq(q);
+            T x = idx.next_geq(q.second);
             benchmark::DoNotOptimize(x);
 #ifdef DEBUG
-            assert(x > q);
+            assert(x > q.second);
+            auto idx = q.first;
+            T curr_elem = x;
+            while(curr_elem > q.second) {
+                if (idx != 0) {
+                    idx--;
+                    curr_elem = data[idx];
+                    if (curr_elem != x) 
+                        assert(curr_elem < q.second); 
+                }
+            }
 #endif
         }
     }
