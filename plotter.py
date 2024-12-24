@@ -176,7 +176,7 @@ for dataset in datasets.keys():
         scan_perf = []
         if scan_present:
             for scan_range in [10, 100, 1000, 10000]:
-                scan_perf.append(tool_performance.get("existing_{}_{}_{}".format(dataset, scan_range, idx_), "-"))
+                scan_perf.append(tool_performance.get("scan_{}_{}_{}".format(dataset, scan_range, idx_), "-"))
             data_to_table.append((idx_, ns_present, ns_missing, f'{occupancy:,}', ns_build, scan_perf[0], scan_perf[1], scan_perf[2], scan_perf[3]))
         else: 
             data_to_table.append((idx_, ns_present, ns_missing, f'{occupancy:,}', ns_build))

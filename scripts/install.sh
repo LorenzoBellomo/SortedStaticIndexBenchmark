@@ -16,9 +16,14 @@ wget -O cmake/CPM.cmake https://github.com/cpm-cmake/CPM.cmake/releases/latest/d
 cd ..
 
 # SDSL
+echo "Installing SDSL"
 mkdir -p lib
 cd indices/sdsl-lite
 ./install.sh ../../lib
 cd ../..
+
+# python libraries for plotting
+echo "Installing Python libraries for plotting"
+python3 -m pip install -r requirements.txt
 
 echo "Done"
