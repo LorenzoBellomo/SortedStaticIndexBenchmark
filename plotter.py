@@ -376,14 +376,33 @@ for dataset in datasets.keys():
     ax2.invert_yaxis()
     plt.savefig("output/plots/spacetime/{}.png".format(dataset), bbox_inches='tight')
     # legends
-    #if dataset in ["books_200M_uint32", "books_800M_uint64"]:
-    #    plt.clf()
-    #    handles = [plt.Rectangle((0,0),1,1, color=col) for col in spacetime_plot_colors]
-    #    for handle in handles: 
-    #        handle.set_edgecolor('black')
-    #    n_columns = math.ceil(len(root_str_list)/3)
-    #    if dataset == "books_800M_uint64":
-    #        legend = plt.legend(handles, new_algorithms, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-    #        export_legend(legend, "legends/64_no_label.png")
     plt.clf()
-    # TODO legends
+    handles = [plt.Rectangle((0,0),1,1, color=col) for col in spacetime_plot_colors]
+    zipped_list = [(a, b) for a, b in zip(handles, algorithms_to_plot)]
+    idx_of_stdvector = algorithms_to_plot.index("std::vector")
+    for handle in handles: 
+        handle.set_edgecolor('black')
+    n_columns = math.ceil(len(root_str_list)/3)
+    vect_new_hand = [handles[i] for i in range(len(handles)) if i <= idx_of_stdvector]
+    vect_new_algos = [algorithms_to_plot[i] for i in range(len(handles)) if i <= idx_of_stdvector]
+    ind_new_hand = [handles[i] for i in range(len(handles)) if i >= idx_of_stdvector]
+    ind_new_algos = [algorithms_to_plot[i] for i in range(len(handles)) if i >= idx_of_stdvector]
+    if dataset == "books_800M_uint64":
+        legend = plt.legend(handles, algorithms_to_plot, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+        export_legend(legend, "output/plots/legends/64_no_label.png")
+    if dataset == "books_200M_uint32":
+        legend = plt.legend(handles, algorithms_to_plot, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+        export_legend(legend, "output/plots/legends/no_label.png")
+    if dataset == "wiki_ts_200M_uint64":
+        legend_vec = plt.legend(vect_new_hand, vect_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(vect_new_algos)/2))
+        export_legend(legend_vec, "output/plots/legends/vec64.png")
+    if dataset == "wiki_ts_200M_uint32":    
+        legend_vec = plt.legend(vect_new_hand, vect_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(vect_new_algos)/2))
+        export_legend(legend_vec, "output/plots/legends/vec.png")
+    if dataset == "companynet_uint32":
+        legend_ind = plt.legend(ind_new_hand, ind_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(ind_new_algos)/2))
+        export_legend(legend_ind, "output/plots/legends/index.png")
+    if dataset == "osm_cellids_800M_uint64":
+        legend_ind = plt.legend(ind_new_hand, ind_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(ind_new_algos)/2))
+        export_legend(legend_ind, "output/plots/legends/index64.png")
+    plt.clf()

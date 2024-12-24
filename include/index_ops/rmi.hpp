@@ -280,9 +280,8 @@ public:
     }
 
     std::string to_string() {
-        if (compact) 
-            return "RMI-compact";
-        return "RMI-large";
+        std::string to_ret = (compact)? "RMI-compact" : "RMI-large";
+        return to_ret;
     }
 };
 
