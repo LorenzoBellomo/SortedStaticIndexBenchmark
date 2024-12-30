@@ -158,13 +158,13 @@ with open("output/index_sizes.txt", 'r') as index_size_file:
     for line in index_size_file.readlines():
         dataset, index_, bytes_ = line.split(" - ")
         bytes_ = bytes_.replace("\n", '')
-        space_occupancy[dataset.split(".")[0] + "_" + index_] = math.ceil(float(bytes_))
+        space_occupancy[dataset.split(".")[0] + "_" + index_] = math.ceil(float(bytes_)/1000000)
 
 # Generate tables for each dataset
-header_column = ['index', 'lookup existing (ns)', 'lookup missing (ns)', 'space (MB)', 'build']
-header_column_with_scan = ['index', 'lookup existing (ns)', 'lookup missing (ns)', 'space (MB)', 'build', "Scan 10", "Scan 100", "Scan 1K", "Scan 10K"]
+header_column = ['index', 'lookup existing (ns)', 'lookup missing (ns)', 'space (MB)', 'build (ms)']
+header_column_with_scan = ['Compressed Index', "Scan 10", "Scan 100", "Scan 1K", "Scan 10K"]
 for dataset in datasets.keys():
-    data_to_table = []
+    data_to_table, data_to_table_scan = [], []
     all_experiments_with_dataset = [a for a in tool_performance.keys() if dataset in a] 
     indices_for_this_dataset = sorted([idx_ for idx_ in all_indices if any([idx_ in exp for exp in all_experiments_with_dataset])])
     scan_present = any(["scan_" in exp for exp in all_experiments_with_dataset])
@@ -174,17 +174,18 @@ for dataset in datasets.keys():
         ns_build = tool_performance.get("buildtime_{}_{}".format(dataset, idx_), "-")
         occupancy = space_occupancy.get("{}_{}".format(dataset, idx_), "-")
         scan_perf = []
+        data_to_table.append((idx_, ns_present, ns_missing, f'{occupancy:,}', ns_build))
         if scan_present:
+            scan_perf.append(idx_)
             for scan_range in [10, 100, 1000, 10000]:
-                scan_perf.append(tool_performance.get("scan_{}_{}_{}".format(dataset, scan_range, idx_), "-"))
-            data_to_table.append((idx_, ns_present, ns_missing, f'{occupancy:,}', ns_build, scan_perf[0], scan_perf[1], scan_perf[2], scan_perf[3]))
-        else: 
-            data_to_table.append((idx_, ns_present, ns_missing, f'{occupancy:,}', ns_build))
+                scan_perf.append(str(tool_performance.get("scan_{}_{}_{}".format(dataset, scan_range, idx_), "-")))
+            if scan_perf[1] != "-":
+                data_to_table_scan.append(scan_perf)
     with open('output/plots/tables/{}.tex'.format(dataset), 'w') as f:
-        if scan_present:
-            f.write(tabulate(data_to_table, tablefmt="latex", headers=header_column_with_scan))
-        else:
-            f.write(tabulate(data_to_table, tablefmt="latex", headers=header_column))
+        f.write(tabulate(data_to_table, tablefmt="latex", headers=header_column))
+    if scan_present:
+        with open('output/plots/tables/scan_{}.tex'.format(dataset), 'w') as f:
+            f.write(tabulate(data_to_table_scan, tablefmt="latex", headers=header_column_with_scan))
     
     perf = {"buildtime": [], "existing": [], "missing": [], "indices": [], "scan10": [],"scan100": [], "scan1000": [], "scan10000": [], "scan_indices": set()}
     for idx_ in indices_for_this_dataset:
@@ -290,7 +291,7 @@ for dataset in datasets.keys():
         if dataset in pareto_dataset:
             fig, ax = plt.subplots()
             if not plot_compressed_indices:
-                algorithms_filtered_idx = [i for i, a in enumerate(indices) if a != "std::vector" and space_occupancy[dataset+"_"+a] >= 1e+8]
+                algorithms_filtered_idx = [i for i, a in enumerate(indices) if a != "std::vector" and space_occupancy[dataset+"_"+a] < 1e+8]
                 algorithms_filtered = [perf["indices"][i] for i in algorithms_filtered_idx]
                 values_filtered = [perf["existing"][i] for i in algorithms_filtered_idx]
                 markers__ = [marker_map[a] for a in algorithms_filtered]
@@ -348,7 +349,7 @@ for dataset in datasets.keys():
     i = 0
     spacetime_plot_positions = []
     algorithms_to_plot = [a["opt"] for a in filtered_spacetime_indices.values()]
-    ns_to_plot = [a["existing"] for a in filtered_spacetime_indices.values()]
+    ns_to_plot = [math.ceil(a["existing"]) for a in filtered_spacetime_indices.values()]
     root_str_list = [a["root_str"] for a in filtered_spacetime_indices.values()]
     space_to_plot = [a["space"] for a in filtered_spacetime_indices.values()]
     spacetime_plot_colors = [color_map[a] for a in algorithms_to_plot]
@@ -388,10 +389,12 @@ for dataset in datasets.keys():
     ind_new_hand = [handles[i] for i in range(len(handles)) if i >= idx_of_stdvector]
     ind_new_algos = [algorithms_to_plot[i] for i in range(len(handles)) if i >= idx_of_stdvector]
     if dataset == "books_800M_uint64":
-        legend = plt.legend(handles, algorithms_to_plot, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+        new_algo = [extract_idx_root(a) for a in algorithms_to_plot]
+        legend = plt.legend(handles, new_algo, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
         export_legend(legend, "output/plots/legends/64_no_label.png")
     if dataset == "books_200M_uint32":
-        legend = plt.legend(handles, algorithms_to_plot, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+        new_algo = [extract_idx_root(a) for a in algorithms_to_plot]
+        legend = plt.legend(handles, new_algo, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
         export_legend(legend, "output/plots/legends/no_label.png")
     if dataset == "wiki_ts_200M_uint64":
         legend_vec = plt.legend(vect_new_hand, vect_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(vect_new_algos)/2))
