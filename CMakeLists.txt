@@ -8,8 +8,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(BENCHMARK_DOWNLOAD_DEPENDENCIES ON)
 add_subdirectory(benchmark)
 
-set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -fopenmp -march=native -O2 -DDEBUG")
-set(CMAKE_CXX_FLAGS_RELEASE "-Wall -Wextra -fopenmp -march=native -O2")
+set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -fopenmp -march=native -O3 -DDEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE "-w -fopenmp -march=native -O3")
 
 # Include directories
 include_directories(

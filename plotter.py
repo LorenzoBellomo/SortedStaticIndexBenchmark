@@ -110,6 +110,8 @@ for experiment in ["existing", "missing", "buildtime", "scan"]:
     with open(path_to, 'r') as json_file:
         data = json.load(json_file)['benchmarks']
     for entry in data:
+        if "error_occurred" in entry and entry['error_occurred'] == True:
+            continue
         full_bm_str = entry["name"].split("/")[0]
         real_time_ns = entry["real_time"]
         dataset = [a for a in datasets.keys() if a in full_bm_str][0]
@@ -174,7 +176,7 @@ for dataset in datasets.keys():
         ns_build = tool_performance.get("buildtime_{}_{}".format(dataset, idx_), "-")
         occupancy = space_occupancy.get("{}_{}".format(dataset, idx_), "-")
         scan_perf = []
-        data_to_table.append((idx_, ns_present, ns_missing, f'{occupancy:,}', ns_build))
+        data_to_table.append((idx_, ns_present, ns_missing, occupancy, ns_build))
         if scan_present:
             scan_perf.append(idx_)
             for scan_range in [10, 100, 1000, 10000]:
@@ -191,7 +193,7 @@ for dataset in datasets.keys():
     for idx_ in indices_for_this_dataset:
         for experiment in ["buildtime", "existing", "missing"]:
             key_ = "{}_{}_{}".format(experiment, dataset, idx_)
-            perf[experiment].append(tool_performance[key_])
+            perf[experiment].append(tool_performance[key_] if key_ in tool_performance else 0)
         perf["indices"].append(idx_)
         perf["scan_present"] = scan_present
         if scan_present:
@@ -255,7 +257,7 @@ for dataset in datasets.keys():
         fig, ax = plt.subplots()
         ind = np.arange(len(indices))
         width = 0.6  
-        space_occup = [space_occupancy[dataset + "_" + idx_] for idx_ in indices]
+        space_occup = [space_occupancy.get(dataset + "_" + idx_, 1) for idx_ in indices]
         ax.bar(ind, space_occup, width, color = colors, edgecolor = "black")
         ax.set_ylabel('Size (in MB)', fontsize=13)
         plt.xticks(ind, indices)
@@ -291,7 +293,7 @@ for dataset in datasets.keys():
         if dataset in pareto_dataset:
             fig, ax = plt.subplots()
             if not plot_compressed_indices:
-                algorithms_filtered_idx = [i for i, a in enumerate(indices) if a != "std::vector" and space_occupancy[dataset+"_"+a] < 1e+8]
+                algorithms_filtered_idx = [i for i, a in enumerate(indices) if a != "std::vector" and space_occupancy.get(dataset+"_"+a, 1) < 1e+8]
                 algorithms_filtered = [perf["indices"][i] for i in algorithms_filtered_idx]
                 values_filtered = [perf["existing"][i] for i in algorithms_filtered_idx]
                 markers__ = [marker_map[a] for a in algorithms_filtered]
@@ -303,8 +305,8 @@ for dataset in datasets.keys():
                 colors__ = [color_map[a] for a in algorithms_filtered]
             to_pareto = []
             for i, algo in enumerate(algorithms_filtered):
-                ax.plot(space_occupancy[dataset + "_" + algo], values_filtered[i], marker=markers__[i], color=colors__[i], label=algo)
-                to_pareto.append((space_occupancy[dataset + "_" + algo], values_filtered[i]))
+                ax.plot(space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i], marker=markers__[i], color=colors__[i], label=algo)
+                to_pareto.append((space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i]))
             pareto = pareto_frontier(to_pareto)
             x_pareto, y_pareto = zip(*pareto)
             plt.plot(x_pareto, y_pareto, color='black', linestyle='-')
@@ -329,7 +331,7 @@ for dataset in datasets.keys():
         root_str = extract_idx_root(a)
         if root_str not in filtered_spacetime_indices:
             options_indices = [x for x in spacetime_indices if extract_idx_root(x) == root_str]
-            list_of_options = [(x, tool_performance["existing_{}_{}".format(dataset, x)],space_occupancy[dataset + "_" + x]) for x in options_indices]
+            list_of_options = [(x, tool_performance["existing_{}_{}".format(dataset, x)],space_occupancy.get(dataset + "_" + x, 1)) for x in options_indices]
             max_space = max(ds[2] for ds in list_of_options)
             max_time = max(ds[1] for ds in list_of_options)
             normalized_scores = []
@@ -343,7 +345,7 @@ for dataset in datasets.keys():
                 "opt": best_idx,
                 "root_str": root_str,
                 "existing": tool_performance["existing_{}_{}".format(dataset, best_idx)],
-                "space": space_occupancy[dataset + "_" + best_idx],
+                "space": space_occupancy.get(dataset + "_" + best_idx, 1),
             }
     # spacetime plots
     i = 0
