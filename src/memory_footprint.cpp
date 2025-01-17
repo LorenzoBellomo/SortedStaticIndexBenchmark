@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
             build_index<PLEXInterface<uint32_t, 128>, uint32_t>(dataset);
         else if (libr == "ALEX") 
             build_index<ALEXInterface<uint32_t>, uint32_t>(dataset);
-        else if (libr == "CSS-Btree") 
+        else if (libr == "CSS-BTree") 
             build_index<CSSInterface<uint32_t, 32>, uint32_t>(dataset);
         else if (libr == "SIMD-BTree") 
             build_index<SIMDBTreeInterface<uint32_t>, uint32_t>(dataset);
@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
             build_index<PLEXInterface<uint64_t, 128>, uint64_t>(dataset);
         else if (libr == "ALEX") 
             build_index<ALEXInterface<uint64_t>, uint64_t>(dataset);
-        else if (libr == "CSS-Btree") 
+        else if (libr == "CSS-BTree") 
             build_index<CSSInterface<uint64_t, 32>, uint64_t>(dataset);
         else if (libr == "SIMD-BTree") 
             build_index<SIMDBTreeInterface<uint64_t>, uint64_t>(dataset);

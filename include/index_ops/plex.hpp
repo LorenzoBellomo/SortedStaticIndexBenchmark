@@ -15,13 +15,13 @@ private:
     std::vector<T> data;
 
 public:
-    void prepare(std::vector<T> data_) {
-        data = data_;
+    void prepare(std::vector<T>& data_) {
+        data = std::move(data_);
     }
 
     void build(std::vector<T> data_) {
-        ts::Builder<T> tsb(data_[0], data_[data_.size() - 1], spline_max_error);
-        for (const auto& key : data_) tsb.AddKey(key);
+        ts::Builder<T> tsb(data[0], data[data.size() - 1], spline_max_error);
+        for (const auto& key : data) tsb.AddKey(key);
         ts = tsb.Finalize();
     }
 

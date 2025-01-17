@@ -28,8 +28,8 @@ private:
     std::vector<T> data;
 
 public:
-    void prepare(std::vector<T> data_) {
-        data = data_;
+    void prepare(std::vector<T>& data_) {
+        data = std::move(data_);
     }
 
     void build(std::vector<T> data_) {

@@ -12,11 +12,11 @@ private:
 
 public:
     void prepare(const std::vector<T>& data_) {
-        data = data_;
+        data = std::move(data_);
     }
 
     void build(const std::vector<T>& data_) {
-        pgmpp_idx = pgmpp::PGMIndex<T, eps, 4, true, 32, float>(data_.begin(), data_.end());
+        pgmpp_idx = pgmpp::PGMIndex<T, eps, 4, true, 32, float>(data.begin(), data.end());
     }
 
     T next_geq(T q) {

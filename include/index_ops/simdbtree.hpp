@@ -16,19 +16,17 @@ private:
     SIMD_Btree::btree<T, log_sz> btree;
 
 public:
-    void prepare(std::vector<T> data_) {
-        data = data_;
-    }
+    void prepare(std::vector<T> data_) {}
 
     void build(std::vector<T> data_) {
-        btree.build(data.begin(), data.end());
+        btree.build(data_.begin(), data_.end());
     }
 
     T next_geq(T q) {
         auto idx = btree.lower_bound_idx(q);
-        if (idx == data.size())
+        if (idx == btree.size())
             return std::numeric_limits<T>::max();
-        return data[idx];
+        return btree[idx];
     }
 
     size_t size_in_bytes() {
@@ -36,30 +34,27 @@ public:
     }
 
     std::string to_string() {
-        return (sz == 0) ? "SIMD-BTree" : "SIMD-BTreeOptimized";
+        return "SIMD-BTree";
     }
 };
 
 template <typename T>
 class SIMDSampledBTreeInterface {
 private:
-    std::vector<T> data;
     SIMD_Btree::b_plus_tree<T> bplustree;
 
 public:
-    void prepare(std::vector<T> data_) {
-        data = data_;
-    }
+    void prepare(std::vector<T> &data_) {}
 
     void build(std::vector<T> data_) {
-        bplustree.build(data.begin(), data.end());
+        bplustree.build(data_.begin(), data_.end());
     }
 
     T next_geq(T q) {
         auto idx = bplustree.lower_bound_idx(q);
-        if (idx == data.size())
+        if (idx == bplustree.size())
             return std::numeric_limits<T>::max();
-        return data[idx];
+        return bplustree[idx];
     }
 
     size_t size_in_bytes() {
