@@ -23,6 +23,7 @@ PGM++128 - 1533
 std::vector - 766
 SIMD-BTree - 2384
 SIMD-SampledBTree - 2393
+LA-vectoropt - 13847
 
 companynet_uint32
 ALEX - 75
@@ -49,6 +50,7 @@ PGM++128 - 12
 std::vector - 7
 SIMD-BTree - 15
 SIMD-SampledBTree - 16
+LA-vectoropt - 74
 
 fb_200M_uint64
 ALEX - 8710
@@ -75,6 +77,7 @@ PGM++128 - 3083
 std::vector - 1529
 SIMD-BTree - 4910
 SIMD-SampledBTree - 4999
+LA-vectoropt - 155764
 
 lognormal_uint32
 ALEX - 1117
@@ -101,6 +104,7 @@ PGM++128 - 386
 std::vector - 194
 SIMD-BTree - 668
 SIMD-SampledBTree - 605
+LA-vectoropt - 3458
 
 normal_uint32
 ALEX - 1116
@@ -127,6 +131,7 @@ PGM++128 - 386
 std::vector - 194
 SIMD-BTree - 668
 SIMD-SampledBTree - 605
+LA-vectoropt - 3457
 
 wiki_ts_200M_uint32
 ALEX - 4463
@@ -153,6 +158,7 @@ PGM++128 - 1532
 std::vector - 766
 SIMD-BTree - 2384
 SIMD-SampledBTree - 2393
+LA-vectoropt - 13803
 
 zipf_uint32
 ALEX - 1199
@@ -179,6 +185,7 @@ PGM++128 - 385
 std::vector - 194
 SIMD-BTree - 668
 SIMD-SampledBTree - 605
+LA-vectoropt - 3456
 
 books_800M_uint64
 ALEX - 34376
@@ -205,6 +212,7 @@ PGM++128 - 12237
 std::vector - 6107
 SIMD-BTree - 21270
 SIMD-SampledBTree - 20168
+LA-vectoropt - 249280
 
 exponential_uint32
 ALEX - 1117
@@ -231,6 +239,7 @@ PGM++128 - 385
 std::vector - 194
 SIMD-BTree - 668
 SIMD-SampledBTree - 605
+LA-vectoropt - 3458
 
 friendster_50M_uint32
 ALEX - 1193
@@ -257,6 +266,7 @@ PGM++128 - 391
 std::vector - 194
 SIMD-BTree - 668
 SIMD-SampledBTree - 605
+LA-vectoropt - 3482
 
 osm_cellids_800M_uint64
 ALEX - 34547
@@ -283,6 +293,7 @@ PGM++128 - 12270
 std::vector - 6107
 SIMD-BTree - 21270
 SIMD-SampledBTree - 20168
+LA-vectoropt - 234795
 
 wiki_ts_200M_uint64
 ALEX - 8605
@@ -309,4 +320,5 @@ PGM++128 - 3058
 std::vector - 1529
 SIMD-BTree - 4910
 SIMD-SampledBTree - 4999
+LA-vectoropt - 24517
 
