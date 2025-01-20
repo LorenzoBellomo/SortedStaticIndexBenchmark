@@ -13,6 +13,7 @@
 \usepackage{tabularx}
 \usepackage{xspace}
 \usepackage{caption}
+\usepackage{verbatim}
 
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 
@@ -33,7 +34,6 @@
 
 \begin{document}
 
-
 % REAL WORLD DATASET DISTRIBUTIONS
 \begin{figure}[!htbp]
 \fbox
@@ -46,13 +46,13 @@
     \end{minipage}
     \vspace{20px}
 
-   \begin{minipage}{0.45\linewidth}
+   \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/dataset_distribution/books_200M_uint32}
-        \caption{Amzn}
+        \caption{Amzn uint32}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/dataset_distribution/companynet_uint32}
             \caption{CompanyNet}
@@ -61,13 +61,13 @@
 
     \vfill
 
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/dataset_distribution/friendster_50M_uint32}
         \caption{Friendster}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/dataset_distribution/wiki_ts_200M_uint32}
             \caption{Wiki uint32}
@@ -96,13 +96,13 @@
     \end{minipage}
     \vspace{20px}
 
-   \begin{minipage}{0.45\linewidth}
+   \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/dataset_distribution/normal_uint32}
         \caption{Normal}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/dataset_distribution/lognormal_uint32}
             \caption{Lognormal}
@@ -111,13 +111,13 @@
 
     \vfill
     
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/dataset_distribution/exponential_uint32}
         \caption{Exponential}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/dataset_distribution/zipf_uint32}
             \caption{Zipf}
@@ -142,17 +142,17 @@
 \centering
     \vspace{20px}
     \begin{minipage}{0.95\linewidth}
-    64-bit DATASETS \\ DISTRIBUTION
+    64-BIT DATASETS \\ DISTRIBUTION
     \end{minipage}
     \vspace{20px}
 
-   \begin{minipage}{0.45\linewidth}
+   \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/dataset_distribution/books_800M_uint64}
         \caption{Amzn uint64}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/dataset_distribution/fb_200M_uint64}
             \caption{Facebook uint64}
@@ -161,13 +161,13 @@
 
     \vfill
     
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/dataset_distribution/osm_cellids_800M_uint64}
         \caption{OSM Cellids uint64}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.45\linewidth}
+    \begin{minipage}{0.49\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/dataset_distribution/wiki_ts_200M_uint64}
             \caption{Wiki uint64}
@@ -177,7 +177,7 @@
     \vfill
     \centering
     \begin{minipage}{\linewidth}
-        64 bits datasets - dataset distributions. The $x$ axis reports the indexes (positions) in the vector to store, while the $y$ axis reports the corresponding values.
+        64-bits datasets - dataset distributions. The $x$ axis reports the indexes (positions) in the vector to store, while the $y$ axis reports the corresponding values.
     \end{minipage}
     \vspace{10px}
 \end{minipage}
@@ -190,16 +190,15 @@
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
-\vspace*{-0.40cm}
     \begin{minipage}{0.2\linewidth}
     \footnotesize{BUILD TIME ON \\ REAL-WORLD DATASETS}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/no_label}
+        \includegraphics[width=\linewidth]{plots/legends/all.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-18px}
+    \vspace*{-10px}
     
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small COMPANYNET\end{sideways}
@@ -214,7 +213,7 @@
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/companynet_uint32.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
 \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small FRIENDSTER\end{sideways}
@@ -229,7 +228,7 @@
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/friendster_50M_uint32.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small AMZN\end{sideways}
@@ -244,7 +243,7 @@
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/books_200M_uint32.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small WIKI\end{sideways}
@@ -260,7 +259,7 @@
         \end{figure}
     \end{minipage}
 
-    %\vspace*{-0.3cm}
+    \vfill
     \centering
     \begin{minipage}{\linewidth}
         The plots above report the time required to build the data structures (indexes) on the real-world datasets. On the left, the dataset's name is shown; in the middle, the complete plot with all the times expressed in milliseconds; and on the right, the same plot but excluding the ones with excessive build times (those that are over double the average of all build times of all indexes).
@@ -277,16 +276,15 @@
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
-\vspace*{-0.40cm}
     \begin{minipage}{0.2\linewidth}
     \footnotesize{BUILD TIME ON \\ SYNTHETIC DATASETS}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/no_label}
+        \includegraphics[width=\linewidth]{plots/legends/all.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-18px}
+    \vspace*{-10px}
     
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small NORMAL\end{sideways}
@@ -301,7 +299,7 @@
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/normal_uint32.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
 \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small LOGNORMAL\end{sideways}
@@ -316,7 +314,7 @@
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/lognormal_uint32.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small EXPONENTIAL\end{sideways}
@@ -331,7 +329,7 @@
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/exponential_uint32.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small ZIPF\end{sideways}
@@ -347,6 +345,7 @@
         \end{figure}
     \end{minipage}
 
+    \vfill
     \centering
     \begin{minipage}{\linewidth}
 The plots above report the time required to build the data structures (indexes) on the synthetic datasets. On the left, the dataset's name is shown; in the middle, the complete plot with all the times expressed in milliseconds; and on the right, the same plot but excluding the ones with excessive build times (those that are over double the average of all build times of all indexes).
@@ -363,16 +362,15 @@ The plots above report the time required to build the data structures (indexes) 
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
-\vspace*{-0.4cm}
     \begin{minipage}{0.2\linewidth}
-    \footnotesize{BUILD TIME ON  \\ 64 bit DATASETS}
+    \footnotesize{BUILD TIME ON  \\ 64-BIT DATASETS}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/64_no_label}
+        \includegraphics[width=\linewidth]{plots/legends/all.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-18px}
+    \vspace*{-10px}
     
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small AMZN64\end{sideways}
@@ -387,7 +385,7 @@ The plots above report the time required to build the data structures (indexes) 
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/books_800M_uint64.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
 \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small FACEBOOK64\end{sideways}
@@ -402,7 +400,7 @@ The plots above report the time required to build the data structures (indexes) 
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/fb_200M_uint64.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small OSM CELLIDS 64\end{sideways}
@@ -417,7 +415,7 @@ The plots above report the time required to build the data structures (indexes) 
             \includegraphics[width=\linewidth]{plots/buildtime/zoom/osm_cellids_800M_uint64.png}
         \end{figure}
     \end{minipage}
-\vspace*{-0.6cm}
+\vspace*{-0.55cm}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small WIKI 64\end{sideways}
@@ -433,6 +431,7 @@ The plots above report the time required to build the data structures (indexes) 
         \end{figure}
     \end{minipage}
 
+    \vfill
     \centering
     \begin{minipage}{\linewidth}
         The plots above report the time required to build the data structures (indexes) on the 64-bit datasets. On the left, the dataset's name is shown; in the middle, the complete plot with all the times expressed in milliseconds; and on the right, the same plot but excluding the ones with excessive build times (those that are over double the average of all build times of all indexes).
@@ -448,14 +447,13 @@ The plots above report the time required to build the data structures (indexes) 
 \fbox
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
-\centering
-\vspace*{-0.2cm}
+\centering 
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{STANDARD/LEARNED INDEXES::\\SEARCH TIME ON \\ REAL DATASET}
+    \footnotesize{TRADITIONAL/LEARNED INDEXES::\\SEARCH TIME ON \\ REAL DATASET}
     \end{minipage}
-   \begin{minipage}{0.75\linewidth}
+   \begin{minipage}{0.7\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/index}
+        \includegraphics[width=\linewidth]{plots/legends/index.png}
         \end{figure}
     \end{minipage}
     \vspace*{-10px}
@@ -463,57 +461,57 @@ The plots above report the time required to build the data structures (indexes) 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small COMPANYNET\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/companynet_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/companynet_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-16px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small FRIENDSTER\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/friendster_50M_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/friendster_50M_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-16px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small AMZN\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/books_200M_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/books_200M_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-16px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small WIKI\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/wiki_ts_200M_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/wiki_ts_200M_uint32.png}
         \end{figure}
@@ -523,12 +521,12 @@ The plots above report the time required to build the data structures (indexes) 
     
     \centering
     \begin{minipage}{\linewidth}
-        The performances of standard and learned indexes on real-world datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
+        The performances of traditional and learned indexes on real-world datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
     \end{minipage}
     \vspace{10px}
 \end{minipage}
 }
-\caption{Average time for pointwise queries on standard and learned indexes, built on real-world datasets.}
+\caption{Average time for pointwise queries on traditional and learned indexes, built on real-world datasets.}
 \end{figure}
 
 % INDEX LOOKUP SYNTH
@@ -537,13 +535,12 @@ The plots above report the time required to build the data structures (indexes) 
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
-\vspace*{-0.2cm}
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{STANDARD/LEARNED INDEXES::\\SEARCH TIME ON \\ SYNTHETIC DATASET}
+    \footnotesize{TRADITIONAL/LEARNED INDEXES::\\SEARCH TIME ON \\ SYNTHETIC DATASET}
     \end{minipage}
-   \begin{minipage}{0.75\linewidth}
+   \begin{minipage}{0.7\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/index}
+        \includegraphics[width=\linewidth]{plots/legends/index.png}
         \end{figure}
     \end{minipage}
     \vspace*{-10px}
@@ -551,57 +548,57 @@ The plots above report the time required to build the data structures (indexes) 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small NORMAL\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/normal_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/normal_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-16px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small LOGNORMAL\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/lognormal_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/lognormal_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-16px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small EXPONENTIAL\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/exponential_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/exponential_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-16px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small ZIPF\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/zipf_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/zipf_uint32.png}
         \end{figure}
@@ -610,12 +607,12 @@ The plots above report the time required to build the data structures (indexes) 
     
     \centering
     \begin{minipage}{\linewidth}
-        The performance of standard and learned indexes on synthetic datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
+        The performance of traditional and learned indexes on synthetic datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
     \end{minipage}
     \vspace{10px}
 \end{minipage}
 }
-\caption{Average time for pointwise queries on standard and learned indexes, built on synthetic datasets.}
+\caption{Average time for pointwise queries on traditional and learned indexes, built on synthetic datasets.}
 \end{figure}
 
 % INDEX LOOKUP uint64
@@ -624,13 +621,12 @@ The plots above report the time required to build the data structures (indexes) 
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
-\vspace*{-0.2cm}
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{STANDARD/LEARNED INDEXES::\\SEARCH TIME ON \\ 64 bit DATASET}
+    \footnotesize{TRADITIONAL/LEARNED INDEXES::\\SEARCH TIME ON \\ 64-BIT DATASET}
     \end{minipage}
-   \begin{minipage}{0.75\linewidth}
+   \begin{minipage}{0.7\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/index64}
+        \includegraphics[width=\linewidth]{plots/legends/index.png}
         \end{figure}
     \end{minipage}
     \vspace*{-10px}
@@ -638,57 +634,57 @@ The plots above report the time required to build the data structures (indexes) 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small AMZN 64 \end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/books_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/books_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small FACEBOOK 64\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/fb_200M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/fb_200M_uint64.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small OSM CELLIDS 64\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/osm_cellids_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/osm_cellids_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.05\linewidth}
     \begin{sideways}\small WIKI 64\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/wiki_ts_200M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/index/space/wiki_ts_200M_uint64.png}
         \end{figure}
@@ -697,12 +693,12 @@ The plots above report the time required to build the data structures (indexes) 
     
     \centering
     \begin{minipage}{\linewidth}
-        The performances of standard and learned indexes on 64-bit datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
+        The performances of traditional and learned indexes on 64-bit datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
     \end{minipage}
     \vspace{10px}
 \end{minipage}
 }
-\caption{Average time for pointwise queries on standard and learned indexes, built on 64-bit datasets.}
+\caption{Average time for pointwise queries on traditional and learned indexes, built on 64-bit datasets.}
 \end{figure}
 
 % VECTOR LOOKUP REAL WORLD
@@ -717,75 +713,75 @@ The plots above report the time required to build the data structures (indexes) 
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/vec}
+        \includegraphics[width=\linewidth]{plots/legends/vector.png}
         \end{figure}
     \end{minipage}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small COMPANYNET\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/companynet_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/companynet_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small FRIENDSTER\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/friendster_50M_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/friendster_50M_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small AMZN\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/books_200M_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/books_200M_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small WIKI\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/wiki_ts_200M_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/wiki_ts_200M_uint32.png}
         \end{figure}
     \end{minipage}
 
-    \vspace*{10px}
+    \vfill
     \centering
     \begin{minipage}{\linewidth}
 The performances of compressed indexes on real-world datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
     \end{minipage}
-    \vfill
+    \vspace{10px}
 \end{minipage}
 }
 \caption{Average time for pointwise queries on compressed indexes, built on real-world datasets.}
@@ -803,75 +799,75 @@ The performances of compressed indexes on real-world datasets are represented in
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/vec}
+        \includegraphics[width=\linewidth]{plots/legends/vector.png}
         \end{figure}
     \end{minipage}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small NORMAL\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/normal_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/normal_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small LOGNORMAL\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/lognormal_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/lognormal_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small EXPONENTIAL\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/exponential_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/exponential_uint32.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small ZIPF\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/zipf_uint32.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/zipf_uint32.png}
         \end{figure}
     \end{minipage}
 
-    \vspace*{10px}
+    \vfill
     \centering
     \begin{minipage}{\linewidth}
 The performances of compressed indexes on synthetic datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.
     \end{minipage}
-    \vfill
+    \vspace{10px}
 \end{minipage}
 }
 \caption{Average time for pointwise queries on compressed indexes, built on synthetic datasets.}
@@ -885,11 +881,11 @@ The performances of compressed indexes on synthetic datasets are represented in 
 \centering
 \vspace*{-0.2cm}
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{COMPRESSED INDEXES::\\SEARCH TIME ON \\ 64 bit DATASET}
+    \footnotesize{COMPRESSED INDEXES::\\SEARCH TIME ON \\ 64-BIT DATASET}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/vec64}
+        \includegraphics[width=\linewidth]{plots/legends/vector.png}
         \end{figure}
     \end{minipage}
     \vspace*{-10px}
@@ -897,57 +893,57 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small AMZN 64 \end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/books_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/books_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small FACEBOOK 64\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/fb_200M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/fb_200M_uint64.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small OSM CELLIDS 64\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/osm_cellids_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/osm_cellids_800M_uint64.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px}
+    \vspace*{-15px}
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small WIKI 64\end{sideways}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/wiki_ts_200M_uint64.png}
         \end{figure}
     \end{minipage}
-    \begin{minipage}{0.3\linewidth}
+    \begin{minipage}{0.32\linewidth}
         \begin{figure}[H]
             \includegraphics[width=\linewidth]{plots/vector/space/wiki_ts_200M_uint64.png}
         \end{figure}
@@ -957,7 +953,7 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \centering
     \begin{minipage}{\linewidth}
         The performances of compressed indexes on 64-bit datasets are represented in two plots. The leftmost plot shows the time of search (in ns) on each index; while the right plot shows the space occupied by each index in MBs (without considering the space occupied by the data to be stored). The left plot shows two bars for each data structure. The left/right one shows the average time to search for an existing/missing item in the collection.\end{minipage}
-    \vspace{30px}
+    \vspace{10px}
 \end{minipage}
 }
 \caption{Average time for pointwise queries on compressed indexes, built on 64-bit datasets.}
@@ -969,16 +965,15 @@ The performances of compressed indexes on synthetic datasets are represented in 
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
-\vspace*{-0.7cm}
     \begin{minipage}{0.23\linewidth}
     \footnotesize{COMPRESSED INDEXES::\\ SCAN TIME}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/scan}
+        \includegraphics[width=\linewidth]{plots/legends/vector.png}
         \end{figure}
     \end{minipage}
-    \vspace*{-20px} 
+    \vspace*{-7px} 
 
     \begin{minipage}{0.03\linewidth}
     \begin{sideways}\small COMPANYNET\end{sideways}
@@ -1044,7 +1039,7 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \begin{minipage}{\linewidth}
     The plots above show the performance of compressed indexes in time and space relative to \emph{range queries}, where starting points are randomly sampled, and the width of the scan is set to 10, 100, 1K, and 10K. The plot on the left shows the time (in ns) required for every interrogation, describing the average time required per access with $x = 10, 100, 1K, 10K$. The plot on the right shows the space occupied by each compressed index (in MB). 
     \end{minipage}
-    \vspace{20px}
+    \vspace{10px}
 \end{minipage}
 }
 \caption{Average time (in ns) for range queries on compressed indexes, on 4 real-world datasets.}
@@ -1061,7 +1056,7 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/no_label}
+        \includegraphics[width=\linewidth]{plots/legends/all.png}
         \end{figure}
     \end{minipage}
    \vfill 
@@ -1110,9 +1105,10 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \end{center}
     \end{minipage}
 
-    \vspace{20px}
+    \vfill
+    
     \begin{minipage}{\linewidth}
-    The figures above show the results corresponding to the space occupied and elapsed time for pointwise queries on real-world datasets on all tested indexes (standard, learned, and compressed). For each dataset and for each index, the top part shows the average time (in ns) needed to make a query on existing items in the dataset, while the bottom part shows the required space in MB (where we added the space of the std::vector for standard and learned indexes).  
+    The figures above show the results corresponding to the space occupied and elapsed time for pointwise queries on real-world datasets on all tested indexes (traditional, learned, and compressed). For each dataset and for each index, the top part shows the average time (in ns) needed to make a query on existing items in the dataset, while the bottom part shows the required space in MB (where we added the space of the std::vector for traditional and learned indexes).  
     The results show only the parameter configurations where each index performs best. 
     \end{minipage}
     \vspace{10px}
@@ -1128,11 +1124,11 @@ The performances of compressed indexes on synthetic datasets are represented in 
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{FOCUS::\\ space/TEMPO SU \\ DATASET SINTETICI}
+    \footnotesize{FOCUS::\\ SPACE/TIME ON \\ SYNTHETIC DATASETS}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/no_label}
+        \includegraphics[width=\linewidth]{plots/legends/all.png}
         \end{figure}
     \end{minipage}
     \vfill
@@ -1181,13 +1177,13 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \end{center}
     \end{minipage}
 
-    \vspace{20px}
+    \vfill
     
     \begin{minipage}{\linewidth}
-        The figures above show the results corresponding to the space occupied and elapsed time for pointwise queries on synthetic datasets on all tested indexes (standard, learned, and compressed). For each dataset and for each index, the top part shows the average time (in ns) needed to make a query on existing items in the dataset, while the bottom part shows the required space in MB (where we added the space of the std::vector for standard and learned indexes).  
+        The figures above show the results corresponding to the space occupied and elapsed time for pointwise queries on synthetic datasets on all tested indexes (traditional, learned, and compressed). For each dataset and for each index, the top part shows the average time (in ns) needed to make a query on existing items in the dataset, while the bottom part shows the required space in MB (where we added the space of the std::vector for traditional and learned indexes).  
     The results show only the parameter configurations where each index performs best. 
             \end{minipage}
-    \vspace{20px}
+    \vspace{10px}
 \end{minipage}
 }
 \caption{Recap space/time plots for pointwise queries on synthetic datasets.}
@@ -1200,11 +1196,11 @@ The performances of compressed indexes on synthetic datasets are represented in 
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{FOCUS::\\ space/TEMPO SU \\ DATASET A 64 bit}
+    \footnotesize{FOCUS::\\ SPACE/TIME ON \\ 64-BIT DATASETS}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{legends/64_no_label}
+        \includegraphics[width=\linewidth]{plots/legends/all.png}
         \end{figure}
     \end{minipage}
     \vfill 
@@ -1253,26 +1249,27 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \end{center}
     \end{minipage}
 
-    \vspace{20px}
+    \vfill
     
     \begin{minipage}{\linewidth}
-        The figures above show the results corresponding to the space occupied and elapsed time for pointwise queries on 64-bit datasets on all tested indexes (standard, learned, and compressed). For each dataset and each index, the top part shows the average time (in ns) needed to make a query on existing items in the dataset, while the bottom part shows the required space in MB (where we added the space of the std::vector for standard and learned indexes).  
+        The figures above show the results corresponding to the space occupied and elapsed time for pointwise queries on 64-bit datasets on all tested indexes (traditional, learned, and compressed). For each dataset and each index, the top part shows the average time (in ns) needed to make a query on existing items in the dataset, while the bottom part shows the required space in MB (where we added the space of the std::vector for traditional and learned indexes).  
     The results show only the parameter configurations where each index performs best. 
     \end{minipage}
-    \vspace{20px}
+    \vspace{10px}
 \end{minipage}
 }
 \caption{Recap space/time plots for pointwise queries on 64-bit datasets.}
 \end{figure}
 
-% PARETO standard and learned indexes
+% PARETO traditional and learned indexes REAL WORLD
 \begin{figure}[!htbp]
 \fbox
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
+\vspace*{-5px}
 \centering
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{FOCUS::  PARETO\\ CURVE ON STANDARD \\ AND LEARNED INDEXES}
+    \footnotesize{FOCUS::  PARETO CURVE\\ ON TRADITIONAL \\ AND LEARNED INDEXES \\ ON REAL-WORLD \\ DATASETS}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
@@ -1283,7 +1280,82 @@ The performances of compressed indexes on synthetic datasets are represented in 
 
    \begin{minipage}{0.48\linewidth}
         \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/companynet_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/friendster_50M_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        COMPANYNET
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        FRIENDSTER
+    \end{center}
+    \end{minipage}
+
+    \vfill
+
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/index/pareto/books_200M_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/wiki_ts_200M_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        AMZN
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        WIKI
+    \end{center}
+    \end{minipage}
+
+    \vspace{20px}
+    
+    \begin{minipage}{\linewidth}
+    The plots recap the experimental results about occupied space/time needed for pointwise queries for traditional and learned indexes on real-world datasets. For these datasets, for each index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
+
+    Additionally, a black line shows the Pareto frontier for traditional/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off.  
+    We avoided plotting ``RMI-large'' because of its excessive space occupancy (roughly 400 MB on each dataset). ``RMI-large'' was not one of the Pareto-optimal configurations.
+    \end{minipage}
+    \vspace{10px}
+\end{minipage}
+}
+\caption{Pareto Frontier: Traditional and Learned Indexes on real-world datasets}
+\end{figure}
+
+% PARETO traditional and learned indexes, synth
+\begin{figure}[!htbp]
+\fbox
+{
+\begin{minipage}[t][0.98\textheight][t]{\textwidth}
+\vspace*{-5px}
+\centering
+    \begin{minipage}{0.23\linewidth}
+    \footnotesize{FOCUS::  PARETO CURVE\\ ON TRADITIONAL \\ AND LEARNED INDEXES \\ ON SYNTHETIC \\ DATASETS}
+    \end{minipage}
+   \begin{minipage}{0.75\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/legends/pareto_index}
+        \end{figure}
+    \end{minipage}
+    \vfill
+
+   \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/normal_uint32.png}
         \end{figure}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
@@ -1293,7 +1365,7 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
     \begin{center}
-        AMZN
+        NORMAL
     \end{center}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
@@ -1306,47 +1378,122 @@ The performances of compressed indexes on synthetic datasets are represented in 
 
     \begin{minipage}{0.48\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{plots/index/pareto/zipf_uint32.png}
+        \includegraphics[width=\linewidth]{plots/index/pareto/exponential_uint32.png}
         \end{figure}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{plots/index/pareto/osm_cellids_800M_uint64.png}
+        \includegraphics[width=\linewidth]{plots/index/pareto/zipf_uint32.png}
         \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        EXPONENTIAL
+    \end{center}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
     \begin{center}
         ZIPF
     \end{center}
     \end{minipage}
+
+    \vspace{20px}
+    
+    \begin{minipage}{\linewidth}
+    The plots recap the experimental results about occupied space/time needed for pointwise queries for traditional and learned indexes on synthetic datasets. For these datasets, for each index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
+
+    Additionally, a black line shows the Pareto frontier for traditional/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off.  
+    We avoided plotting ``RMI-large'' because of its excessive space occupancy (roughly 400 MB on each dataset). ``RMI-large'' was not one of the Pareto-optimal configurations.
+    \end{minipage}
+    \vspace{10px}
+\end{minipage}
+}
+\caption{Pareto Frontier: Traditional and Learned Indexes on synthetic datasets}
+\end{figure}
+
+% PARETO traditional and learned indexes 64bit
+\begin{figure}[!htbp]
+\fbox
+{
+\begin{minipage}[t][0.98\textheight][t]{\textwidth}
+\vspace*{-5px}
+\centering
+    \begin{minipage}{0.23\linewidth}
+    \footnotesize{FOCUS::  PARETO CURVE \\ ON TRADITIONAL \\ AND LEARNED INDEXES \\ ON 64-BIT DATASETS}
+    \end{minipage}
+   \begin{minipage}{0.75\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/legends/pareto_index}
+        \end{figure}
+    \end{minipage}
+    \vfill
+
+   \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/books_800M_uint64.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/fb_200M_uint64.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        AMZN 64
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        FACEBOOK 64
+    \end{center}
+    \end{minipage}
+
+    \vfill
+
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/osm_cellids_800M_uint64.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/index/pareto/wiki_ts_200M_uint64.png}
+        \end{figure}
+    \end{minipage}
     \begin{minipage}{0.48\linewidth}
     \begin{center}
         OSM CELLIDS 64
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        WIKI 64
     \end{center}
     \end{minipage}
 
     \vspace{20px}
     
     \begin{minipage}{\linewidth}
-    The plots recap the experimental results about occupied space/time needed for pointwise queries for standard and learned indexes, representative for the four clusters (Amzn for the ``uniform'' cluster, Zipf for the ``duplicate'' cluster, Lognormal for the ``sim-exponential distribution'' cluster, and OSM Cellids as an outlier dataset with atypical results). For these datasets, for each index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
+    The plots recap the experimental results about occupied space/time needed for pointwise queries for traditional and learned indexes on 64-bit datasets. For these datasets, for each index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
 
-    Additionally, a black line shows the Pareto frontier for standard/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off.  
+    Additionally, a black line shows the Pareto frontier for traditional/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off.  
     We avoided plotting ``RMI-large'' because of its excessive space occupancy (roughly 400 MB on each dataset). ``RMI-large'' was not one of the Pareto-optimal configurations.
     \end{minipage}
     \vspace{10px}
 \end{minipage}
 }
-\caption{Pareto Frontier: Standard and Learned Indexes}
+\caption{Pareto Frontier: Traditional and Learned Indexes on 64-bit datasets}
 \end{figure}
 
-% PARETO vectors
+% PARETO vectors real world
 \begin{figure}[!htbp]
 \fbox
 {
 \begin{minipage}[t][0.98\textheight][t]{\textwidth}
 \centering
     \begin{minipage}{0.23\linewidth}
-    \footnotesize{FOCUS::  PARETO\\ CURVE ON \\ COMPRESSED INDEXES}
+    \footnotesize{FOCUS::  PARETO\\ CURVE ON \\ COMPRESSED INDEXES \\ ON REAL-WORLD \\ DATASETS}
     \end{minipage}
    \begin{minipage}{0.75\linewidth}
         \begin{figure}[H]
@@ -1357,7 +1504,80 @@ The performances of compressed indexes on synthetic datasets are represented in 
 
    \begin{minipage}{0.48\linewidth}
         \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/companynet_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/friendster_50M_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        COMPANYNET
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        FRIENDSTER
+    \end{center}
+    \end{minipage}
+
+    \vfill
+
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
         \includegraphics[width=\linewidth]{plots/vector/pareto/books_200M_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/wiki_ts_200M_uint32.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        AMZN
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        WIKI
+    \end{center}
+    \end{minipage}
+
+    \vfill
+    
+    \begin{minipage}{\linewidth}
+        The plots recap the experimental results about occupied space/time needed for pointwise queries for compressed indexes on real-world datasets. For these datasets, for each compressed index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
+
+    Additionally, a black line shows the Pareto frontier for traditional/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off. 
+            \end{minipage}
+    \vspace{10px}
+\end{minipage}
+}
+\caption{Pareto Frontier: Compressed Indexes on real-world datasets}
+\end{figure}
+
+% PARETO vectors synthetic
+\begin{figure}[!htbp]
+\fbox
+{
+\begin{minipage}[t][0.98\textheight][t]{\textwidth}
+\centering
+    \begin{minipage}{0.23\linewidth}
+    \footnotesize{FOCUS::  PARETO\\ CURVE ON \\ COMPRESSED INDEXES \\ ON SYNTHETIC \\ DATASETS}
+    \end{minipage}
+   \begin{minipage}{0.75\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/legends/pareto_vector}
+        \end{figure}
+    \end{minipage}
+    \vfill
+
+   \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/normal_uint32.png}
         \end{figure}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
@@ -1367,7 +1587,7 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
     \begin{center}
-        AMZN
+        NORMAL
     \end{center}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
@@ -1380,36 +1600,109 @@ The performances of compressed indexes on synthetic datasets are represented in 
 
     \begin{minipage}{0.48\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{plots/vector/pareto/zipf_uint32.png}
+        \includegraphics[width=\linewidth]{plots/vector/pareto/exponential_uint32.png}
         \end{figure}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
         \begin{figure}[H]
-        \includegraphics[width=\linewidth]{plots/vector/pareto/osm_cellids_800M_uint64.png}
+        \includegraphics[width=\linewidth]{plots/vector/pareto/zipf_uint32.png}
         \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        EXPONENTIAL
+    \end{center}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
     \begin{center}
         ZIPF
     \end{center}
     \end{minipage}
+
+    \vfill
+    
+    \begin{minipage}{\linewidth}
+        The plots recap the experimental results about occupied space/time needed for pointwise queries for compressed indexes on synthetic datasets. For these datasets, for each compressed index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
+
+    Additionally, a black line shows the Pareto frontier for traditional/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off. 
+            \end{minipage}
+    \vspace{10px}
+\end{minipage}
+}
+\caption{Pareto Frontier: Compressed Indexes on synthetic datasets}
+\end{figure}
+
+% PARETO vectors 64-bit
+\begin{figure}[!htbp]
+\fbox
+{
+\begin{minipage}[t][0.98\textheight][t]{\textwidth}
+\centering
+    \begin{minipage}{0.23\linewidth}
+    \footnotesize{FOCUS::  PARETO\\ CURVE ON \\ COMPRESSED INDEXES \\ ON 64-BIT DATASETS}
+    \end{minipage}
+   \begin{minipage}{0.75\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/legends/pareto_vector}
+        \end{figure}
+    \end{minipage}
+    \vfill
+
+   \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/books_800M_uint64.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/fb_200M_uint64.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        AMZN 64
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        FACEBOOK 64
+    \end{center}
+    \end{minipage}
+
+    \vfill
+
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/osm_cellids_800M_uint64.png}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/vector/pareto/wiki_ts_200M_uint64.png}
+        \end{figure}
+    \end{minipage}
     \begin{minipage}{0.48\linewidth}
     \begin{center}
         OSM CELLIDS 64
     \end{center}
     \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        WIKI 64
+    \end{center}
+    \end{minipage}
 
-    \vspace{20px}
+    \vfill
     
     \begin{minipage}{\linewidth}
-        The plots recap the experimental results about occupied space/time needed for pointwise queries for compressed indexes, representative for the four clusters (Amzn for the ``uniform'' cluster, Zipf for the ``duplicate'' cluster, Lognormal for the ``sim-exponential distribution'' cluster, and OSM Cellids as an outlier dataset with atypical results). For these datasets, for each compressed index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
+        The plots recap the experimental results about occupied space/time needed for pointwise queries for compressed indexes on 64-bit datasets. For these datasets, for each compressed index, and each tested configuration we plot the extra space occupied (in MB) on the x-axis, and the time (in ns) per pointwise query on existing items in the datasets. \\
 
-    Additionally, a black line shows the Pareto frontier for standard/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off. 
+    Additionally, a black line shows the Pareto frontier for traditional/learned indexes. The indexes that sit on top of the Pareto frontier offer the best space-time trade-off. 
             \end{minipage}
     \vspace{10px}
 \end{minipage}
 }
-\caption{Pareto Frontier: Compressed Indexes}
+\caption{Pareto Frontier: Compressed Indexes on 64-bit datasets}
 \end{figure}
 
 \clearpage
@@ -1476,22 +1769,27 @@ The performances of compressed indexes on synthetic datasets are represented in 
 
 \begin{table}[t]
 \input{plots/tables/scan_companynet_uint32}
-\caption{Tabular data: SCAN experiments on the companynet dataset}
+\caption{Tabular data: SCAN experiments on the companynet dataset (times are expressed in ns)}
 \end{table}
 
 \begin{table}[t]
 \input{plots/tables/scan_wiki_ts_200M_uint32}
-\caption{Tabular data: SCAN experiments on the wiki uint32 dataset}
+\caption{Tabular data: SCAN experiments on the wiki uint32 dataset (times are expressed in ns)}
 \end{table}
 
 \begin{table}[t]
 \input{plots/tables/scan_books_200M_uint32}
-\caption{Tabular data: SCAN experiments on the amzn uint32 dataset}
+\caption{Tabular data: SCAN experiments on the amzn uint32 dataset (times are expressed in ns)}
 \end{table}
 
 \begin{table}[t]
 \input{plots/tables/scan_fb_200M_uint64}
-\caption{Tabular data: SCAN experiments on the FB uint64 dataset}
+\caption{Tabular data: SCAN experiments on the FB uint64 dataset (times are expressed in ns)}
 \end{table}
+
+\clearpage
+
+\section*{Error Report}
+\verbatiminput{plots/error_dump.txt}
 
 \end{document}
