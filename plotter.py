@@ -315,7 +315,7 @@ for dataset in datasets:
         for i, algo in enumerate(algorithms_filtered):
             ax.plot(space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i], marker=markers__[i], color=colors__[i], linestyle='None', label=algo, markersize=10)
             to_pareto.append((space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i]))
-        if dataset == "companynet_uint32":
+        if dataset == "friendster_50M_uint32":
             ax.set_xlabel('')
             if not plot_compressed_indices:
                 legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
