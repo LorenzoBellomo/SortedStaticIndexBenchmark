@@ -186,6 +186,8 @@ for dataset in datasets:
         ns_present = tool_performance.get("existing_{}_{}".format(dataset, idx_), "-")
         ns_missing = tool_performance.get("missing_{}_{}".format(dataset, idx_), "-")
         ns_build = tool_performance.get("buildtime_{}_{}".format(dataset, idx_), "-")
+        if idx_ == "std::vector":
+            ns_build = "-"
         occupancy = space_occupancy.get("{}_{}".format(dataset, idx_), "-")
         scan_perf = []
         data_to_table.append((idx_, ns_present, ns_missing, occupancy, ns_build))
