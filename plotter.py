@@ -159,6 +159,7 @@ with open("output/index_sizes.txt", 'r') as index_size_file:
 # legends
 clean_all_idx = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices]))
 clean_std_learn_idx = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices if not is_compressed_idx_map[a]]))
+clean_std_learn_idx.append(("std::vector", "red"))
 clean_all_vect = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices if is_compressed_idx_map[a]]))
 handles = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_all_idx]
 handles_idx = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_std_learn_idx]
