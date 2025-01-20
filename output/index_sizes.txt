@@ -2,9 +2,6 @@ wiki_ts_200M_uint64 - RMI-compact - 6291472
 wiki_ts_200M_uint64 - RMI-large - 402653200
 wiki_ts_200M_uint64 - SIMD-BTree - 48
 wiki_ts_200M_uint64 - SIMD-SampledBTree - 200000120
-wiki_ts_200M_uint64 - PGMBTree8 - 11336624
-wiki_ts_200M_uint64 - PGMBTree32 - 1365536
-wiki_ts_200M_uint64 - PGMBTree128 - 307648
 wiki_ts_200M_uint64 - PLEX8 - 63301600
 wiki_ts_200M_uint64 - PLEX32 - 5086732
 wiki_ts_200M_uint64 - PLEX128 - 1030668
@@ -14,10 +11,12 @@ wiki_ts_200M_uint64 - GammaCode16 - 1781555370
 wiki_ts_200M_uint64 - GammaCode32 - 1784279170
 wiki_ts_200M_uint64 - DeltaCode16 - 1112740338
 wiki_ts_200M_uint64 - DeltaCode32 - 1094834882
+wiki_ts_200M_uint64 - LA-vectoropt - 110365011
 wiki_ts_200M_uint64 - LA-vector6 - 156093759
 wiki_ts_200M_uint64 - LA-vector8 - 201616862
 wiki_ts_200M_uint64 - LA-vector10 - 250529866
 wiki_ts_200M_uint64 - LA-vector12 - 300170248
+wiki_ts_200M_uint64 - EliasFano - 147042041
 wiki_ts_200M_uint64 - PGM8 - 11415824
 wiki_ts_200M_uint64 - PGM32 - 1377960
 wiki_ts_200M_uint64 - PGM128 - 309048
@@ -29,9 +28,6 @@ lognormal_uint32 - RMI-compact - 6291472
 lognormal_uint32 - RMI-large - 402653200
 lognormal_uint32 - SIMD-BTree - 48
 lognormal_uint32 - SIMD-SampledBTree - 12500120
-lognormal_uint32 - PGMBTree8 - 2256660
-lognormal_uint32 - PGMBTree32 - 159204
-lognormal_uint32 - PGMBTree128 - 11040
 lognormal_uint32 - PLEX8 - 17334392
 lognormal_uint32 - PLEX32 - 1181924
 lognormal_uint32 - PLEX128 - 76768
@@ -41,6 +37,7 @@ lognormal_uint32 - GammaCode16 - 87787970
 lognormal_uint32 - GammaCode32 - 77798554
 lognormal_uint32 - DeltaCode16 - 80887794
 lognormal_uint32 - DeltaCode32 - 70668066
+lognormal_uint32 - LA-vectoropt - 59687080
 lognormal_uint32 - LA-vector6 - 107183181
 lognormal_uint32 - LA-vector8 - 64077441
 lognormal_uint32 - LA-vector10 - 64646798
@@ -57,9 +54,6 @@ fb_200M_uint64 - RMI-compact - 6291472
 fb_200M_uint64 - RMI-large - 402653200
 fb_200M_uint64 - SIMD-BTree - 48
 fb_200M_uint64 - SIMD-SampledBTree - 200000120
-fb_200M_uint64 - PGMBTree8 - 67770976
-fb_200M_uint64 - PGMBTree32 - 16885168
-fb_200M_uint64 - PGMBTree128 - 4100352
 fb_200M_uint64 - PLEX8 - 175153944
 fb_200M_uint64 - PLEX32 - 54453096
 fb_200M_uint64 - PLEX128 - 13309048
@@ -69,6 +63,7 @@ fb_200M_uint64 - GammaCode16 - 392269730
 fb_200M_uint64 - GammaCode32 - 304927202
 fb_200M_uint64 - DeltaCode16 - 373039418
 fb_200M_uint64 - DeltaCode32 - 285056018
+fb_200M_uint64 - LA-vectoropt - 0
 fb_200M_uint64 - LA-vector6 - 0
 fb_200M_uint64 - LA-vector8 - 0
 fb_200M_uint64 - LA-vector10 - 0
@@ -85,9 +80,6 @@ companynet_uint32 - RMI-compact - 6291472
 companynet_uint32 - RMI-large - 402653200
 companynet_uint32 - SIMD-BTree - 48
 companynet_uint32 - SIMD-SampledBTree - 250120
-companynet_uint32 - PGMBTree8 - 64728
-companynet_uint32 - PGMBTree32 - 6648
-companynet_uint32 - PGMBTree128 - 1008
 companynet_uint32 - PLEX8 - 403936
 companynet_uint32 - PLEX32 - 45820
 companynet_uint32 - PLEX128 - 4092
@@ -97,6 +89,7 @@ companynet_uint32 - GammaCode16 - 2993050
 companynet_uint32 - GammaCode32 - 2826146
 companynet_uint32 - DeltaCode16 - 2495090
 companynet_uint32 - DeltaCode32 - 2311578
+companynet_uint32 - LA-vectoropt - 2016194
 companynet_uint32 - LA-vector6 - 6091641
 companynet_uint32 - LA-vector8 - 5485318
 companynet_uint32 - LA-vector10 - 4740056
@@ -113,9 +106,6 @@ normal_uint32 - RMI-compact - 6291472
 normal_uint32 - RMI-large - 402653200
 normal_uint32 - SIMD-BTree - 48
 normal_uint32 - SIMD-SampledBTree - 12500120
-normal_uint32 - PGMBTree8 - 2256504
-normal_uint32 - PGMBTree32 - 157452
-normal_uint32 - PGMBTree128 - 10608
 normal_uint32 - PLEX8 - 17576532
 normal_uint32 - PLEX32 - 1194532
 normal_uint32 - PLEX128 - 76676
@@ -125,6 +115,7 @@ normal_uint32 - GammaCode16 - 87833770
 normal_uint32 - GammaCode32 - 77848874
 normal_uint32 - DeltaCode16 - 81369738
 normal_uint32 - DeltaCode32 - 71167786
+normal_uint32 - LA-vectoropt - 61600650
 normal_uint32 - LA-vector6 - 119898585
 normal_uint32 - LA-vector8 - 65161238
 normal_uint32 - LA-vector10 - 64375824
@@ -141,9 +132,6 @@ wiki_ts_200M_uint32 - RMI-compact - 6291472
 wiki_ts_200M_uint32 - RMI-large - 402653200
 wiki_ts_200M_uint32 - SIMD-BTree - 48
 wiki_ts_200M_uint32 - SIMD-SampledBTree - 50000120
-wiki_ts_200M_uint32 - PGMBTree8 - 8502468
-wiki_ts_200M_uint32 - PGMBTree32 - 1024152
-wiki_ts_200M_uint32 - PGMBTree128 - 230736
 wiki_ts_200M_uint32 - PLEX8 - 63301576
 wiki_ts_200M_uint32 - PLEX32 - 5086708
 wiki_ts_200M_uint32 - PLEX128 - 1030644
@@ -153,6 +141,7 @@ wiki_ts_200M_uint32 - GammaCode16 - 1781555370
 wiki_ts_200M_uint32 - GammaCode32 - 1784279170
 wiki_ts_200M_uint32 - DeltaCode16 - 1112740338
 wiki_ts_200M_uint32 - DeltaCode32 - 1094834882
+wiki_ts_200M_uint32 - LA-vectoropt - 104400161
 wiki_ts_200M_uint32 - LA-vector6 - 153890919
 wiki_ts_200M_uint32 - LA-vector8 - 201100782
 wiki_ts_200M_uint32 - LA-vector10 - 250381874
@@ -169,9 +158,6 @@ zipf_uint32 - RMI-compact - 6291472
 zipf_uint32 - RMI-large - 402653200
 zipf_uint32 - SIMD-BTree - 48
 zipf_uint32 - SIMD-SampledBTree - 12500120
-zipf_uint32 - PGMBTree8 - 2187468
-zipf_uint32 - PGMBTree32 - 157296
-zipf_uint32 - PGMBTree128 - 11928
 zipf_uint32 - PLEX8 - 17269892
 zipf_uint32 - PLEX32 - 1186516
 zipf_uint32 - PLEX128 - 77716
@@ -181,6 +167,7 @@ zipf_uint32 - GammaCode16 - 162735450
 zipf_uint32 - GammaCode32 - 155251690
 zipf_uint32 - DeltaCode16 - 122645426
 zipf_uint32 - DeltaCode32 - 113821794
+zipf_uint32 - LA-vectoropt - 53994401
 zipf_uint32 - LA-vector6 - 113473608
 zipf_uint32 - LA-vector8 - 68050189
 zipf_uint32 - LA-vector10 - 64932678
@@ -197,9 +184,6 @@ books_800M_uint64 - RMI-compact - 6291472
 books_800M_uint64 - RMI-large - 402653200
 books_800M_uint64 - SIMD-BTree - 48
 books_800M_uint64 - SIMD-SampledBTree - 800000120
-books_800M_uint64 - PGMBTree8 - 269758624
-books_800M_uint64 - PGMBTree32 - 39427968
-books_800M_uint64 - PGMBTree128 - 4287728
 books_800M_uint64 - PLEX8 - 774101216
 books_800M_uint64 - PLEX32 - 185257168
 books_800M_uint64 - PLEX128 - 19745520
@@ -209,11 +193,13 @@ books_800M_uint64 - GammaCode16 - 6528066930
 books_800M_uint64 - GammaCode32 - 6319002746
 books_800M_uint64 - DeltaCode16 - 4553883402
 books_800M_uint64 - DeltaCode32 - 4279013362
+books_800M_uint64 - LA-vectoropt - 0
 books_800M_uint64 - LA-vector6 - 4800442821
 books_800M_uint64 - LA-vector8 - 5000431313
 books_800M_uint64 - LA-vector10 - 5400389152
 books_800M_uint64 - LA-vector12 - 5600256998
 books_800M_uint64 - Roaring - 13122121772
+books_800M_uint64 - EliasFano - 3688770957
 books_800M_uint64 - PGM8 - 272269056
 books_800M_uint64 - PGM32 - 39624280
 books_800M_uint64 - PGM128 - 4301048
@@ -225,9 +211,6 @@ exponential_uint32 - RMI-compact - 6291472
 exponential_uint32 - RMI-large - 402653200
 exponential_uint32 - SIMD-BTree - 48
 exponential_uint32 - SIMD-SampledBTree - 12500120
-exponential_uint32 - PGMBTree8 - 2207952
-exponential_uint32 - PGMBTree32 - 155736
-exponential_uint32 - PGMBTree128 - 10800
 exponential_uint32 - PLEX8 - 17367992
 exponential_uint32 - PLEX32 - 1181108
 exponential_uint32 - PLEX128 - 76532
@@ -237,6 +220,7 @@ exponential_uint32 - GammaCode16 - 84752170
 exponential_uint32 - GammaCode32 - 74656786
 exponential_uint32 - DeltaCode16 - 78231010
 exponential_uint32 - DeltaCode32 - 67920066
+exponential_uint32 - LA-vectoropt - 56779361
 exponential_uint32 - LA-vector6 - 94087943
 exponential_uint32 - LA-vector8 - 64659516
 exponential_uint32 - LA-vector10 - 65700984
@@ -253,9 +237,6 @@ friendster_50M_uint32 - RMI-compact - 6291472
 friendster_50M_uint32 - RMI-large - 402653200
 friendster_50M_uint32 - SIMD-BTree - 48
 friendster_50M_uint32 - SIMD-SampledBTree - 12500120
-friendster_50M_uint32 - PGMBTree8 - 9125340
-friendster_50M_uint32 - PGMBTree32 - 2299560
-friendster_50M_uint32 - PGMBTree128 - 465420
 friendster_50M_uint32 - PLEX8 - 41953996
 friendster_50M_uint32 - PLEX32 - 11486284
 friendster_50M_uint32 - PLEX128 - 2575632
@@ -265,6 +246,7 @@ friendster_50M_uint32 - GammaCode16 - 49825994
 friendster_50M_uint32 - GammaCode32 - 38986858
 friendster_50M_uint32 - DeltaCode16 - 51450114
 friendster_50M_uint32 - DeltaCode32 - 40665034
+friendster_50M_uint32 - LA-vectoropt - 56279026
 friendster_50M_uint32 - LA-vector6 - 61988400
 friendster_50M_uint32 - LA-vector8 - 59063961
 friendster_50M_uint32 - LA-vector10 - 65285170
@@ -282,9 +264,6 @@ osm_cellids_800M_uint64 - RMI-compact - 6291488
 osm_cellids_800M_uint64 - RMI-large - 402653216
 osm_cellids_800M_uint64 - SIMD-BTree - 48
 osm_cellids_800M_uint64 - SIMD-SampledBTree - 800000120
-osm_cellids_800M_uint64 - PGMBTree8 - 214162896
-osm_cellids_800M_uint64 - PGMBTree32 - 46200592
-osm_cellids_800M_uint64 - PGMBTree128 - 10680224
 osm_cellids_800M_uint64 - PLEX8 - 878734200
 osm_cellids_800M_uint64 - PLEX32 - 146712900
 osm_cellids_800M_uint64 - PLEX128 - 33640732
@@ -294,11 +273,13 @@ osm_cellids_800M_uint64 - GammaCode16 - 5588512282
 osm_cellids_800M_uint64 - GammaCode32 - 5348126906
 osm_cellids_800M_uint64 - DeltaCode16 - 4006199578
 osm_cellids_800M_uint64 - DeltaCode32 - 3713071738
+osm_cellids_800M_uint64 - LA-vectoropt - 0
 osm_cellids_800M_uint64 - LA-vector6 - 0
 osm_cellids_800M_uint64 - LA-vector8 - 0
 osm_cellids_800M_uint64 - LA-vector10 - 0
 osm_cellids_800M_uint64 - LA-vector12 - 0
 osm_cellids_800M_uint64 - Roaring - 9098761748
+osm_cellids_800M_uint64 - EliasFano - 3690482053
 osm_cellids_800M_uint64 - PGM8 - 219801240
 osm_cellids_800M_uint64 - PGM32 - 47474040
 osm_cellids_800M_uint64 - PGM128 - 10994128
@@ -310,9 +291,6 @@ books_200M_uint32 - RMI-compact - 6291472
 books_200M_uint32 - RMI-large - 402653200
 books_200M_uint32 - SIMD-BTree - 48
 books_200M_uint32 - SIMD-SampledBTree - 50000120
-books_200M_uint32 - PGMBTree8 - 22152996
-books_200M_uint32 - PGMBTree32 - 3080388
-books_200M_uint32 - PGMBTree128 - 275364
 books_200M_uint32 - PLEX8 - 134927060
 books_200M_uint32 - PLEX32 - 19059204
 books_200M_uint32 - PLEX128 - 2148324
@@ -322,6 +300,7 @@ books_200M_uint32 - GammaCode16 - 172353114
 books_200M_uint32 - GammaCode32 - 128097594
 books_200M_uint32 - DeltaCode16 - 181228410
 books_200M_uint32 - DeltaCode32 - 137268498
+books_200M_uint32 - LA-vectoropt - 0
 books_200M_uint32 - LA-vector6 - 0
 books_200M_uint32 - LA-vector8 - 0
 books_200M_uint32 - LA-vector10 - 0
