@@ -46,29 +46,16 @@ tool_performance = {}
 space_occupancy = {}
 
 bottom_plots = ["wiki_ts_200M_uint32", "zipf_uint32", "wiki_ts_200M_uint64"]
-pareto_dataset = ["books_200M_uint32", "zipf_uint32", "lognormal_uint32", "osm_cellids_800M_uint64"]
 
-list_of_markers = [m for m in Line2D.markers.keys() if m not in [",", "None", None, " ", ""]] 
-list_of_colors = ["blue", "lime", "yellow", "grey", "orange", "green", "purple", "navy", "lightsalmon", "deepskyblue", "olive", 
+list_of_markers = [m for m in Line2D.markers.keys() if m not in [",", "None", None, " ", "", "0", "1", 0, 1, 2, 3]] 
+list_of_colors = ["black", "blue", "lime", "grey", "orange", "green", "yellow", "purple", "navy", "deepskyblue", "olive", 
                   "gold", "lightcoral", "magenta", "yellowgreen", "brown", "violet", "seagreen", "khaki", "chocolate"] 
 
 color_map = {"std::vector": "red"}
 marker_map = {}
 
-datasets = {
-    "zipf_uint32": "zipf", 
-    "books_200M_uint32": "books", 
-    "companynet_uint32": "companynet", 
-    "fb_200M_uint64": "fb64", 
-    "lognormal_uint32": "lognormal", 
-    "normal_uint32": "normal", 
-    "wiki_ts_200M_uint32": "wiki", 
-    "books_800M_uint64": "books64", 
-    "exponential_uint32": "exponential", 
-    "friendster_50M_uint32": "friendster",
-    "osm_cellids_800M_uint64": "osm64", 
-    "wiki_ts_200M_uint64": "wiki64"
-}
+datasets = ["zipf_uint32", "books_200M_uint32", "companynet_uint32", "fb_200M_uint64", "lognormal_uint32", "normal_uint32",
+            "wiki_ts_200M_uint32", "books_800M_uint64", "exponential_uint32", "friendster_50M_uint32", "osm_cellids_800M_uint64", "wiki_ts_200M_uint64"]
 
 # Read memory usage data
 curr_dataset = ""
@@ -88,7 +75,7 @@ with open("output/memory_footprint.txt") as memory_usage_f:
             curr_dataset = line.strip()
 
 # Write memory ratios to file
-with open("output/memory_ratios.txt", 'w') as recap_memory_f:
+with open("output/plots/memory_ratios.txt", 'w') as recap_memory_f:
     for algo, list_res in memory_usage.items():
         max_ratio, min_ratio = 0, 500000
         max_datas, min_datas = "", ""
@@ -102,6 +89,8 @@ with open("output/memory_ratios.txt", 'w') as recap_memory_f:
                 min_datas = dataset
         recap_memory_f.write("{}: MAX: {:.2f}x ({}) - MIN: {:.2f}x ({})\n".format(algo, max_ratio, max_datas, min_ratio, min_datas))
 
+
+error_file = open("output/plots/error_dump.txt", "w")
 # Read performance data from JSON files
 marker_idx, color_idx = 0, 0
 all_indices = set()
@@ -110,19 +99,23 @@ for experiment in ["existing", "missing", "buildtime", "scan"]:
     with open(path_to, 'r') as json_file:
         data = json.load(json_file)['benchmarks']
     for entry in data:
-        if "error_occurred" in entry and entry['error_occurred'] == True:
-            continue
         full_bm_str = entry["name"].split("/")[0]
         real_time_ns = entry["real_time"]
-        dataset = [a for a in datasets.keys() if a in full_bm_str][0]
+        dataset = [a for a in datasets if a in full_bm_str][0]
         full_bm_str = full_bm_str.replace(dataset + "_", '')
         if experiment == "scan":
             num_scans = int(full_bm_str.split("_")[0])
             index_ = full_bm_str.split("_")[1]
-            tool_performance[experiment + "_" + dataset + "_" + str(num_scans) + "_" + index_] = (real_time_ns / (num_scans*100000))
+            if "error_occurred" in entry and entry['error_occurred'] == True:
+                error_file.write("{} - {} - {}: {}\n".format(index_, dataset, experiment, entry["error_message"]))
+            else:
+                tool_performance[experiment + "_" + dataset + "_" + str(num_scans) + "_" + index_] = (real_time_ns / (num_scans*100000))
         else:
             index_ = full_bm_str.split("_")[0]
-            tool_performance[experiment + "_" + dataset + "_" + index_] = real_time_ns / 1000000
+            if "error_occurred" in entry and entry['error_occurred'] == True:
+                error_file.write("{} - {} - {}: {}\n".format(index_, dataset, experiment, entry["error_message"]))
+            else:
+                tool_performance[experiment + "_" + dataset + "_" + index_] = real_time_ns / 1000000
         if index_ not in all_indices:
             all_indices.add(index_)
             root_string = extract_idx_root(index_)
@@ -141,13 +134,14 @@ for filename in os.listdir("include/index_ops"):
     with open("include/index_ops/" + filename, 'r') as index_ops_file:
         is_compressed_idx = False
         read_next_line = False
+        to_update = []
         for line in index_ops_file.readlines(): 
             if read_next_line:
                 read_next_line = False
                 line = line.strip()
                 line = line.replace("return ", "")
                 match = re.findall('"([^"]*)"', line)[0]
-                to_update = [k for k in is_compressed_idx_map.keys() if match in k]
+                to_update = to_update + [k for k in is_compressed_idx_map.keys() if match in k]
             if "T access" in line:
                 is_compressed_idx = True
             if "string to_string" in line:
@@ -162,10 +156,27 @@ with open("output/index_sizes.txt", 'r') as index_size_file:
         bytes_ = bytes_.replace("\n", '')
         space_occupancy[dataset.split(".")[0] + "_" + index_] = math.ceil(float(bytes_)/1000000)
 
+# legends
+clean_all_idx = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices]))
+clean_std_learn_idx = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices if not is_compressed_idx_map[a]]))
+clean_all_vect = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices if is_compressed_idx_map[a]]))
+handles = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_all_idx]
+handles_idx = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_std_learn_idx]
+handles_vect = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_all_vect]
+for idx_list, handles_list, fname in [(clean_all_idx, handles, "all"), (clean_std_learn_idx, handles_idx, "index"), (clean_all_vect, handles_vect, "vector")]:
+    for handle in handles_list: 
+        handle.set_edgecolor('black')
+    denominator = 3 if len(idx_list) > 12 else 2
+    n_columns = math.ceil(len(idx_list)/denominator)
+    idx_name_list = [a for a, _ in idx_list]
+    legend_ind = plt.legend(handles_list, idx_name_list, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+    export_legend(legend_ind, "output/plots/legends/{}.png".format(fname))
+    plt.clf()
+
 # Generate tables for each dataset
 header_column = ['index', 'lookup existing (ns)', 'lookup missing (ns)', 'space (MB)', 'build (ms)']
 header_column_with_scan = ['Compressed Index', "Scan 10", "Scan 100", "Scan 1K", "Scan 10K"]
-for dataset in datasets.keys():
+for dataset in datasets:
     data_to_table, data_to_table_scan = [], []
     all_experiments_with_dataset = [a for a in tool_performance.keys() if dataset in a] 
     indices_for_this_dataset = sorted([idx_ for idx_ in all_indices if any([idx_ in exp for exp in all_experiments_with_dataset])])
@@ -189,7 +200,7 @@ for dataset in datasets.keys():
         with open('output/plots/tables/scan_{}.tex'.format(dataset), 'w') as f:
             f.write(tabulate(data_to_table_scan, tablefmt="latex", headers=header_column_with_scan))
     
-    perf = {"buildtime": [], "existing": [], "missing": [], "indices": [], "scan10": [],"scan100": [], "scan1000": [], "scan10000": [], "scan_indices": set()}
+    perf = {"buildtime": [], "existing": [], "missing": [], "indices": [], "scan10": [],"scan100": [], "scan1000": [], "scan10000": [], "scan_indices":  []}
     for idx_ in indices_for_this_dataset:
         for experiment in ["buildtime", "existing", "missing"]:
             key_ = "{}_{}_{}".format(experiment, dataset, idx_)
@@ -199,8 +210,9 @@ for dataset in datasets.keys():
         if scan_present:
             for scan_range in [10, 100, 1000, 10000]:
                 key_ = "scan_{}_{}_{}".format(dataset, scan_range, idx_)
-                if key_ in tool_performance: 
-                    perf["scan_indices"].add(idx_)
+                if key_ in tool_performance:
+                    if idx_ not in perf["scan_indices"]: 
+                        perf["scan_indices"].append(idx_)
                     perf["scan{}".format(scan_range)].append(tool_performance[key_])
     # buildtime
     fig, ax = plt.subplots()
@@ -280,50 +292,46 @@ for dataset in datasets.keys():
             root_to_file = "vector/scan"
             plt.savefig("output/plots/{}/{}.png".format(root_to_file, dataset), bbox_inches='tight')
             plt.clf()
-            handles = [plt.Rectangle((0,0),1,1, color=col) for col in colors_scan]
-            for handle in handles: 
-                handle.set_edgecolor('black')
-            n_columns = math.ceil(len(perf["scan_indices"])/3)
-            if not dataset.endswith("64"):
-                legend = plt.legend(handles, perf["scan_indices"], loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-                export_legend(legend, "output/plots/legends/scan.png")
-            plt.clf()
 
         # pareto plots
-        if dataset in pareto_dataset:
-            fig, ax = plt.subplots()
+        fig, ax = plt.subplots()
+        if not plot_compressed_indices:
+            algorithms_filtered_idx = [i for i, a in enumerate(perf["indices"]) 
+                                       if a != "std::vector" 
+                                       and space_occupancy.get(dataset+"_"+a, 1) < max((space_occupancy[dataset+"_std::vector"]/4), 200)
+                                       and not is_compressed_idx_map[a]]
+            algorithms_filtered = [perf["indices"][i] for i in algorithms_filtered_idx]
+            values_filtered = [perf["existing"][i] for i in algorithms_filtered_idx]
+            markers__ = [marker_map[a] for a in algorithms_filtered] 
+            colors__ = [color_map[a] for a in algorithms_filtered]
+        else:
+            algorithms_filtered_idx = [i for i, a in enumerate(perf["indices"]) if is_compressed_idx_map[a]]
+            algorithms_filtered = [perf["indices"][i] for i in algorithms_filtered_idx]
+            values_filtered = [perf["existing"][i] for i in algorithms_filtered_idx]
+            markers__ = [marker_map[a] for a in algorithms_filtered]
+            colors__ = [color_map[a] for a in algorithms_filtered]
+        to_pareto = []
+        for i, algo in enumerate(algorithms_filtered):
+            ax.plot(space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i], marker=markers__[i], color=colors__[i], linestyle='None', label=algo, markersize=10)
+            to_pareto.append((space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i]))
+        if dataset == "companynet_uint32":
+            ax.set_xlabel('')
             if not plot_compressed_indices:
-                algorithms_filtered_idx = [i for i, a in enumerate(indices) if a != "std::vector" and space_occupancy.get(dataset+"_"+a, 1) < 1e+8]
-                algorithms_filtered = [perf["indices"][i] for i in algorithms_filtered_idx]
-                values_filtered = [perf["existing"][i] for i in algorithms_filtered_idx]
-                markers__ = [marker_map[a] for a in algorithms_filtered]
-                colors__ = [color_map[a] for a in algorithms_filtered]
+                legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+                export_legend(legend, "output/plots/legends/pareto_index.png")
             else:
-                algorithms_filtered = indices
-                values_filtered = values
-                markers__ = [marker_map[a] for a in algorithms_filtered]
-                colors__ = [color_map[a] for a in algorithms_filtered]
-            to_pareto = []
-            for i, algo in enumerate(algorithms_filtered):
-                ax.plot(space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i], marker=markers__[i], color=colors__[i], label=algo)
-                to_pareto.append((space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i]))
-            pareto = pareto_frontier(to_pareto)
-            x_pareto, y_pareto = zip(*pareto)
-            plt.plot(x_pareto, y_pareto, color='black', linestyle='-')
-            root_to_file = "vector" if plot_compressed_indices else "index"
-            ax.set_ylabel('ns per item', fontsize=13)
-            ax.set_xlabel('Size (in MB)', fontsize=13)
-            plt.savefig("output/plots/{}/pareto/{}.png".format(root_to_file, dataset), bbox_inches='tight')
-            if dataset == "books_200M_uint32":
-                ax.set_xlabel('')
-                if not plot_compressed_indices:
-                    legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-                    export_legend(legend, "output/plots/legends/pareto_index.png")
-                else:
-                    n_columns = 4
-                    legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-                    export_legend(legend, "output/plots/legends/pareto_vector.png")
-            plt.clf()
+                n_columns = 4
+                legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+                export_legend(legend, "output/plots/legends/pareto_vector.png")
+            ax.get_legend().remove()
+        pareto = pareto_frontier(to_pareto)
+        x_pareto, y_pareto = zip(*pareto)
+        plt.plot(x_pareto, y_pareto, color='black', linestyle='-')
+        root_to_file = "vector" if plot_compressed_indices else "index"
+        ax.set_ylabel('ns per item', fontsize=13)
+        ax.set_xlabel('Size (in MB)', fontsize=13)
+        plt.savefig("output/plots/{}/pareto/{}.png".format(root_to_file, dataset), bbox_inches='tight')
+        plt.clf()
 
     # computing optimal plots for spacetime 
     filtered_spacetime_indices = {}
@@ -346,6 +354,7 @@ for dataset in datasets.keys():
                 "root_str": root_str,
                 "existing": tool_performance["existing_{}_{}".format(dataset, best_idx)],
                 "space": space_occupancy.get(dataset + "_" + best_idx, 1),
+                "compressedidx": is_compressed_idx_map[a]
             }
     # spacetime plots
     i = 0
@@ -353,7 +362,12 @@ for dataset in datasets.keys():
     algorithms_to_plot = [a["opt"] for a in filtered_spacetime_indices.values()]
     ns_to_plot = [math.ceil(a["existing"]) for a in filtered_spacetime_indices.values()]
     root_str_list = [a["root_str"] for a in filtered_spacetime_indices.values()]
-    space_to_plot = [a["space"] for a in filtered_spacetime_indices.values()]
+    space_to_plot = [0 for _ in filtered_spacetime_indices.values()]
+    for jj, a in enumerate(filtered_spacetime_indices.values()):
+        if a["compressedidx"]:
+            space_to_plot[jj] = a["space"]
+        else:
+            space_to_plot[jj] = a["space"] + space_occupancy[dataset + "_std::vector"]
     spacetime_plot_colors = [color_map[a] for a in algorithms_to_plot]
     for a in filtered_spacetime_indices.values():
         if a["opt"] == "std::vector":
@@ -373,41 +387,8 @@ for dataset in datasets.keys():
     ax2.tick_params(left = False, right = False, labelleft = False, labelbottom = False, bottom = False) 
     ax2.bar(spacetime_plot_positions, space_to_plot, color = spacetime_plot_colors, edgecolor = "black")
     ax2.set_ylabel('size in MB')
-    ax2.set_ylim(0, max(space_to_plot) * 1.2) 
+    ax2.set_ylim(0, max(space_to_plot) * 1.3) 
     for j, i in enumerate(spacetime_plot_positions):
-        ax2.text(i, space_to_plot[j]+(max(space_to_plot) / 6), space_to_plot[j], ha = 'center',rotation=45)
+        ax2.text(i, space_to_plot[j]+(max(space_to_plot) / 4), space_to_plot[j], ha = 'center',rotation=45)
     ax2.invert_yaxis()
     plt.savefig("output/plots/spacetime/{}.png".format(dataset), bbox_inches='tight')
-    # legends
-    plt.clf()
-    handles = [plt.Rectangle((0,0),1,1, color=col) for col in spacetime_plot_colors]
-    zipped_list = [(a, b) for a, b in zip(handles, algorithms_to_plot)]
-    idx_of_stdvector = algorithms_to_plot.index("std::vector")
-    for handle in handles: 
-        handle.set_edgecolor('black')
-    n_columns = math.ceil(len(root_str_list)/3)
-    vect_new_hand = [handles[i] for i in range(len(handles)) if i <= idx_of_stdvector]
-    vect_new_algos = [algorithms_to_plot[i] for i in range(len(handles)) if i <= idx_of_stdvector]
-    ind_new_hand = [handles[i] for i in range(len(handles)) if i >= idx_of_stdvector]
-    ind_new_algos = [algorithms_to_plot[i] for i in range(len(handles)) if i >= idx_of_stdvector]
-    if dataset == "books_800M_uint64":
-        new_algo = [extract_idx_root(a) for a in algorithms_to_plot]
-        legend = plt.legend(handles, new_algo, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-        export_legend(legend, "output/plots/legends/64_no_label.png")
-    if dataset == "books_200M_uint32":
-        new_algo = [extract_idx_root(a) for a in algorithms_to_plot]
-        legend = plt.legend(handles, new_algo, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-        export_legend(legend, "output/plots/legends/no_label.png")
-    if dataset == "wiki_ts_200M_uint64":
-        legend_vec = plt.legend(vect_new_hand, vect_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(vect_new_algos)/2))
-        export_legend(legend_vec, "output/plots/legends/vec64.png")
-    if dataset == "wiki_ts_200M_uint32":    
-        legend_vec = plt.legend(vect_new_hand, vect_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(vect_new_algos)/2))
-        export_legend(legend_vec, "output/plots/legends/vec.png")
-    if dataset == "companynet_uint32":
-        legend_ind = plt.legend(ind_new_hand, ind_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(ind_new_algos)/2))
-        export_legend(legend_ind, "output/plots/legends/index.png")
-    if dataset == "osm_cellids_800M_uint64":
-        legend_ind = plt.legend(ind_new_hand, ind_new_algos, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=math.ceil(len(ind_new_algos)/2))
-        export_legend(legend_ind, "output/plots/legends/index64.png")
-    plt.clf()

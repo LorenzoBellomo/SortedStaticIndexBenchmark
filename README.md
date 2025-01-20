@@ -4,8 +4,8 @@ This repository contains the benchmark on Sorted Integers for standard, learned,
 
 **Contributions:**
 - Comprehensive analysis of time/space performance of indexing data structures for static integer sets;
-- a highly optimized implementation of a BTree exploiting SIMD instructions;
-- an easily extensible benchmark framework consisting of *TOT* compressed indexes, *TOT* standard indexes, and *TOT* learned indexes, selected among the most well-known and best-performing ones;
+- a highly optimized implementation of a BTree exploiting SIMD instructions, based on this [Algorithmica article](https://en.algorithmica.org/hpc/data-structures/s-tree/), and that achieves state-of-the-art results;
+- an easily extensible benchmark framework consisting of 5 compressed indexes, 3 standard indexes, and 5 learned indexes, selected among the most well-known and best-performing ones;
 - a new hybrid index deploying compression, SIMD instructions, and learned models. 
 
 **Tested Indexes (compressed, standard, and learned):**
@@ -63,9 +63,9 @@ The provided scripts are the following:
 ## Building the Benchmark
 To build the project, use the following commands:
 ```
-cmake -DCMAKE_BUILD_TYPE=Release .. # uses O2 as optimization flag
+cmake -DCMAKE_BUILD_TYPE=Release .. # uses O3 as optimization flag + huge page
  # or 
-cmake -DCMAKE_BUILD_TYPE=Debug .. # to also run asserts, uses O2 as optimization flag
+cmake -DCMAKE_BUILD_TYPE=Debug .. # to also run asserts
 ```
 
 ## Understanding the results and the plots
