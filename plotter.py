@@ -127,6 +127,7 @@ for experiment in ["existing", "missing", "buildtime", "scan"]:
                 color_idx = color_idx + 1
             marker_map[index_] = list_of_markers[marker_idx]
             marker_idx = marker_idx + 1
+error_file.close()
 
 # understanding if the index is a compressed index or not (if the index_ops.hpp file has the access method)
 is_compressed_idx_map = {k: False for k in all_indices}

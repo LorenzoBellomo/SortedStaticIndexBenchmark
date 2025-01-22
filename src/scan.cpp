@@ -17,6 +17,9 @@ void Benchmark(benchmark::State& state, std::string dataset_name, size_t scan_si
     try {
         idx.prepare(data);
         idx.build(data);
+    #ifdef DEBUG
+        auto data_copy = data;
+    #endif
         T results[scan_size];
         for (auto _ : state) {
             for (auto q_idx : lookups) {
@@ -24,7 +27,7 @@ void Benchmark(benchmark::State& state, std::string dataset_name, size_t scan_si
                     results[i] = idx.access(q_idx + i);
     #ifdef DEBUG
                 for(auto i = 0; i < scan_size; i++) {
-                    assert(results[i] == data[q_idx + i]);
+                    assert(results[i] == data_copy[q_idx + i]);
                 }
     #endif
             }

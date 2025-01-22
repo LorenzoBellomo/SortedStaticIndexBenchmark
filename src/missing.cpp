@@ -25,6 +25,9 @@ void Benchmark(benchmark::State& state, std::string dataset_name) {
     try {
         idx.prepare(data);
         idx.build(data);
+    #ifdef DEBUG
+        auto data_copy = data;
+    #endif
         for (auto _ : state) {
             for (auto q : lookups) {
                 T x = idx.next_geq(q.second);
@@ -36,7 +39,7 @@ void Benchmark(benchmark::State& state, std::string dataset_name) {
                 while(curr_elem > q.second) {
                     if (idx != 0) {
                         idx--;
-                        curr_elem = data[idx];
+                        curr_elem = data_copy[idx];
                         if (curr_elem != x) 
                             assert(curr_elem < q.second); 
                     }
