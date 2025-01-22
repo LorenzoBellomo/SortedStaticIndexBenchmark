@@ -1,4 +1,6 @@
 
+mkdir -p rmi_source_files
+
 cd indices/RMI
 
 echo "Books uint32"
