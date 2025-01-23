@@ -41,7 +41,7 @@ source $HOME/.cargo/env
 
 ## Run everything, including the experiments
 ```
-git clone --recurse-submodules https://github.com/LorenzoBellomo/SortedStaticBenchmark.git
+git clone --recurse-submodules https://github.com/LorenzoBellomo/SortedStaticIndexBenchmark.git
 cd SortedStaticBenchmark
 ./scripts/install.sh
 ./scripts/download_datasets.sh
