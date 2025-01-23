@@ -12,14 +12,14 @@
 template <class IDX, typename T>
 void Benchmark(benchmark::State& state, std::string dataset_name, size_t scan_size) {
     auto data = LoadDataset<T>("../data/" + dataset_name);
+    #ifdef DEBUG
+    auto data_copy = data;
+    #endif
     IDX idx;
     auto lookups = GenerateScanLookups<T>(data, scan_size);
     try {
         idx.prepare(data);
         idx.build(data);
-    #ifdef DEBUG
-        auto data_copy = data;
-    #endif
         T results[scan_size];
         for (auto _ : state) {
             for (auto q_idx : lookups) {

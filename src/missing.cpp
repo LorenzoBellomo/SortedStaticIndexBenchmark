@@ -19,15 +19,15 @@
 template <class IDX, typename T>
 void Benchmark(benchmark::State& state, std::string dataset_name) {
     auto data = LoadDataset<T>("../data/" + dataset_name);
+    #ifdef DEBUG
+    auto data_copy = data;
+    #endif
     IDX idx;
     //auto lookups = LoadDataset<T>("../data/lookups/" + dataset_name);
     auto lookups = generate_missing_lookups(data, M1);
     try {
         idx.prepare(data);
         idx.build(data);
-    #ifdef DEBUG
-        auto data_copy = data;
-    #endif
         for (auto _ : state) {
             for (auto q : lookups) {
                 T x = idx.next_geq(q.second);
