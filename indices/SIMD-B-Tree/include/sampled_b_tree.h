@@ -83,11 +83,15 @@ namespace SIMD_Btree {
 
         // Support operator[]
         static inline constexpr bool support_access() {
-            return false;
+            return true;
         }
 
         value_type operator[](const size_t idx) const {
-            throw std::runtime_error("Operator [] is not supported yet");
+            return leaf_nodes[idx];
+        }
+
+        size_t size() const {
+            return leaves_number;
         }
 
         size_t size_in_bytes() const {
