@@ -16,3 +16,6 @@
 [submodule "indices/PGM-index"]
 	path = indices/PGM-index
 	url = https://github.com/gvinciguerra/PGM-index.git
+[submodule "indices/s-tree"]
+	path = indices/s-tree
+	url = https://github.com/mattiaodorisio/s-tree
