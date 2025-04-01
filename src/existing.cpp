@@ -122,9 +122,9 @@ int main(int argc, char** argv) {
                 benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_std::vector", Benchmark<StdVectorInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_PGM8", Benchmark<PGMInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_PGM32", Benchmark<PGMInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_PGM128", Benchmark<PGMInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PGM-index8", Benchmark<PGMInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PGM-index32", Benchmark<PGMInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PGM-index128", Benchmark<PGMInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++8", Benchmark<PGMPPInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++32", Benchmark<PGMPPInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++128", Benchmark<PGMPPInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
@@ -153,9 +153,9 @@ int main(int argc, char** argv) {
                 benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             if (dataset != "fb_200M_uint64")
                 benchmark::RegisterBenchmark(dataset+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_PGM8", Benchmark<PGMInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_PGM32", Benchmark<PGMInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_PGM128", Benchmark<PGMInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PGM-index8", Benchmark<PGMInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PGM-index32", Benchmark<PGMInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_PGM-index128", Benchmark<PGMInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++8", Benchmark<PGMPPInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++32", Benchmark<PGMPPInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PGM++128", Benchmark<PGMPPInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);

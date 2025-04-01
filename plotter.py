@@ -114,6 +114,8 @@ for experiment in ["existing", "missing", "buildtime", "scan"]:
             index_ = full_bm_str.split("_")[0]
             if "error_occurred" in entry and entry['error_occurred'] == True:
                 error_file.write("{} - {} - {}: {}\n".format(index_, dataset, experiment, entry["error_message"]))
+            elif experiment == "buildtime":
+                tool_performance[experiment + "_" + dataset + "_" + index_] = real_time_ns / 1000000000
             else:
                 tool_performance[experiment + "_" + dataset + "_" + index_] = real_time_ns / 1000000
         if index_ not in all_indices:
@@ -128,6 +130,9 @@ for experiment in ["existing", "missing", "buildtime", "scan"]:
             marker_map[index_] = list_of_markers[marker_idx]
             marker_idx = marker_idx + 1
 error_file.close()
+
+all_indices = list(all_indices)
+all_indices.sort()
 
 # understanding if the index is a compressed index or not (if the index_ops.hpp file has the access method)
 is_compressed_idx_map = {k: False for k in all_indices}
@@ -149,6 +154,8 @@ for filename in os.listdir("include/index_ops"):
                 read_next_line = True
         for update_to_make in to_update:
             is_compressed_idx_map[update_to_make] = is_compressed_idx
+is_compressed_idx_map["SIMD-BTree"] = False
+is_compressed_idx_map["SIMD-SampledBTree"] = False
 
 # Read index sizes
 with open("output/index_sizes.txt", 'r') as index_size_file:
@@ -158,10 +165,20 @@ with open("output/index_sizes.txt", 'r') as index_size_file:
         space_occupancy[dataset.split(".")[0] + "_" + index_] = math.ceil(float(bytes_)/1000000)
 
 # legends
-clean_all_idx = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices]))
-clean_std_learn_idx = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices if not is_compressed_idx_map[a]]))
+clean_all_idx = []
+clean_std_learn_idx = []
+clean_all_vect = []
+added = set()
+for a in all_indices:
+    root_str = extract_idx_root(a)
+    if root_str not in added:
+        added.add(root_str)
+        clean_all_idx.append((root_str, color_map[a]))
+        if is_compressed_idx_map[a]:
+            clean_all_vect.append((root_str, color_map[a]))
+        else:
+            clean_std_learn_idx.append((root_str, color_map[a]))
 clean_std_learn_idx.append(("std::vector", "red"))
-clean_all_vect = list(set([(extract_idx_root(a), color_map[a]) for a in all_indices if is_compressed_idx_map[a]]))
 handles = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_all_idx]
 handles_idx = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_std_learn_idx]
 handles_vect = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_all_vect]
@@ -176,7 +193,7 @@ for idx_list, handles_list, fname in [(clean_all_idx, handles, "all"), (clean_st
     plt.clf()
 
 # Generate tables for each dataset
-header_column = ['index', 'lookup existing (ns)', 'lookup missing (ns)', 'space (MB)', 'build (ms)']
+header_column = ['index', 'lookup existing (ns)', 'lookup missing (ns)', 'space (MB)', 'build (s)']
 header_column_with_scan = ['Compressed Index', "Scan 10", "Scan 100", "Scan 1K", "Scan 10K"]
 for dataset in datasets:
     data_to_table, data_to_table_scan = [], []
@@ -220,33 +237,48 @@ for dataset in datasets:
                     perf["scan{}".format(scan_range)].append(tool_performance[key_])
     # buildtime
     fig, ax = plt.subplots()
-    zipped_list = [(idx_, buildtime) for idx_, buildtime in zip(perf["indices"], perf["buildtime"]) if idx_ != "std::vector"]
+    buildtime = perf["buildtime"]
+    ylabel = "s to build"
+    if max(buildtime) < 5:
+        buildtime = [a*1000 for a in buildtime]
+        ylabel = "ms to build"
+    zipped_list = [(idx_, time_) for idx_, time_ in zip(perf["indices"], buildtime) if idx_ != "std::vector"]
     ax.bar([a for a, _ in zipped_list], [a for _, a in zipped_list], color = [color_map[a] for a, _ in zipped_list], edgecolor = "black")
     if dataset not in bottom_plots:
         ax.get_xaxis().set_ticks([])
-    ax.set_ylabel('ms to build', fontsize=13)
+    ax.set_ylabel(ylabel, fontsize=13)
     plt.yticks(ticks=plt.yticks()[0], labels=plt.yticks()[0].astype(int))
     plt.xticks(rotation=45, ha="right")
-    plt.savefig("output/plots/buildtime/{}.png".format(dataset), bbox_inches='tight')
+    plt.savefig("output/plots/buildtime/{}.svg".format(dataset), bbox_inches='tight')
     plt.clf()
     # zoom
     fig, ax = plt.subplots()
-    avg_ = sum(perf["buildtime"]) / len(perf["buildtime"])
-    zipped_list = [(idx_, buildtime) for idx_, buildtime in zip(perf["indices"], perf["buildtime"]) if idx_ != "std::vector" and buildtime <= 2*avg_]
+    avg_ = sum(buildtime) / len(buildtime)
+    new_buildtime_post_zoom = []
+    new_algo_post_zoom = []
+    for i, time_ in enumerate(buildtime):
+        if time_ <= 2*avg_:
+            new_buildtime_post_zoom.append(time_)
+            new_algo_post_zoom.append(perf["indices"][i])
+    ylabel = "s to build"
+    if max(new_buildtime_post_zoom) < 5:
+        new_buildtime_post_zoom = [a*1000 for a in new_buildtime_post_zoom]
+        ylabel = "ms to build"
+    zipped_list = [(idx_, time_) for idx_, time_ in zip(new_algo_post_zoom, new_buildtime_post_zoom) if idx_ != "std::vector"]
     ax.bar([a for a, _ in zipped_list], [a for _, a in zipped_list], color = [color_map[a] for a, _ in zipped_list], edgecolor = "black")
     if dataset not in bottom_plots:
         ax.get_xaxis().set_ticks([])
-    ax.set_ylabel('ms to build', fontsize=13)
+    ax.set_ylabel(ylabel, fontsize=13)
     plt.yticks(ticks=plt.yticks()[0], labels=plt.yticks()[0].astype(int))
     plt.xticks(rotation=45, ha="right")
-    plt.savefig("output/plots/buildtime/zoom/{}.png".format(dataset), bbox_inches='tight')
+    plt.savefig("output/plots/buildtime/zoom/{}.svg".format(dataset), bbox_inches='tight')
     plt.clf()
     # index and compressed index plots
     spacetime_indices = []
     for plot_compressed_indices in [True, False]:
         fig, ax = plt.subplots()
         width = 0.4
-        idx_of_correct_indices = [i for i, idx_ in enumerate(perf["indices"]) if is_compressed_idx_map[idx_] == plot_compressed_indices]
+        idx_of_correct_indices = [i for i, idx_ in enumerate(sorted(perf["indices"])) if is_compressed_idx_map[idx_] == plot_compressed_indices]
         indices = [perf["indices"][i] for i in idx_of_correct_indices]
         spacetime_indices.extend(indices)
         if plot_compressed_indices: 
@@ -266,7 +298,7 @@ for dataset in datasets:
         plt.xticks(ind + width / 2, indices)
         plt.xticks(rotation=45, ha="right")
         root_to_file = "vector" if plot_compressed_indices else "index"
-        plt.savefig("output/plots/{}/{}.png".format(root_to_file, dataset), bbox_inches='tight')
+        plt.savefig("output/plots/{}/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
         plt.clf()
 
         # space
@@ -279,7 +311,7 @@ for dataset in datasets:
         plt.xticks(ind, indices)
         plt.xticks(rotation=45, ha="right")
         root_to_file = "vector" if plot_compressed_indices else "index"
-        plt.savefig("output/plots/{}/space/{}.png".format(root_to_file, dataset), bbox_inches='tight')
+        plt.savefig("output/plots/{}/space/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
         plt.clf()
 
         # scan plots
@@ -294,7 +326,7 @@ for dataset in datasets:
             plt.xticks(ind + width + width/2, perf["scan_indices"])
             plt.xticks(rotation=45, ha="right")
             root_to_file = "vector/scan"
-            plt.savefig("output/plots/{}/{}.png".format(root_to_file, dataset), bbox_inches='tight')
+            plt.savefig("output/plots/{}/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
             plt.clf()
 
         # pareto plots
@@ -318,15 +350,16 @@ for dataset in datasets:
         for i, algo in enumerate(algorithms_filtered):
             ax.plot(space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i], marker=markers__[i], color=colors__[i], linestyle='None', label=algo, markersize=10)
             to_pareto.append((space_occupancy.get(dataset + "_" + algo, 1), values_filtered[i]))
-        if dataset == "friendster_50M_uint32":
+        if dataset == "osm_cellids_800M_uint64" and not plot_compressed_indices:
             ax.set_xlabel('')
-            if not plot_compressed_indices:
-                legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-                export_legend(legend, "output/plots/legends/pareto_index.png")
-            else:
-                n_columns = 4
-                legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
-                export_legend(legend, "output/plots/legends/pareto_vector.png")
+            legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+            export_legend(legend, "output/plots/legends/pareto_index.png")
+            ax.get_legend().remove()
+        elif dataset == "friendster_50M_uint32" and plot_compressed_indices:
+            ax.set_xlabel('')
+            n_columns = 4
+            legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
+            export_legend(legend, "output/plots/legends/pareto_vector.png")
             ax.get_legend().remove()
         pareto = pareto_frontier(to_pareto)
         x_pareto, y_pareto = zip(*pareto)
@@ -334,7 +367,7 @@ for dataset in datasets:
         root_to_file = "vector" if plot_compressed_indices else "index"
         ax.set_ylabel('ns per item', fontsize=13)
         ax.set_xlabel('Size (in MB)', fontsize=13)
-        plt.savefig("output/plots/{}/pareto/{}.png".format(root_to_file, dataset), bbox_inches='tight')
+        plt.savefig("output/plots/{}/pareto/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
         plt.clf()
 
     # computing optimal plots for spacetime 
@@ -395,4 +428,4 @@ for dataset in datasets:
     for j, i in enumerate(spacetime_plot_positions):
         ax2.text(i, space_to_plot[j]+(max(space_to_plot) / 4), space_to_plot[j], ha = 'center',rotation=45)
     ax2.invert_yaxis()
-    plt.savefig("output/plots/spacetime/{}.png".format(dataset), bbox_inches='tight')
+    plt.savefig("output/plots/spacetime/{}.svg".format(dataset), bbox_inches='tight')

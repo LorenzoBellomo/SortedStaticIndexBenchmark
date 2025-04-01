@@ -29,6 +29,10 @@ public:
         return btree[idx];
     }
 
+    T access(size_t idx) {
+        return btree[idx];
+    }
+
     size_t size_in_bytes() {
         return btree.size_in_bytes();
     }

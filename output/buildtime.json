@@ -305,10 +305,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint64_PGM8/iterations:10",
+      "name": "wiki_ts_200M_uint64_PGM-index8/iterations:10",
       "family_index": 19,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint64_PGM8/iterations:10",
+      "run_name": "wiki_ts_200M_uint64_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -319,10 +319,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint64_PGM32/iterations:10",
+      "name": "wiki_ts_200M_uint64_PGM-index32/iterations:10",
       "family_index": 20,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint64_PGM32/iterations:10",
+      "run_name": "wiki_ts_200M_uint64_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -333,10 +333,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint64_PGM128/iterations:10",
+      "name": "wiki_ts_200M_uint64_PGM-index128/iterations:10",
       "family_index": 21,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint64_PGM128/iterations:10",
+      "run_name": "wiki_ts_200M_uint64_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -683,10 +683,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "lognormal_uint32_PGM8/iterations:10",
+      "name": "lognormal_uint32_PGM-index8/iterations:10",
       "family_index": 46,
       "per_family_instance_index": 0,
-      "run_name": "lognormal_uint32_PGM8/iterations:10",
+      "run_name": "lognormal_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -697,10 +697,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "lognormal_uint32_PGM32/iterations:10",
+      "name": "lognormal_uint32_PGM-index32/iterations:10",
       "family_index": 47,
       "per_family_instance_index": 0,
-      "run_name": "lognormal_uint32_PGM32/iterations:10",
+      "run_name": "lognormal_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -711,10 +711,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "lognormal_uint32_PGM128/iterations:10",
+      "name": "lognormal_uint32_PGM-index128/iterations:10",
       "family_index": 48,
       "per_family_instance_index": 0,
-      "run_name": "lognormal_uint32_PGM128/iterations:10",
+      "run_name": "lognormal_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1043,10 +1043,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "fb_200M_uint64_PGM8/iterations:10",
+      "name": "fb_200M_uint64_PGM-index8/iterations:10",
       "family_index": 71,
       "per_family_instance_index": 0,
-      "run_name": "fb_200M_uint64_PGM8/iterations:10",
+      "run_name": "fb_200M_uint64_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1057,10 +1057,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "fb_200M_uint64_PGM32/iterations:10",
+      "name": "fb_200M_uint64_PGM-index32/iterations:10",
       "family_index": 72,
       "per_family_instance_index": 0,
-      "run_name": "fb_200M_uint64_PGM32/iterations:10",
+      "run_name": "fb_200M_uint64_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1071,10 +1071,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "fb_200M_uint64_PGM128/iterations:10",
+      "name": "fb_200M_uint64_PGM-index128/iterations:10",
       "family_index": 73,
       "per_family_instance_index": 0,
-      "run_name": "fb_200M_uint64_PGM128/iterations:10",
+      "run_name": "fb_200M_uint64_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1421,10 +1421,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "companynet_uint32_PGM8/iterations:10",
+      "name": "companynet_uint32_PGM-index8/iterations:10",
       "family_index": 98,
       "per_family_instance_index": 0,
-      "run_name": "companynet_uint32_PGM8/iterations:10",
+      "run_name": "companynet_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1435,10 +1435,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "companynet_uint32_PGM32/iterations:10",
+      "name": "companynet_uint32_PGM-index32/iterations:10",
       "family_index": 99,
       "per_family_instance_index": 0,
-      "run_name": "companynet_uint32_PGM32/iterations:10",
+      "run_name": "companynet_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1449,10 +1449,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "companynet_uint32_PGM128/iterations:10",
+      "name": "companynet_uint32_PGM-index128/iterations:10",
       "family_index": 100,
       "per_family_instance_index": 0,
-      "run_name": "companynet_uint32_PGM128/iterations:10",
+      "run_name": "companynet_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1785,10 +1785,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "normal_uint32_PGM8/iterations:10",
+      "name": "normal_uint32_PGM-index8/iterations:10",
       "family_index": 124,
       "per_family_instance_index": 0,
-      "run_name": "normal_uint32_PGM8/iterations:10",
+      "run_name": "normal_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1799,10 +1799,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "normal_uint32_PGM32/iterations:10",
+      "name": "normal_uint32_PGM-index32/iterations:10",
       "family_index": 125,
       "per_family_instance_index": 0,
-      "run_name": "normal_uint32_PGM32/iterations:10",
+      "run_name": "normal_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1813,10 +1813,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "normal_uint32_PGM128/iterations:10",
+      "name": "normal_uint32_PGM-index128/iterations:10",
       "family_index": 126,
       "per_family_instance_index": 0,
-      "run_name": "normal_uint32_PGM128/iterations:10",
+      "run_name": "normal_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2149,10 +2149,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint32_PGM8/iterations:10",
+      "name": "wiki_ts_200M_uint32_PGM-index8/iterations:10",
       "family_index": 150,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint32_PGM8/iterations:10",
+      "run_name": "wiki_ts_200M_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2163,10 +2163,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint32_PGM32/iterations:10",
+      "name": "wiki_ts_200M_uint32_PGM-index32/iterations:10",
       "family_index": 151,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint32_PGM32/iterations:10",
+      "run_name": "wiki_ts_200M_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2177,10 +2177,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint32_PGM128/iterations:10",
+      "name": "wiki_ts_200M_uint32_PGM-index128/iterations:10",
       "family_index": 152,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint32_PGM128/iterations:10",
+      "run_name": "wiki_ts_200M_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2513,10 +2513,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "zipf_uint32_PGM8/iterations:10",
+      "name": "zipf_uint32_PGM-index8/iterations:10",
       "family_index": 176,
       "per_family_instance_index": 0,
-      "run_name": "zipf_uint32_PGM8/iterations:10",
+      "run_name": "zipf_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2527,10 +2527,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "zipf_uint32_PGM32/iterations:10",
+      "name": "zipf_uint32_PGM-index32/iterations:10",
       "family_index": 177,
       "per_family_instance_index": 0,
-      "run_name": "zipf_uint32_PGM32/iterations:10",
+      "run_name": "zipf_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2541,10 +2541,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "zipf_uint32_PGM128/iterations:10",
+      "name": "zipf_uint32_PGM-index128/iterations:10",
       "family_index": 178,
       "per_family_instance_index": 0,
-      "run_name": "zipf_uint32_PGM128/iterations:10",
+      "run_name": "zipf_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2879,10 +2879,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_800M_uint64_PGM8/iterations:10",
+      "name": "books_800M_uint64_PGM-index8/iterations:10",
       "family_index": 202,
       "per_family_instance_index": 0,
-      "run_name": "books_800M_uint64_PGM8/iterations:10",
+      "run_name": "books_800M_uint64_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2893,10 +2893,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_800M_uint64_PGM32/iterations:10",
+      "name": "books_800M_uint64_PGM-index32/iterations:10",
       "family_index": 203,
       "per_family_instance_index": 0,
-      "run_name": "books_800M_uint64_PGM32/iterations:10",
+      "run_name": "books_800M_uint64_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2907,10 +2907,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_800M_uint64_PGM128/iterations:10",
+      "name": "books_800M_uint64_PGM-index128/iterations:10",
       "family_index": 204,
       "per_family_instance_index": 0,
-      "run_name": "books_800M_uint64_PGM128/iterations:10",
+      "run_name": "books_800M_uint64_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -3257,10 +3257,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "exponential_uint32_PGM8/iterations:10",
+      "name": "exponential_uint32_PGM-index8/iterations:10",
       "family_index": 229,
       "per_family_instance_index": 0,
-      "run_name": "exponential_uint32_PGM8/iterations:10",
+      "run_name": "exponential_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -3271,10 +3271,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "exponential_uint32_PGM32/iterations:10",
+      "name": "exponential_uint32_PGM-index32/iterations:10",
       "family_index": 230,
       "per_family_instance_index": 0,
-      "run_name": "exponential_uint32_PGM32/iterations:10",
+      "run_name": "exponential_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -3285,10 +3285,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "exponential_uint32_PGM128/iterations:10",
+      "name": "exponential_uint32_PGM-index128/iterations:10",
       "family_index": 231,
       "per_family_instance_index": 0,
-      "run_name": "exponential_uint32_PGM128/iterations:10",
+      "run_name": "exponential_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -3635,10 +3635,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "friendster_50M_uint32_PGM8/iterations:10",
+      "name": "friendster_50M_uint32_PGM-index8/iterations:10",
       "family_index": 256,
       "per_family_instance_index": 0,
-      "run_name": "friendster_50M_uint32_PGM8/iterations:10",
+      "run_name": "friendster_50M_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -3649,10 +3649,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "friendster_50M_uint32_PGM32/iterations:10",
+      "name": "friendster_50M_uint32_PGM-index32/iterations:10",
       "family_index": 257,
       "per_family_instance_index": 0,
-      "run_name": "friendster_50M_uint32_PGM32/iterations:10",
+      "run_name": "friendster_50M_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -3663,10 +3663,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "friendster_50M_uint32_PGM128/iterations:10",
+      "name": "friendster_50M_uint32_PGM-index128/iterations:10",
       "family_index": 258,
       "per_family_instance_index": 0,
-      "run_name": "friendster_50M_uint32_PGM128/iterations:10",
+      "run_name": "friendster_50M_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -4009,10 +4009,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "osm_cellids_800M_uint64_PGM8/iterations:10",
+      "name": "osm_cellids_800M_uint64_PGM-index8/iterations:10",
       "family_index": 282,
       "per_family_instance_index": 0,
-      "run_name": "osm_cellids_800M_uint64_PGM8/iterations:10",
+      "run_name": "osm_cellids_800M_uint64_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -4023,10 +4023,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "osm_cellids_800M_uint64_PGM32/iterations:10",
+      "name": "osm_cellids_800M_uint64_PGM-index32/iterations:10",
       "family_index": 283,
       "per_family_instance_index": 0,
-      "run_name": "osm_cellids_800M_uint64_PGM32/iterations:10",
+      "run_name": "osm_cellids_800M_uint64_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -4037,10 +4037,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "osm_cellids_800M_uint64_PGM128/iterations:10",
+      "name": "osm_cellids_800M_uint64_PGM-index128/iterations:10",
       "family_index": 284,
       "per_family_instance_index": 0,
-      "run_name": "osm_cellids_800M_uint64_PGM128/iterations:10",
+      "run_name": "osm_cellids_800M_uint64_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -4397,10 +4397,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_200M_uint32_PGM8/iterations:10",
+      "name": "books_200M_uint32_PGM-index8/iterations:10",
       "family_index": 309,
       "per_family_instance_index": 0,
-      "run_name": "books_200M_uint32_PGM8/iterations:10",
+      "run_name": "books_200M_uint32_PGM-index8/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -4411,10 +4411,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_200M_uint32_PGM32/iterations:10",
+      "name": "books_200M_uint32_PGM-index32/iterations:10",
       "family_index": 310,
       "per_family_instance_index": 0,
-      "run_name": "books_200M_uint32_PGM32/iterations:10",
+      "run_name": "books_200M_uint32_PGM-index32/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -4425,10 +4425,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_200M_uint32_PGM128/iterations:10",
+      "name": "books_200M_uint32_PGM-index128/iterations:10",
       "family_index": 311,
       "per_family_instance_index": 0,
-      "run_name": "books_200M_uint32_PGM128/iterations:10",
+      "run_name": "books_200M_uint32_PGM-index128/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
