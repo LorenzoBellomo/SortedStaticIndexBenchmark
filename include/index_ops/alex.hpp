@@ -26,7 +26,7 @@ public:
     }
 
     T next_geq(T q) {
-        auto iter = alex_.find(q);
+        auto iter = alex_.lower_bound(q);
         if (iter == alex_.end())
             return std::numeric_limits<T>::max();
         return (*iter).first;
