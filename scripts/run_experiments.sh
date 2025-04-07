@@ -8,7 +8,7 @@ make -j
 
 # measuring memory footprint
 
-options=("ALEX" "Roaring" "EliasFano" "GammaCode16" "GammaCode32" "DeltaCode16" "DeltaCode32" "LA-vectoropt" "LA-vector6" "LA-vector8" "LA-vector10" "LA-vector12" "CSS-BTree" "PLEX8" "PLEX32" "PLEX128" "PGM8" "PGM32" "PGM128" "PGM++8" "PGM++32" "PGM++128" "std::vector" "SIMD-BTree" "SIMD-SampledBTree")
+options=("ALEX" "Roaring" "EliasFano" "GammaCode16" "GammaCode32" "DeltaCode16" "DeltaCode32" "LA-vectoropt" "LA-vector6" "LA-vector8" "LA-vector10" "LA-vector12" "CSS-BTree" "PLEX8" "PLEX32" "PLEX128" "PGM8" "PGM32" "PGM128" "PGM++8" "PGM++32" "PGM++128" "std::vector" "SIMD-BTree" "SIMD-SampledBTree" "FAST")
 datasets=("books_200M_uint32" "companynet_uint32" "fb_200M_uint64" "lognormal_uint32" "normal_uint32" "wiki_ts_200M_uint32" "zipf_uint32" "books_800M_uint64" "exponential_uint32" "friendster_50M_uint32" "osm_cellids_800M_uint64" "wiki_ts_200M_uint64" "normal_800M_uint32" "books_50M_uint64")
 
 output_file="../output/memory_footprint.txt"

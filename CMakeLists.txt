@@ -23,6 +23,7 @@ include_directories(
     indices/ALEX # ALEX
     indices/s-tree/include # SIMD (sampled) btree
     include # implementations of basic operations for each index + utils + Wrapper SDSL
+    indices/FAST # FAST
 )
 
 # You can add CPM.cmake like so:

@@ -15,6 +15,7 @@
 #include <index_ops/plex.hpp>
 #include <index_ops/rmi.hpp>
 #include <index_ops/simdbtree.hpp>
+#include <index_ops/fast.hpp>
 
 template <class IDX, typename T>
 void build_index(std::string dataset_name) {
@@ -80,6 +81,8 @@ int main(int argc, char *argv[]) {
             build_index<PGMPPInterface<uint32_t, 32>, uint32_t>(dataset);
         else if (libr == "PGM++128") 
             build_index<PGMPPInterface<uint32_t, 128>, uint32_t>(dataset);
+        else if (libr == "FAST") 
+            build_index<FASTInterface<uint32_t>, uint32_t>(dataset);
     } else {
         if (libr == "PLEX8")
             build_index<PLEXInterface<uint64_t, 8>, uint64_t>(dataset);
@@ -131,6 +134,8 @@ int main(int argc, char *argv[]) {
             build_index<PGMPPInterface<uint64_t, 32>, uint64_t>(dataset);
         else if (libr == "PGM++128") 
             build_index<PGMPPInterface<uint64_t, 128>, uint64_t>(dataset);
+        else if (libr == "FAST") 
+            build_index<FASTInterface<uint64_t>, uint64_t>(dataset);
     }
     return 0;
 }
