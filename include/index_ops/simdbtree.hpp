@@ -6,7 +6,6 @@
 #include <limits>
 #include <b_tree.h>
 #include <sampled_b_tree.h>
-#include "b_tree_pgm.h"
 
 template <typename T, size_t sz = 0>
 class SIMDBTreeInterface {
@@ -67,39 +66,6 @@ public:
 
     std::string to_string() {
         return "SIMD-SampledBTree";
-    }
-};
-
-
-template<typename T, int eps>
-class SIMDPGMBTreeInterface {
-private:
-    std::vector<T> data;
-    SIMDBTree::pgm::BTreePGMIndex<T, eps> pgmbtree_idx;
-
-public:
-    void prepare(const std::vector<T>& data_) {
-        data = data_;
-    }
-
-    void build(const std::vector<T>& data_) {
-        pgmbtree_idx.build(data_.begin(), data_.end());
-    }
-
-    T next_geq(T q) {
-        auto range = pgmbtree_idx.search(q);
-        auto lb = std::lower_bound(data.begin() + range.lo, data.begin() + range.hi, q);
-        if (lb == data.end())
-            return std::numeric_limits<T>::max();
-        return *lb;
-    }
-
-    size_t size_in_bytes() {
-        return pgmbtree_idx.size_in_bytes();
-    }
-
-    std::string to_string() {
-        return "PGMBTree" + std::to_string(eps);
     }
 };
 
