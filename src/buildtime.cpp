@@ -71,6 +71,12 @@ void register_RMIs(const std::string &dataset, int num_iter) {
     } else if (dataset == "books_200M_uint32") {
         benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 11, true>, T>, dataset)->Iterations(num_iter);
         benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 11, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "books_50M_uint64") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 12, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 12, false>, T>, dataset)->Iterations(num_iter);
+    } else if (dataset == "normal_800M_uint32") {
+        benchmark::RegisterBenchmark(dataset+"_RMI-compact", Benchmark<RMIInterface<T, 13, true>, T>, dataset)->Iterations(num_iter);
+        benchmark::RegisterBenchmark(dataset+"_RMI-large", Benchmark<RMIInterface<T, 13, false>, T>, dataset)->Iterations(num_iter);
     } else {
         throw std::invalid_argument("Unknown dataset");
     }
@@ -79,8 +85,8 @@ void register_RMIs(const std::string &dataset, int num_iter) {
 int main(int argc, char** argv) {
     std::vector<std::string> datasets({"wiki_ts_200M_uint64", "lognormal_uint32", "fb_200M_uint64", "companynet_uint32",
     "normal_uint32", "wiki_ts_200M_uint32", "zipf_uint32", "books_800M_uint64", "exponential_uint32", "friendster_50M_uint32", 
-    "osm_cellids_800M_uint64", "books_200M_uint32"});
-    std::vector<std::string> no_duplicate_datasets({"fb_200M_uint64", "friendster_50M_uint32", "books_800M_uint64", "osm_cellids_800M_uint64"});
+    "osm_cellids_800M_uint64", "books_200M_uint32", "books_50M_uint64", "normal_800M_uint32"});
+    std::vector<std::string> no_duplicate_datasets({"fb_200M_uint64", "friendster_50M_uint32", "books_800M_uint64", "osm_cellids_800M_uint64", "books_50M_uint64"});
 
 #ifdef DEBUG
     auto num_iter = 1;
@@ -96,9 +102,6 @@ int main(int argc, char** argv) {
             register_RMIs<uint32_t>(dataset, num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-BTree", Benchmark<SIMDBTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-SampledBTree", Benchmark<SIMDSampledBTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
-            //benchmark::RegisterBenchmark(dataset+"_SIMD-PGMBTree8", Benchmark<SIMDPGMBTreeInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
-            //benchmark::RegisterBenchmark(dataset+"_SIMD-PGMBTree32", Benchmark<SIMDPGMBTreeInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
-            //benchmark::RegisterBenchmark(dataset+"_SIMD-PGMBTree128", Benchmark<SIMDPGMBTreeInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
@@ -127,9 +130,6 @@ int main(int argc, char** argv) {
             register_RMIs<uint64_t>(dataset, num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-BTree", Benchmark<SIMDBTreeInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-SampledBTree", Benchmark<SIMDSampledBTreeInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
-            //benchmark::RegisterBenchmark(dataset+"_SIMD-PGMBTree8", Benchmark<SIMDPGMBTreeInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
-            //benchmark::RegisterBenchmark(dataset+"_SIMD-PGMBTree32", Benchmark<SIMDPGMBTreeInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
-            //benchmark::RegisterBenchmark(dataset+"_SIMD-PGMBTree128", Benchmark<SIMDPGMBTreeInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint64_t, 32>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint64_t, 128>, uint64_t>, dataset)->Iterations(num_iter);

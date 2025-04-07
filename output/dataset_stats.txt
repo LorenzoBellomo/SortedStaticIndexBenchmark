@@ -3,6 +3,11 @@ SIZE: 50000000
 AVERAGE GAP: 42.9497
 # duplicates: 710309
 ===========================================
+normal_800_uint32
+SIZE: 800000000
+AVERAGE GAP: 2.68435
+# duplicates: 156208228
+===========================================
 exponential_uint32
 SIZE: 50000000
 AVERAGE GAP: 42.9496
@@ -53,6 +58,11 @@ AVERAGE GAP: 9.22337e+10
 books_800M_uint64
 SIZE: 800000000
 AVERAGE GAP: 1.15292e+10
+# duplicates: 0
+===========================================
+books_50M_uint64
+SIZE: 50000000
+AVERAGE GAP: 4.66131e+09
 # duplicates: 0
 ===========================================
 osm_cellids_800M_uint64

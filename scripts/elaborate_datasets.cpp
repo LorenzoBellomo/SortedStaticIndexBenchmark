@@ -194,6 +194,11 @@ int main() {
     std::cout << "normal_uint32" << std::endl;
     print_stats(data);
 
+    data = generate_normal_distr(800000000);
+    write_bin32_file("../data/normal_800M_uint32", data);
+    std::cout << "normal_800_uint32" << std::endl;
+    print_stats(data);
+
     data = generate_exponential_distr(M50);
     write_bin32_file("../data/exponential_uint32", data);
     std::cout << "exponential_uint32" << std::endl;
@@ -246,6 +251,11 @@ int main() {
 
     data64 = read_bin64_file("../data/books_800M_uint64");
     std::cout << "books_800M_uint64" << std::endl;
+    print_stats(data64);
+
+    data64.resize(M50);
+    std::cout << "books_50M_uint64" << std::endl;
+    write_bin64_file("../data/books_50M_uint64", data64);
     print_stats(data64);
 
     data64 = read_bin64_file("../data/osm_cellids_800M_uint64");

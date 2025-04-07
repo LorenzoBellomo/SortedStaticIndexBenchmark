@@ -1,0 +1,84 @@
+{
+    "configs": [
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 16777216,
+            "namespace": "normal_800M_uint32_0",
+            "size": 402653200,
+            "average log2 error": 4.085555629451174,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 8388608,
+            "namespace": "normal_800M_uint32_1",
+            "size": 201326608,
+            "average log2 error": 4.40059157946773,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 4194304,
+            "namespace": "normal_800M_uint32_2",
+            "size": 100663312,
+            "average log2 error": 4.752324152851488,
+            "binary": true
+        },
+        {
+            "layers": "radix22,linear",
+            "branching factor": 1048576,
+            "namespace": "normal_800M_uint32_3",
+            "size": 41943040,
+            "average log2 error": 5.471578706848437,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 524288,
+            "namespace": "normal_800M_uint32_4",
+            "size": 12582928,
+            "average log2 error": 5.965806627637167,
+            "binary": true
+        },
+        {
+            "layers": "radix,linear",
+            "branching factor": 262144,
+            "namespace": "normal_800M_uint32_5",
+            "size": 6291472,
+            "average log2 error": 6.408091198144368,
+            "binary": true
+        },
+        {
+            "layers": "radix18,linear",
+            "branching factor": 32768,
+            "namespace": "normal_800M_uint32_6",
+            "size": 1835008,
+            "average log2 error": 7.7091782736694169,
+            "binary": true
+        },
+        {
+            "layers": "linear_spline,linear",
+            "branching factor": 32768,
+            "namespace": "normal_800M_uint32_7",
+            "size": 786448,
+            "average log2 error": 7.794145935698868,
+            "binary": true
+        },
+        {
+            "layers": "radix,linear",
+            "branching factor": 1024,
+            "namespace": "normal_800M_uint32_8",
+            "size": 24592,
+            "average log2 error": 9.927962449693242,
+            "binary": true
+        },
+        {
+            "layers": "radix,linear",
+            "branching factor": 128,
+            "namespace": "normal_800M_uint32_9",
+            "size": 3088,
+            "average log2 error": 13.374182119461733,
+            "binary": true
+        }
+    ]
+}

@@ -21,6 +21,8 @@
 9 = friendster_50M_uint32
 10 = osm_cellids_800M_uint64
 11 = books_200M_uint32
+12 = books_50M_uint64
+13 = normal_800M_uint32
 */
 template <typename T, int dataset, bool compact>
 class RMIInterface {
@@ -107,6 +109,18 @@ public:
                 else
                     books_large::load(model_path.c_str());
                 break;
+            case 12:
+                if (compact) 
+                    books64small_compact::load(model_path.c_str());
+                else
+                    books64small_large::load(model_path.c_str());
+                break;
+            case 13:
+                if (compact) 
+                    normal800_compact::load(model_path.c_str());
+                else
+                    normal800_large::load(model_path.c_str());
+                break;
             default: 
                 throw std::invalid_argument("Unknown dataset");
         }
@@ -187,6 +201,18 @@ public:
                     x = books_compact::lookup(q, &err);
                 else
                     x = books_large::lookup(q, &err);
+                break;
+            case 12:
+                if (compact) 
+                    books64small_compact::lookup(q, &err);
+                else
+                    books64small_large::lookup(q, &err);
+                break;
+            case 13:
+                if (compact) 
+                    normal800_compact::lookup(q, &err);
+                else
+                    normal800_large::lookup(q, &err);
                 break;
             default: 
                 throw std::invalid_argument("Unknown dataset");
@@ -273,6 +299,18 @@ public:
                     return books_compact::RMI_SIZE;
                 else
                     return books_large::RMI_SIZE;
+                break;
+            case 12:
+                if (compact) 
+                    books64small_compact::RMI_SIZE;
+                else
+                    books64small_large::RMI_SIZE;
+                break;
+            case 13:
+                if (compact) 
+                    normal800_compact::RMI_SIZE;
+                else
+                    normal800_large::RMI_SIZE;
                 break;
             default: 
                 throw std::invalid_argument("Unknown dataset");

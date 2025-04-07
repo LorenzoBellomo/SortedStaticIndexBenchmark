@@ -56,7 +56,8 @@ color_map = {"std::vector": "red"}
 marker_map = {}
 
 datasets = ["zipf_uint32", "books_200M_uint32", "companynet_uint32", "fb_200M_uint64", "lognormal_uint32", "normal_uint32",
-            "wiki_ts_200M_uint32", "books_800M_uint64", "exponential_uint32", "friendster_50M_uint32", "osm_cellids_800M_uint64", "wiki_ts_200M_uint64"]
+            "wiki_ts_200M_uint32", "books_800M_uint64", "exponential_uint32", "friendster_50M_uint32", "osm_cellids_800M_uint64", 
+            "wiki_ts_200M_uint64", "books_50M_uint64", "normal_800M_uint32"]
 
 # Read memory usage data
 curr_dataset = ""
@@ -169,6 +170,7 @@ with open("output/index_sizes.txt", 'r') as index_size_file:
 clean_all_idx = []
 clean_std_learn_idx = []
 clean_all_vect = []
+clean_scan = []
 added = set()
 for a in all_indices:
     root_str = extract_idx_root(a)
@@ -177,13 +179,17 @@ for a in all_indices:
         clean_all_idx.append((root_str, color_map[a]))
         if is_compressed_idx_map[a]:
             clean_all_vect.append((root_str, color_map[a]))
+            clean_scan.append((root_str, color_map[a]))
         else:
+            if a == "SIMD-BTree":
+                clean_scan.append((root_str, color_map[a]))
             clean_std_learn_idx.append((root_str, color_map[a]))
 clean_std_learn_idx.append(("std::vector", "red"))
 handles = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_all_idx]
 handles_idx = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_std_learn_idx]
 handles_vect = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_all_vect]
-for idx_list, handles_list, fname in [(clean_all_idx, handles, "all"), (clean_std_learn_idx, handles_idx, "index"), (clean_all_vect, handles_vect, "vector")]:
+handles_scan = [plt.Rectangle((0,0),1,1, color=col) for _, col in clean_scan]
+for idx_list, handles_list, fname in [(clean_all_idx, handles, "all"), (clean_std_learn_idx, handles_idx, "index"), (clean_all_vect, handles_vect, "vector"), (clean_scan, handles_scan, "scan")]:
     for handle in handles_list: 
         handle.set_edgecolor('black')
     denominator = 3 if len(idx_list) > 12 else 2

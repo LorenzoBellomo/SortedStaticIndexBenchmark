@@ -51,6 +51,14 @@ echo "FB uint64"
 cargo run --release -- ../../data/fb_200M_uint64 fb64_compact robust_linear,linear 262144
 cargo run --release -- ../../data/fb_200M_uint64 fb64_large robust_linear,linear 16777216
 
+echo "Books 50M uint64"
+cargo run --release -- ../../data/books_50M_uint64 books64small_compact linear_spline,linear 262144
+cargo run --release -- ../../data/books_50M_uint64 books64small_large linear_spline,linear 16777216
+
+echo "normal 800M uint32"
+cargo run --release -- ../../data/normal_800M_uint32 normal800_compact radix,linear 262144
+cargo run --release -- ../../data/normal_800M_uint32 normal800_large linear_spline,linear 16777216
+
 # PUTTING ALL .cpp in one whole file (same for _data.h and .h files)
 echo "" > ../../rmi_source_files/rmi.h
 echo "" > ../../rmi_source_files/rmi_data.h

@@ -80,7 +80,7 @@ To add an index to the benchmark you must follow the following steps:
 - create, under "include/index_ops" the interface file for that index, implementing the required methods (prepare, build, next_geq, access, size_in_bytes, to_string);
 - register the benchmark in the files buildtime.cpp, existing.cpp, and missing.cpp. In case the new one is a compressed index, also add register the benchmark in the scan.cpp file. Finally, in these files, add the #include<index_ops/YOURFILE.hpp> line at the beginning.
 
-The methods to implement are:
+The methods to implement (in the .hpp file to include in "include/index_ops") are:
 - _prepare_: a function that is run before _"build"_, but is not timed. It is used for some indexes if they need extra work that is not considered build time (for example, to copy a vector);
 - _build_: builds the index;
 - _next\_geq_: returns the first item that is greater or equal than the query, or the max possible item represented in the number of bits used for representing data;

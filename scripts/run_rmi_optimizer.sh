@@ -12,3 +12,5 @@ cargo run --release -- --optimize ../../output/optimizer_output/friendster.json 
 cargo run --release -- --optimize ../../output/optimizer_output/normal.json ../../data/normal_uint32
 cargo run --release -- --optimize ../../output/optimizer_output/wiki.json ../../data/wiki_ts_200M_uint32
 cargo run --release -- --optimize ../../output/optimizer_output/zipf.json ../../data/zipf_uint32
+cargo run --release -- --optimize ../../output/optimizer_output/books64small.json ../../data/books_50M_uint64
+cargo run --release -- --optimize ../../output/optimizer_output/normal800.json ../../data/normal_800M_uint32

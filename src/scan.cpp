@@ -8,7 +8,7 @@
 #include <index_ops/roaring.hpp>
 #include <index_ops/lavec.hpp>
 #include <index_ops/gammadelta.hpp>
-#include <index_ops/simd_btree.hpp>
+#include <index_ops/simdbtree.hpp>
 
 template <class IDX, typename T>
 void Benchmark(benchmark::State& state, std::string dataset_name, size_t scan_size) {
