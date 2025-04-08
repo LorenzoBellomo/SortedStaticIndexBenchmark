@@ -26,6 +26,8 @@
 #include <utility>
 #include <cmath>
 
+#include "fast_util.h"
+
 const unsigned SIMD_BYTE = 256 / 8;
 const unsigned CACHE_LINE_BYTE = 64;
 const unsigned PAGE_BYTE = (1 << 21);

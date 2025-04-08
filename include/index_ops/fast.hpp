@@ -29,7 +29,7 @@ public:
     }
 
     size_t size_in_bytes() {
-        return (fast_tree.size_in_bytes());
+        return fast_tree.size_in_byte();
     }
 
     std::string to_string() {
