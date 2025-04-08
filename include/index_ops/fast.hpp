@@ -18,7 +18,7 @@ public:
     }
 
     void build(std::vector<T> data_) {
-        fast_tree.buildFAST(data_.data(), data_.size());
+        fast_tree.buildFAST(data.data(), data.size());
     }
 
     T next_geq(T q) {
