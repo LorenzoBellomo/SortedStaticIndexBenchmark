@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "static-search-tree",
+    "suffix-array-searching",
+]
+resolver = "2"
+
+[profile.release]
+lto = "thin"
+incremental = true
+opt-level = 3
+panic = 'abort'

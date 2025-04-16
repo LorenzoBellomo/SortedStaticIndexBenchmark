@@ -1,0 +1,19 @@
+* Integer search
+- Binary search
+- Branchless
+- With/without prefetching
+- Sorted/Eytzinger/B-tree layout
+  - For B-trees, try:
+    - B=16
+    - B=15, packed
+    - B=15, padded
+    (8/7)
+- Prefix lookup
+- Interpolation search (on non-random data)
+- Batching
+  - Chunked
+- Everything with unchecked array indexing
+- Skip Van-Emde-Boas
+- Try with/without function inlining
+* Suffix array search
+- Inlining values

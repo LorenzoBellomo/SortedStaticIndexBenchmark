@@ -24,6 +24,7 @@ include_directories(
     indices/s-tree/include # SIMD (sampled) btree
     include # implementations of basic operations for each index + utils + Wrapper SDSL
     indices/FAST # FAST
+    indices/suffix-array-searching # RUST SIMD static search tree
 )
 
 # You can add CPM.cmake like so:
@@ -45,5 +46,14 @@ file(GLOB SRC_FILES "src/*.cpp")
 foreach(src_file ${SRC_FILES})
     get_filename_component( filename_ ${src_file} NAME_WE )
     add_executable( ${filename_} ${src_file} ${RMI_SOURCE_FILES})
-    target_link_libraries(${filename_} benchmark::benchmark roaring::roaring ${CMAKE_SOURCE_DIR}/lib/lib/libsdsl.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort.a ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort64.a)
+    target_link_libraries(${filename_} 
+      benchmark::benchmark 
+      roaring::roaring 
+      ${CMAKE_SOURCE_DIR}/lib/lib/libsdsl.a 
+      ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort.a 
+      ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort64.a
+      -L${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/static-search-tree/target/release 
+      -lstatic_search_tree 
+      -Wl,-rpath=${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/static-search-tree/target/release
+    )
 endforeach(src_file ${SRC_FILES})

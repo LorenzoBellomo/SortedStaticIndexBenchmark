@@ -5,3 +5,7 @@ lib
 src_old
 .vscode
 output/plots_svg
+
+cargo.lock
+.cargo
+target

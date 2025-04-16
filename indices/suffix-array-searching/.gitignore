@@ -1,0 +1,6 @@
+/target
+/flamegraph.svg
+/perf.data*
+human-genome.fa
+.ipynb_checkpoints
+/.env/
