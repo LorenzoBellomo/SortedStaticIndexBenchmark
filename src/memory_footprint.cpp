@@ -15,6 +15,7 @@
 #include <index_ops/plex.hpp>
 #include <index_ops/rmi.hpp>
 #include <index_ops/simdbtree.hpp>
+#include <index_ops/staticsearchtree.hpp>
 #include <index_ops/fast.hpp>
 
 template <class IDX, typename T>
@@ -26,6 +27,11 @@ void build_index(std::string dataset_name) {
 }
 
 int main(int argc, char *argv[]) {
+
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " <library> <dataset>" << std::endl;
+        return 1;
+    }
 
     std::string libr = argv[1];
     std::string dataset = argv[2];
@@ -45,6 +51,8 @@ int main(int argc, char *argv[]) {
             build_index<SIMDBTreeInterface<uint32_t>, uint32_t>(dataset);
         else if (libr == "SIMD-SampledBTree") 
             build_index<SIMDSampledBTreeInterface<uint32_t>, uint32_t>(dataset);
+        else if (libr == "StaticSearchTree") 
+            build_index<StaticSearchTreeInterface<uint32_t>, uint32_t>(dataset);
         else if (libr == "GammaCode16") 
             build_index<GammaInterface<uint32_t, 16>, uint32_t>(dataset);
         else if (libr == "GammaCode32") 

@@ -12,7 +12,9 @@ private:
     wrapper_sdsl_enc_vector<sdsl::enc_vector_rank<sdsl::coder::elias_gamma_rank, dens>, std::vector<T>> v_gamma;
 
 public:
-    void prepare(std::vector<T> data_) {}
+    void prepare(std::vector<T> data_) {
+        (void)data_;
+    }
 
     void build(std::vector<T> data_) {
         v_gamma = wrapper_sdsl_enc_vector<sdsl::enc_vector_rank<sdsl::coder::elias_gamma_rank, dens>, std::vector<T>>(data_);

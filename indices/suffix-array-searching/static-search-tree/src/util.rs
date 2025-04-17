@@ -131,7 +131,7 @@ pub(crate) fn vec_on_hugepages<T>(len: usize) -> Option<Vec<T>> {
     const NO_HEAP: bool = true;
     let mbs = if NO_HEAP { 32 } else { 2 };
     let alloc_size = size.next_multiple_of(mbs * 1024 * 1024);
-    eprintln!("Allocating {}MB", alloc_size / 1024 / 1024);
+    // eprintln!("Allocating {}MB", alloc_size / 1024 / 1024);
     if size > 64 * 1024 * 1024 * 1024 {
         return None;
     }

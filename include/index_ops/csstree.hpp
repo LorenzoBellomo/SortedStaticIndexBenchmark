@@ -12,7 +12,9 @@ private:
     CSSTree<node_size, T> css;
 
 public:
-    void prepare(std::vector<T> data_) {}
+    void prepare(std::vector<T> data_) {
+        (void)data_;
+    }
 
     void build(std::vector<T> data_) {
         css = CSSTree<node_size, T>(data_);

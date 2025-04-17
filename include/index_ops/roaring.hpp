@@ -15,7 +15,9 @@ private:
     roaring::Roaring64Map r64;
 
 public:
-    void prepare(std::vector<T> data_) {}
+    void prepare(std::vector<T> data_) {
+        (void)data_;
+    }
 
     void build(std::vector<T> data_) {
         if constexpr(sizeof(T) == 4) {

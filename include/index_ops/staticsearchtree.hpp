@@ -24,6 +24,7 @@ public:
     }
 
     void build(const std::vector<T>& data_) {
+        (void)data_;
         stree = stree16_new(data.data(), data.size());
     }
 

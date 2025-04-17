@@ -52,8 +52,8 @@ foreach(src_file ${SRC_FILES})
       ${CMAKE_SOURCE_DIR}/lib/lib/libsdsl.a 
       ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort.a 
       ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort64.a
-      -L${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/static-search-tree/target/release 
+      -L${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/target/release 
       -lstatic_search_tree 
-      -Wl,-rpath=${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/static-search-tree/target/release
+      -Wl,-rpath=${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/target/release
     )
 endforeach(src_file ${SRC_FILES})

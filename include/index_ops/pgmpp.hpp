@@ -16,6 +16,7 @@ public:
     }
 
     void build(const std::vector<T>& data_) {
+        (void)data_;
         pgmpp_idx = pgmpp::PGMIndex<T, eps, 4, true, 32, float>(data.begin(), data.end());
     }
 

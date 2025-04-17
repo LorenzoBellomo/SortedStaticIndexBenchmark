@@ -16,6 +16,7 @@ public:
     }
 
     void build(const std::vector<T>& data_) {
+        (void)data_;
         pgm_idx = pgm::PGMIndex<T, eps>(data.begin(), data.end());
     }
 

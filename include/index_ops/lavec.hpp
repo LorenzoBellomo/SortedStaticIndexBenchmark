@@ -12,7 +12,9 @@ private:
     la_vector<T, bpc> v1;
 
 public:
-    void prepare(std::vector<T> data_) {}
+    void prepare(std::vector<T> data_) {
+        (void)data_;
+    }
 
     void build(std::vector<T> data_) {
         v1 = la_vector<T, bpc>(data_);

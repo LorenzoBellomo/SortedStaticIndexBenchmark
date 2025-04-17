@@ -20,6 +20,7 @@ public:
     }
 
     void build(std::vector<T> data_) {
+        (void)data_;
         ts::Builder<T> tsb(data[0], data[data.size() - 1], spline_max_error);
         for (const auto& key : data) tsb.AddKey(key);
         ts = tsb.Finalize();

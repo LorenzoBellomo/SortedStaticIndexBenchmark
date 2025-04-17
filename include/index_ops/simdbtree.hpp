@@ -15,7 +15,9 @@ private:
     SIMD_Btree::btree<T, log_sz> btree;
 
 public:
-    void prepare(std::vector<T> data_) {}
+    void prepare(std::vector<T> data_) {
+        (void)data_;
+    }
 
     void build(std::vector<T> data_) {
         btree.build(data_.begin(), data_.end());

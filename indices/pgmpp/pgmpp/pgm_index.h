@@ -132,11 +132,11 @@ protected:
         }
         
         // Compute level segment count
-        for (auto i=1; i<levels_offsets.size(); ++i) {
+        for (size_t i=1; i<levels_offsets.size(); ++i) {
             levels_segment_count.push_back(levels_offsets[i] - levels_offsets[i-1]);
         }
         
-        for (auto i=0; i<levels_segment_count.size(); ++i) {
+        for (size_t i=0; i<levels_segment_count.size(); ++i) {
             if (levels_segment_count[i] <= 16) {
                 start_level = i;
                 break;

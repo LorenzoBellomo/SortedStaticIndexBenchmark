@@ -25,6 +25,10 @@ BidiIter random_unique(BidiIter begin, BidiIter end, size_t num_random, int seed
 template <typename T>
 std::vector<T> LoadDataset(const std::string& path_to_file) {
     std::ifstream ifs(path_to_file, std::ios::binary);
+    if (!ifs.good()) {
+        std::cerr << "Error opening file: " << path_to_file << std::endl;
+        throw std::runtime_error("File not found");
+    }
     uint64_t N = 0;
     ifs.read(reinterpret_cast<char*>(&N), sizeof(uint64_t));
     std::vector<T> buf(N);

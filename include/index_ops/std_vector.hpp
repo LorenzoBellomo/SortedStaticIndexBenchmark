@@ -15,7 +15,9 @@ public:
         data = std::move(data_);
     }
 
-    void build(std::vector<T> data_) {}
+    void build(std::vector<T> data_) {
+        (void)data_;
+    }
 
     T access(size_t idx) {
         return data[idx];

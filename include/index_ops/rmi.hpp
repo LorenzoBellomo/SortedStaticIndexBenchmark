@@ -35,6 +35,7 @@ public:
     }
 
     void build(std::vector<T> data_) {
+        (void)data_;
         std::string model_path = "../indices/RMI/rmi_data";
         switch(dataset) {
             case 0:

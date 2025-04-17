@@ -13,7 +13,18 @@ private:
     std::pair<T, uint8_t>* for_alex;
 
 public:
+
+    ALEXInterface() : for_alex(nullptr) {}
+    ~ALEXInterface() {
+        if (for_alex != nullptr) {
+            delete[] for_alex;
+        }
+    }
+
     void prepare(std::vector<T> data_) {
+        if (for_alex != nullptr) {
+            delete[] for_alex;
+        }
         for_alex = new std::pair<T, uint8_t>[data_.size()];
         for (size_t i = 0; i < data_.size(); i++) {
             for_alex[i].first = data_[i];
