@@ -4,36 +4,25 @@
 #include <iostream>
 #include <vector>
 #include <limits>
-#include <alex.h>
+#include <utility>
+#include "alex.h"
 
 template <typename T>
 class ALEXInterface {
 private:
     alex::Alex<T, uint8_t> alex_;
-    std::pair<T, uint8_t>* for_alex;
+    std::vector<std::pair<T, uint8_t>> for_alex;
 
 public:
-
-    ALEXInterface() : for_alex(nullptr) {}
-    ~ALEXInterface() {
-        if (for_alex != nullptr) {
-            delete[] for_alex;
-        }
-    }
-
     void prepare(std::vector<T> data_) {
-        if (for_alex != nullptr) {
-            delete[] for_alex;
-        }
-        for_alex = new std::pair<T, uint8_t>[data_.size()];
+        for_alex.reserve(data_.size());
         for (size_t i = 0; i < data_.size(); i++) {
-            for_alex[i].first = data_[i];
-            for_alex[i].second = static_cast<uint8_t>(0);
+            for_alex.emplace_back(std::make_pair(data_[i], static_cast<uint8_t>(0)));
         }
     }
 
     void build(std::vector<T> data_) {
-        alex_.bulk_load(for_alex, data_.size());
+        alex_.bulk_load(for_alex.data(), data_.size());
     }
 
     T next_geq(T q) {

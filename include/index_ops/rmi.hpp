@@ -6,7 +6,7 @@
 #include <limits>
 #include <string>
 
-#include <rmi.h>
+#include "rmi.h"
 
 /*
 0 = wiki_ts_200M_uint64
@@ -28,99 +28,206 @@ template <typename T, int dataset, bool compact>
 class RMIInterface {
 private:
     std::vector<T> data;
+    bool built;
 
 public:
+    RMIInterface() : built(false) {}
+
+    ~RMIInterface() {
+        clear();
+    }
+
     void prepare(std::vector<T>& data_) {
         data = std::move(data_);
     }
 
     void build(std::vector<T> data_) {
         (void)data_;
+
+        clear();
+        
         std::string model_path = "../indices/RMI/rmi_data";
         switch(dataset) {
             case 0:
                 if (compact) 
-                    wiki64_compact::load(model_path.c_str());
+                    built = wiki64_compact::load(model_path.c_str());
                 else
-                    wiki64_large::load(model_path.c_str());
+                    built = wiki64_large::load(model_path.c_str());
                 break;
             case 1:
                 if (compact) 
-                    lognormal_compact::load(model_path.c_str());
+                    built = lognormal_compact::load(model_path.c_str());
                 else
-                    lognormal_large::load(model_path.c_str());
+                    built = lognormal_large::load(model_path.c_str());
                 break;
             case 2:
                 if (compact) 
-                    fb64_compact::load(model_path.c_str());
+                    built = fb64_compact::load(model_path.c_str());
                 else
-                    fb64_large::load(model_path.c_str());
+                    built = fb64_large::load(model_path.c_str());
                 break;
             case 3:
                 if (compact) 
-                    companynet_compact::load(model_path.c_str());
+                    built = companynet_compact::load(model_path.c_str());
                 else
-                    companynet_large::load(model_path.c_str());
+                    built = companynet_large::load(model_path.c_str());
                 break;
             case 4:
                 if (compact) 
-                    normal_compact::load(model_path.c_str());
+                    built = normal_compact::load(model_path.c_str());
                 else
-                    normal_large::load(model_path.c_str());
+                    built = normal_large::load(model_path.c_str());
                 break;
             case 5:
                 if (compact) 
-                    wiki_compact::load(model_path.c_str());
+                    built = wiki_compact::load(model_path.c_str());
                 else
-                    wiki_large::load(model_path.c_str());
+                    built = wiki_large::load(model_path.c_str());
                 break;
             case 6:
                 if (compact) 
-                    zipf_compact::load(model_path.c_str());
+                    built = zipf_compact::load(model_path.c_str());
                 else
-                    zipf_large::load(model_path.c_str());
+                    built = zipf_large::load(model_path.c_str());
                 break;
             case 7:
                 if (compact) 
-                    books64_compact::load(model_path.c_str());
+                    built = books64_compact::load(model_path.c_str());
                 else
-                    books64_large::load(model_path.c_str());
+                    built = books64_large::load(model_path.c_str());
                 break;
             case 8:
                 if (compact) 
-                    exponential_compact::load(model_path.c_str());
+                    built = exponential_compact::load(model_path.c_str());
                 else
-                    exponential_large::load(model_path.c_str());
+                    built = exponential_large::load(model_path.c_str());
                 break;
             case 9:
                 if (compact) 
-                    friendster_compact::load(model_path.c_str());
+                    built = friendster_compact::load(model_path.c_str());
                 else
-                    friendster_large::load(model_path.c_str());
+                    built = friendster_large::load(model_path.c_str());
                 break;
             case 10:
                 if (compact) 
-                    osm64_compact::load(model_path.c_str());
+                    built = osm64_compact::load(model_path.c_str());
                 else
-                    osm64_large::load(model_path.c_str());
+                    built = osm64_large::load(model_path.c_str());
                 break;
             case 11:
                 if (compact) 
-                    books_compact::load(model_path.c_str());
+                    built = books_compact::load(model_path.c_str());
                 else
-                    books_large::load(model_path.c_str());
+                    built = books_large::load(model_path.c_str());
                 break;
             case 12:
                 if (compact) 
-                    books64small_compact::load(model_path.c_str());
+                    built = books64small_compact::load(model_path.c_str());
                 else
-                    books64small_large::load(model_path.c_str());
+                    built = books64small_large::load(model_path.c_str());
                 break;
             case 13:
                 if (compact) 
-                    normal800_compact::load(model_path.c_str());
+                    built = normal800_compact::load(model_path.c_str());
                 else
-                    normal800_large::load(model_path.c_str());
+                    built = normal800_large::load(model_path.c_str());
+                break;
+            default: 
+                throw std::invalid_argument("Unknown dataset");
+        }
+    }
+
+    // TODO: this is wrong because it assumes one and only one build() call
+    void clear() {
+        if (!built) {
+            return;
+        }
+        built = false;
+
+        switch(dataset) {
+            case 0:
+                if (compact) 
+                    wiki64_compact::cleanup();
+                else
+                    wiki64_large::cleanup();
+                break;
+            case 1:
+                if (compact) 
+                    lognormal_compact::cleanup();
+                else
+                    lognormal_large::cleanup();
+                break;
+            case 2:
+                if (compact) 
+                    fb64_compact::cleanup();
+                else
+                    fb64_large::cleanup();
+                break;
+            case 3:
+                if (compact) 
+                    companynet_compact::cleanup();
+                else
+                    companynet_large::cleanup();
+                break;
+            case 4:
+                if (compact) 
+                    normal_compact::cleanup();
+                else
+                    normal_large::cleanup();
+                break;
+            case 5:
+                if (compact) 
+                    wiki_compact::cleanup();
+                else
+                    wiki_large::cleanup();
+                break;
+            case 6:
+                if (compact) 
+                    zipf_compact::cleanup();
+                else
+                    zipf_large::cleanup();
+                break;
+            case 7:
+                if (compact) 
+                    books64_compact::cleanup();
+                else
+                    books64_large::cleanup();
+                break;
+            case 8:
+                if (compact) 
+                    exponential_compact::cleanup();
+                else
+                    exponential_large::cleanup();
+                break;
+            case 9:
+                if (compact) 
+                    friendster_compact::cleanup();
+                else
+                    friendster_large::cleanup();
+                break;
+            case 10:
+                if (compact) 
+                    osm64_compact::cleanup();
+                else
+                    osm64_large::cleanup();
+                break;
+            case 11:
+                if (compact) 
+                    books_compact::cleanup();
+                else
+                    books_large::cleanup();
+                break;
+            case 12:
+                if (compact) 
+                    books64small_compact::cleanup();
+                else
+                    books64small_large::cleanup();
+                break;
+            case 13:
+                if (compact) 
+                    normal800_compact::cleanup();
+                else
+                    normal800_large::cleanup();
                 break;
             default: 
                 throw std::invalid_argument("Unknown dataset");
