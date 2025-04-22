@@ -22,6 +22,7 @@ public:
     }
 
     void build(std::vector<T> data_) {
+        alex_ = alex::Alex<T, uint8_t>();
         alex_.bulk_load(for_alex.data(), data_.size());
     }
 

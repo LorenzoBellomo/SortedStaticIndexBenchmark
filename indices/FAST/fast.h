@@ -118,14 +118,14 @@ public:
         return size_in_byte_;
     }
 private:
-    const unsigned SIMD_SIZE = SIMD_BYTE / sizeof(KeyType);
-    const unsigned CACHE_LINE_SIZE = CACHE_LINE_BYTE / sizeof(KeyType);
-    const unsigned PAGE_SIZE = PAGE_BYTE / sizeof(KeyType);
-    const unsigned SIMD_DEPTH = __builtin_ctz(SIMD_SIZE);
-    const unsigned CACHE_LINE_DEPTH = __builtin_ctz(CACHE_LINE_SIZE);
-    const unsigned PAGE_DEPTH = __builtin_ctz(PAGE_SIZE);
-    const unsigned PAGE_CACHE_DEPTH = (PAGE_DEPTH - 1) / CACHE_LINE_DEPTH * CACHE_LINE_DEPTH;
-    const unsigned SIMD_MASK = pow(SIMD_SIZE - 1) - 1;
+    static const unsigned SIMD_SIZE = SIMD_BYTE / sizeof(KeyType);
+    static const unsigned CACHE_LINE_SIZE = CACHE_LINE_BYTE / sizeof(KeyType);
+    static const unsigned PAGE_SIZE = PAGE_BYTE / sizeof(KeyType);
+    static const unsigned SIMD_DEPTH = __builtin_ctz(SIMD_SIZE);
+    static const unsigned CACHE_LINE_DEPTH = __builtin_ctz(CACHE_LINE_SIZE);
+    static const unsigned PAGE_DEPTH = __builtin_ctz(PAGE_SIZE);
+    static const unsigned PAGE_CACHE_DEPTH = (PAGE_DEPTH - 1) / CACHE_LINE_DEPTH * CACHE_LINE_DEPTH;
+    static const unsigned SIMD_MASK = 1ULL << ((SIMD_SIZE - 1) - 1);
 
     unsigned depth;
     size_t len;

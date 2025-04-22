@@ -19,6 +19,7 @@ public:
 
     void build(std::vector<T> data_) {
         (void)data_;
+        fast_tree = FAST<T>();
         fast_tree.buildFAST(data.data(), data.size());
     }
 

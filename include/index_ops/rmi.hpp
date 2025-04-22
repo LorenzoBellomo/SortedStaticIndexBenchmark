@@ -137,7 +137,6 @@ public:
         }
     }
 
-    // TODO: this is wrong because it assumes one and only one build() call
     void clear() {
         if (!built) {
             return;
@@ -312,15 +311,15 @@ public:
                 break;
             case 12:
                 if (compact) 
-                    books64small_compact::lookup(q, &err);
+                    x = books64small_compact::lookup(q, &err);
                 else
-                    books64small_large::lookup(q, &err);
+                    x = books64small_large::lookup(q, &err);
                 break;
             case 13:
                 if (compact) 
-                    normal800_compact::lookup(q, &err);
+                    x = normal800_compact::lookup(q, &err);
                 else
-                    normal800_large::lookup(q, &err);
+                    x = normal800_large::lookup(q, &err);
                 break;
             default: 
                 throw std::invalid_argument("Unknown dataset");
@@ -410,15 +409,15 @@ public:
                 break;
             case 12:
                 if (compact) 
-                    books64small_compact::RMI_SIZE;
+                    return books64small_compact::RMI_SIZE;
                 else
-                    books64small_large::RMI_SIZE;
+                    return books64small_large::RMI_SIZE;
                 break;
             case 13:
                 if (compact) 
-                    normal800_compact::RMI_SIZE;
+                    return normal800_compact::RMI_SIZE;
                 else
-                    normal800_large::RMI_SIZE;
+                    return normal800_large::RMI_SIZE;
                 break;
             default: 
                 throw std::invalid_argument("Unknown dataset");
