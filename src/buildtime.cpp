@@ -15,7 +15,7 @@
 #include <index_ops/plex.hpp>
 #include <index_ops/rmi.hpp>
 #include <index_ops/simdbtree.hpp>
-#include <index_ops/staticsearchtree.hpp>
+// #include <index_ops/staticsearchtree.hpp>
 #include <index_ops/fast.hpp>
 
 static std::ofstream bytesize_file("../output/index_sizes.txt");   
@@ -98,13 +98,12 @@ int main(int argc, char** argv) {
 
     // Register benchmarks
     for (auto dataset : datasets) {
-        const char* dataset_char = dataset.c_str();
         // registering benchmarks for different datasets, and all the indexes present in index_ops
         if (dataset.back() == '2')  { // HERE REGISTERING ONLY THE ONES THAT WORK FOR 32 BIT
             register_RMIs<uint32_t>(dataset, num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-BTree", Benchmark<SIMDBTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-SampledBTree", Benchmark<SIMDSampledBTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
-            benchmark::RegisterBenchmark(dataset+"_StaticSearchTree", Benchmark<StaticSearchTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
+            // benchmark::RegisterBenchmark(dataset+"_StaticSearchTree", Benchmark<StaticSearchTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
@@ -119,9 +118,9 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_LA-vector8", Benchmark<LaVectorInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector10", Benchmark<LaVectorInterface<uint32_t, 10>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector12", Benchmark<LaVectorInterface<uint32_t, 12>, uint32_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_FAST", Benchmark<FASTInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             if (std::find(no_duplicate_datasets.begin(), no_duplicate_datasets.end(), dataset) != no_duplicate_datasets.end()) {
                 benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
-                benchmark::RegisterBenchmark(dataset+"_FAST", Benchmark<FASTInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             }
             benchmark::RegisterBenchmark(dataset+"_std::vector", Benchmark<StdVectorInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
@@ -149,9 +148,9 @@ int main(int argc, char** argv) {
             benchmark::RegisterBenchmark(dataset+"_LA-vector8", Benchmark<LaVectorInterface<uint64_t, 8>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector10", Benchmark<LaVectorInterface<uint64_t, 10>, uint64_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_LA-vector12", Benchmark<LaVectorInterface<uint64_t, 12>, uint64_t>, dataset)->Iterations(num_iter);
+            benchmark::RegisterBenchmark(dataset+"_FAST", Benchmark<FASTInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             if (std::find(no_duplicate_datasets.begin(), no_duplicate_datasets.end(), dataset) != no_duplicate_datasets.end()) {
                 benchmark::RegisterBenchmark(dataset+"_Roaring", Benchmark<RoaringInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
-                benchmark::RegisterBenchmark(dataset+"_FAST", Benchmark<FASTInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);
             }
             if (dataset != "fb_200M_uint64")
                 benchmark::RegisterBenchmark(dataset+"_EliasFano", Benchmark<SDSLEliasFanoInterface<uint64_t>, uint64_t>, dataset)->Iterations(num_iter);

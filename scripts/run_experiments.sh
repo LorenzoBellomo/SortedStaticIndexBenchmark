@@ -1,7 +1,4 @@
-
-cd indices/suffix-array-searching
-cargo build -r
-cd ../..
+#!/bin/bash
 
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release .. # OR USE DEBUG IF YOU WANT TO RUN THE ASSERTS
