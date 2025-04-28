@@ -24,7 +24,6 @@ include_directories(
     indices/s-tree/include # SIMD (sampled) btree
     include # implementations of basic operations for each index + utils + Wrapper SDSL
     indices/FAST # FAST
-    indices/suffix-array-searching # RUST SIMD static search tree
 )
 
 # You can add CPM.cmake like so:
@@ -52,8 +51,5 @@ foreach(src_file ${SRC_FILES})
       ${CMAKE_SOURCE_DIR}/lib/lib/libsdsl.a 
       ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort.a 
       ${CMAKE_SOURCE_DIR}/lib/lib/libdivsufsort64.a
-      -L${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/target/release 
-      -lstatic_search_tree 
-      -Wl,-rpath=${CMAKE_SOURCE_DIR}/indices/suffix-array-searching/target/release
     )
 endforeach(src_file ${SRC_FILES})

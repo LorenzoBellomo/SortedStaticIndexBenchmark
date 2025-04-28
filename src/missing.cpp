@@ -15,7 +15,6 @@
 #include <index_ops/plex.hpp>
 #include <index_ops/rmi.hpp>
 #include <index_ops/simdbtree.hpp>
-// #include <index_ops/staticsearchtree.hpp>
 #include <index_ops/fast.hpp>
 
 template <class IDX, typename T>
@@ -121,7 +120,6 @@ int main(int argc, char** argv) {
             register_RMIs<uint32_t>(dataset, num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-BTree", Benchmark<SIMDBTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_SIMD-SampledBTree", Benchmark<SIMDSampledBTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
-            // benchmark::RegisterBenchmark(dataset+"_StaticSearchTree", Benchmark<StaticSearchTreeInterface<uint32_t>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX8", Benchmark<PLEXInterface<uint32_t, 8>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX32", Benchmark<PLEXInterface<uint32_t, 32>, uint32_t>, dataset)->Iterations(num_iter);
             benchmark::RegisterBenchmark(dataset+"_PLEX128", Benchmark<PLEXInterface<uint32_t, 128>, uint32_t>, dataset)->Iterations(num_iter);
