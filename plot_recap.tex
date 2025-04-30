@@ -1737,7 +1737,7 @@ The performances of compressed indexes on synthetic datasets are represented in 
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
     \begin{center}
-        BOOKS
+        AMZN 64
     \end{center}
     \end{minipage}
     \begin{minipage}{0.48\linewidth}
@@ -1749,12 +1749,12 @@ The performances of compressed indexes on synthetic datasets are represented in 
 \vspace{10px}
 \centering
 \begin{minipage}{\linewidth}
-    The performance of all indexes on the Amzn64 and Normal datasets is represented in two plots. The plot, showing the time of search (in ns), displays two bars for each data structure. The left/right one shows the average time to search for an existing item in the collection on the small/large scale dataset. In the case of Amzn, the left bar corresponds to the performance of indexes on the 50M slice of Amzn64, while the right column corresponds to Amzn64 in its entirety. In the case of Normal, the left bar corresponds to the performance of indexes on the 50M syntetically generated Normal dataset, while the right column corresponds to another Normal dataset, using the same parameters, but of size 800M.
+    The performance of all indexes on the Amzn64 and Normal datasets is represented in two plots. The plot shows the ratio for a query of an existing item. In the case of Amzn, the ratio considers the performance of indexes on the 50M slice of Amzn64, and Amzn64 in its entirety. In the case of Normal, the ratio corresponds to the performance of indexes on the 50M syntetically generated Normal dataset, and to another Normal dataset, generated using the same parameters, but of size 800M. In both cases, the performance refers to the ratio of the average ns needed to find the item in the large dataset, divided by the average ns needed to find an item in the smaller scale dataset. 
     \end{minipage}
     \vspace{10px}
 \end{minipage}
 }
-\caption{Average time for pointwise queries on all indexes, built on two datasets of different scale.}
+\caption{Average time ratio for pointwise queries on all indexes when scaling the dataset size (50M to 800M items).}
 \end{figure}
 
 \clearpage

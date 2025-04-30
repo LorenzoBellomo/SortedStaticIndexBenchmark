@@ -21,6 +21,8 @@ This repository contains the benchmark on Sorted Integers for standard, learned,
 - [Elias Fano](https://github.com/simongog/sdsl-lite) (compressed index): use the implementation from the SDSL library.
 - [SIMD B-Tree](https://github.com/mattiaodorisio/SIMD-B-Tree) (standard index): a new implementation of a BTree and a Sampled BTree using SIMD operations.
 - std::vector (baseline): lower\_bound operation (binary search) is used as a baseline
+- [FAST](https://github.com/curtis-sun/TLI/blob/main/competitors/fast/src/fast.h) (standard index): implementation of a SIMD-BTree by Viktor Leis based on the paper from Kim et. al for SIGMOD 2010.
+- [static-search-tree](https://curiouscoding.nl/posts/static-search-tree/) (standard index): This Static-Search Tree is a highly optimized RUST implementation of what was described in the Algorithmica article. For this reason, the index is not directly integrated in our benchmark as of now, but we provided the results of its own benchmark execution in output/static-search-tree-bm-results.json
 
 **Experiments:**
 - _build time_: measures, for each dataset, the time required to construct the index.

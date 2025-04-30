@@ -457,17 +457,18 @@ for dataset_label, dataset_s, dataset_l in [("books", "books_50M_uint64", "books
             perf[exp_l].append(tool_performance[key_] if key_ in tool_performance else 0)
         perf["indices"].append(idx_)
     fig, ax = plt.subplots()
-    width = 0.4
+    width = 0.6
     idx_of_correct_indices = [i for i, _ in enumerate(sorted(perf["indices"]))]
     indices = [perf["indices"][i] for i in idx_of_correct_indices]
     values_small = [perf["small"][i] for i in idx_of_correct_indices]
     values_large = [perf["large"][i] for i in idx_of_correct_indices]
+    values = [values_large[i] / values_small[i] for i in idx_of_correct_indices]
     colors = [color_map[idx_] for idx_ in indices]
     ind = np.arange(len(indices))
-    ax.bar(ind, values_small, width, color = colors, edgecolor = "black")
-    ax.bar(ind + width, values_large, width, color = colors, edgecolor = "black")
-    ax.set_ylabel('ns per item', fontsize=13)
-    plt.xticks(ind + width / 2, indices)
+    ax.bar(ind, values, width, color = colors, edgecolor = "black")
+    ax.set_ylabel('ratio - existing queries', fontsize=13)
+    ax.set_ylim(ymin=min(values )*0.9, ymax=max(values)*1.1)
+    plt.xticks(ind, indices)
     plt.xticks(rotation=45, ha="right")
     plt.savefig("output/plots/scaling_{}.png".format(dataset_label), bbox_inches='tight')
     plt.savefig("output/plots_svg/scaling_{}.svg".format(dataset_label), bbox_inches='tight')
