@@ -39,10 +39,10 @@
   },
   "benchmarks": [
     {
-      "name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "name": "fb_200M_uint64_10_SIMD-BTree/iterations:10",
       "family_index": 0,
       "per_family_instance_index": 0,
-      "run_name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "run_name": "fb_200M_uint64_10_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -203,10 +203,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "name": "fb_200M_uint64_100_SIMD-BTree/iterations:10",
       "family_index": 11,
       "per_family_instance_index": 0,
-      "run_name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "run_name": "fb_200M_uint64_100_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -367,10 +367,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "name": "fb_200M_uint64_1000_SIMD-BTree/iterations:10",
       "family_index": 22,
       "per_family_instance_index": 0,
-      "run_name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "run_name": "fb_200M_uint64_1000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -531,10 +531,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "name": "fb_200M_uint64_10000_SIMD-BTree/iterations:10",
       "family_index": 33,
       "per_family_instance_index": 0,
-      "run_name": "fb_200M_uint64_SIMD-BTree/iterations:10",
+      "run_name": "fb_200M_uint64_10000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -695,10 +695,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "wiki_ts_200M_uint32_10_SIMD-BTree/iterations:10",
       "family_index": 44,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "wiki_ts_200M_uint32_10_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -863,10 +863,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "wiki_ts_200M_uint32_100_SIMD-BTree/iterations:10",
       "family_index": 56,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "wiki_ts_200M_uint32_100_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1031,10 +1031,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "wiki_ts_200M_uint32_1000_SIMD-BTree/iterations:10",
       "family_index": 68,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "wiki_ts_200M_uint32_1000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1199,10 +1199,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "wiki_ts_200M_uint32_10000_SIMD-BTree/iterations:10",
       "family_index": 80,
       "per_family_instance_index": 0,
-      "run_name": "wiki_ts_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "wiki_ts_200M_uint32_10000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1367,10 +1367,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "name": "companynet_uint32_10_SIMD-BTree/iterations:10",
       "family_index": 92,
       "per_family_instance_index": 0,
-      "run_name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "run_name": "companynet_uint32_10_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1535,10 +1535,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "name": "companynet_uint32_100_SIMD-BTree/iterations:10",
       "family_index": 104,
       "per_family_instance_index": 0,
-      "run_name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "run_name": "companynet_uint32_100_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1703,10 +1703,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "name": "companynet_uint32_1000_SIMD-BTree/iterations:10",
       "family_index": 116,
       "per_family_instance_index": 0,
-      "run_name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "run_name": "companynet_uint32_1000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -1871,10 +1871,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "name": "companynet_uint32_10000_SIMD-BTree/iterations:10",
       "family_index": 128,
       "per_family_instance_index": 0,
-      "run_name": "companynet_uint32_SIMD-BTree/iterations:10",
+      "run_name": "companynet_uint32_10000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2039,10 +2039,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "books_200M_uint32_10_SIMD-BTree/iterations:10",
       "family_index": 140,
       "per_family_instance_index": 0,
-      "run_name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "books_200M_uint32_10_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2217,10 +2217,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "books_200M_uint32_100_SIMD-BTree/iterations:10",
       "family_index": 152,
       "per_family_instance_index": 0,
-      "run_name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "books_200M_uint32_100_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2395,10 +2395,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "books_200M_uint32_1000_SIMD-BTree/iterations:10",
       "family_index": 164,
       "per_family_instance_index": 0,
-      "run_name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "books_200M_uint32_1000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,
@@ -2573,10 +2573,10 @@
       "time_unit": "ns"
     },
     {
-      "name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "name": "books_200M_uint32_10000_SIMD-BTree/iterations:10",
       "family_index": 176,
       "per_family_instance_index": 0,
-      "run_name": "books_200M_uint32_SIMD-BTree/iterations:10",
+      "run_name": "books_200M_uint32_10000_SIMD-BTree/iterations:10",
       "run_type": "iteration",
       "repetitions": 1,
       "repetition_index": 0,

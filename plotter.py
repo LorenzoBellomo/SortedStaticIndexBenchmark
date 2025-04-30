@@ -445,3 +445,30 @@ for dataset in datasets:
     ax2.invert_yaxis()
     plt.savefig("output/plots_svg/spacetime/{}.svg".format(dataset), bbox_inches='tight')
     plt.savefig("output/plots/spacetime/{}.png".format(dataset), bbox_inches='tight')
+
+# scaling plots
+for dataset_label, dataset_s, dataset_l in [("books", "books_50M_uint64", "books_800M_uint64"), ("normal", "normal_uint32", "normal_800M_uint32")]:
+    perf = {"small": [], "large": [], "indices": []}
+    all_experiments_with_dataset = [a for a in tool_performance.keys() if dataset_l in a] 
+    indices_for_this_dataset = sorted([idx_ for idx_ in all_indices if any([idx_ in exp for exp in all_experiments_with_dataset])])
+    for idx_ in indices_for_this_dataset:
+        for exp_l, experiment in [("small", dataset_s), ("large", dataset_l)]:
+            key_ = "existing_{}_{}".format(experiment, idx_)
+            perf[exp_l].append(tool_performance[key_] if key_ in tool_performance else 0)
+        perf["indices"].append(idx_)
+    fig, ax = plt.subplots()
+    width = 0.4
+    idx_of_correct_indices = [i for i, _ in enumerate(sorted(perf["indices"]))]
+    indices = [perf["indices"][i] for i in idx_of_correct_indices]
+    values_small = [perf["small"][i] for i in idx_of_correct_indices]
+    values_large = [perf["large"][i] for i in idx_of_correct_indices]
+    colors = [color_map[idx_] for idx_ in indices]
+    ind = np.arange(len(indices))
+    ax.bar(ind, values_small, width, color = colors, edgecolor = "black")
+    ax.bar(ind + width, values_large, width, color = colors, edgecolor = "black")
+    ax.set_ylabel('ns per item', fontsize=13)
+    plt.xticks(ind + width / 2, indices)
+    plt.xticks(rotation=45, ha="right")
+    plt.savefig("output/plots/scaling_{}.png".format(dataset_label), bbox_inches='tight')
+    plt.savefig("output/plots_svg/scaling_{}.svg".format(dataset_label), bbox_inches='tight')
+    plt.clf()

@@ -1709,6 +1709,54 @@ The performances of compressed indexes on synthetic datasets are represented in 
 \caption{Pareto Frontier: Compressed Indexes on 64-bit datasets}
 \end{figure}
 
+\begin{figure}[!htb]
+\fbox
+{
+\begin{minipage}[t][][t]{0.95\textwidth}
+\centering
+\vspace*{-7px}
+    \begin{minipage}{0.2\linewidth}
+    \footnotesize{SCALING \\ EXPERIMENT}
+    \end{minipage}
+   \begin{minipage}{0.75\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/legends/all.png}
+        \end{figure}
+    \end{minipage}
+    \vspace*{-12px}
+
+    \begin{minipage}{0.47\linewidth}
+        \begin{figure}[H]
+        \includegraphics[width=\linewidth]{plots/scaling_books}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.47\linewidth}
+        \begin{figure}[H]
+            \includegraphics[width=\linewidth]{plots/scaling_normal}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        BOOKS
+    \end{center}
+    \end{minipage}
+    \begin{minipage}{0.48\linewidth}
+    \begin{center}
+        NORMAL
+    \end{center}
+    \end{minipage}
+
+\vspace{10px}
+\centering
+\begin{minipage}{\linewidth}
+    The performance of all indexes on the Amzn64 and Normal datasets is represented in two plots. The plot, showing the time of search (in ns), displays two bars for each data structure. The left/right one shows the average time to search for an existing item in the collection on the small/large scale dataset. In the case of Amzn, the left bar corresponds to the performance of indexes on the 50M slice of Amzn64, while the right column corresponds to Amzn64 in its entirety. In the case of Normal, the left bar corresponds to the performance of indexes on the 50M syntetically generated Normal dataset, while the right column corresponds to another Normal dataset, using the same parameters, but of size 800M.
+    \end{minipage}
+    \vspace{10px}
+\end{minipage}
+}
+\caption{Average time for pointwise queries on all indexes, built on two datasets of different scale.}
+\end{figure}
+
 \clearpage
 
 \begin{table}[t]

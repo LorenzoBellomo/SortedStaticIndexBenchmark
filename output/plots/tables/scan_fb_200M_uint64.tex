@@ -1,11 +1,12 @@
 \begin{tabular}{lrrrr}
 \hline
- Compressed Index   &   Scan 10 &   Scan 100 &    Scan 1K &   Scan 10K \\
+ Compressed Index   &   Scan 10 &   Scan 100 &   Scan 1K &   Scan 10K \\
 \hline
- DeltaCode16        & 122.292   &  100.978   & 100.201    &  99.5831   \\
- DeltaCode32        & 177.565   &  147.963   & 147.04     & 146.48     \\
- GammaCode16        & 138.96    &  116.163   & 113.737    & 112.854    \\
- GammaCode32        & 203.884   &  168.636   & 165.93     & 165.224    \\
- std::vector        &   2.35548 &    2.16368 &   0.963471 &   0.925722 \\
+ DeltaCode16        &  123.492  &  101.815   &  99.7216  &  99.5902   \\
+ DeltaCode32        &  179.717  &  148.469   & 146.481   & 146.433    \\
+ GammaCode16        &  138.03   &  116.485   & 112.413   & 112.255    \\
+ GammaCode32        &  203.892  &  168.523   & 165.228   & 165.047    \\
+ SIMD-BTree         &   11.385  &   10.5871  &   6.91615 &   6.60085  \\
+ std::vector        &    2.5901 &    2.01242 &   1.07582 &   0.934759 \\
 \hline
 \end{tabular}

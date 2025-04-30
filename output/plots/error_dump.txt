@@ -14,6 +14,7 @@ LA-vector6 - books_200M_uint32 - existing: Bit fields' sizes are not large enoug
 LA-vector8 - books_200M_uint32 - existing: Bit fields' sizes are not large enough
 LA-vector10 - books_200M_uint32 - existing: Bit fields' sizes are not large enough
 LA-vector12 - books_200M_uint32 - existing: Bit fields' sizes are not large enough
+LA-vectoropt - books_50M_uint64 - existing: First correction too large
 LA-vectoropt - fb_200M_uint64 - missing: First correction too large
 LA-vector6 - fb_200M_uint64 - missing: Bit fields' sizes are not large enough
 LA-vector8 - fb_200M_uint64 - missing: Bit fields' sizes are not large enough
@@ -30,6 +31,7 @@ LA-vector6 - books_200M_uint32 - missing: Bit fields' sizes are not large enough
 LA-vector8 - books_200M_uint32 - missing: Bit fields' sizes are not large enough
 LA-vector10 - books_200M_uint32 - missing: Bit fields' sizes are not large enough
 LA-vector12 - books_200M_uint32 - missing: Bit fields' sizes are not large enough
+LA-vectoropt - books_50M_uint64 - missing: First correction too large
 LA-vectoropt - fb_200M_uint64 - buildtime: First correction too large
 LA-vector6 - fb_200M_uint64 - buildtime: Bit fields' sizes are not large enough
 LA-vector8 - fb_200M_uint64 - buildtime: Bit fields' sizes are not large enough
@@ -46,6 +48,7 @@ LA-vector6 - books_200M_uint32 - buildtime: Bit fields' sizes are not large enou
 LA-vector8 - books_200M_uint32 - buildtime: Bit fields' sizes are not large enough
 LA-vector10 - books_200M_uint32 - buildtime: Bit fields' sizes are not large enough
 LA-vector12 - books_200M_uint32 - buildtime: Bit fields' sizes are not large enough
+LA-vectoropt - books_50M_uint64 - buildtime: First correction too large
 LA-vectoropt - fb_200M_uint64 - scan: First correction too large
 LA-vector6 - fb_200M_uint64 - scan: Bit fields' sizes are not large enough
 LA-vector8 - fb_200M_uint64 - scan: Bit fields' sizes are not large enough
