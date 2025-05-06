@@ -96,7 +96,7 @@ This project is licensed under the terms of the Apache License 2.0.
 
 If you use the library please cite the following paper:
 
-> L. Bellomo, G. Cianci, L. de Rosa, P. Ferragina, and M. Odorisio. A Comparative Study of Compressed, Learned, and Traditional Indexing Methods for Integer Data. 2025.
+> L. Bellomo, G. Cianci, L. de Rosa, P. Ferragina, and M. Odorisio. A Comparative Study of Compressed, Learned, and Traditional Indexing Methods for Integer Data. Proceedings of the 23rd Symposium on Experimental Algorithms (SEA), 2025.
 
 ```tex
 Bibtex available soon
