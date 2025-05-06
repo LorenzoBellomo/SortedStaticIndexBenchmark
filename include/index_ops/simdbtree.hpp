@@ -46,24 +46,24 @@ public:
 template <typename T>
 class SIMDSampledBTreeInterface {
 private:
-    SIMD_Btree::b_plus_tree<T> bplustree;
+    SIMD_Btree::sampled_btree<T> sampled_tree;
 
 public:
     void prepare(std::vector<T> &data_) {}
 
     void build(std::vector<T> data_) {
-        bplustree.build(data_.begin(), data_.end());
+        sampled_tree.build(data_.begin(), data_.end());
     }
 
     T next_geq(T q) {
-        auto idx = bplustree.lower_bound_idx(q);
-        if (idx == bplustree.size())
+        auto idx = sampled_tree.lower_bound_idx(q);
+        if (idx == sampled_tree.size())
             return std::numeric_limits<T>::max();
-        return bplustree[idx];
+        return sampled_tree[idx];
     }
 
     size_t size_in_bytes() {
-        return bplustree.size_in_bytes();
+        return sampled_tree.size_in_bytes();
     }
 
     std::string to_string() {
