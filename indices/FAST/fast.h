@@ -125,7 +125,7 @@ private:
     static const unsigned CACHE_LINE_DEPTH = __builtin_ctz(CACHE_LINE_SIZE);
     static const unsigned PAGE_DEPTH = __builtin_ctz(PAGE_SIZE);
     static const unsigned PAGE_CACHE_DEPTH = (PAGE_DEPTH - 1) / CACHE_LINE_DEPTH * CACHE_LINE_DEPTH;
-    static const unsigned SIMD_MASK = 1ULL << ((SIMD_SIZE - 1) - 1);
+    static const unsigned SIMD_MASK = (1ULL << (SIMD_SIZE - 1)) - 1;
 
     unsigned depth;
     size_t len;
