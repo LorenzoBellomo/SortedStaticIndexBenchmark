@@ -89,3 +89,15 @@ The methods to implement (in the .hpp file to include in "include/index_ops") ar
 - _access_: **MUST BE IMPLEMENTED only for compressed indexes**, and is used to access the i-th element in the collection;
 - _size\_in\_bytes_: provides the size in bytes of the model.
 - _to\_string_: string version of the index, must be coherent with the one specified when registering a benchmark (e.g., PGM8, std::vector...)
+
+## License
+
+This project is licensed under the terms of the Apache License 2.0.
+
+If you use the library please cite the following paper:
+
+> L. Bellomo, G. Cianci, L. de Rosa, P. Ferragina, and M. Odorisio. A Comparative Study of Compressed, Learned, and Traditional Indexing Methods for Integer Data. 2025.
+
+```tex
+Bibtex available soon
+```
