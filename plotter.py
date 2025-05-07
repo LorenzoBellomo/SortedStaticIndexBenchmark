@@ -40,7 +40,7 @@ def extract_idx_root(idx):
 folders = ["buildtime", "buildtime/zoom", "index", "index/pareto", "index/space", "legends", "spacetime", 
            "tables", "vector", "vector/pareto", "vector/scan", "vector/space"]
 create_folders("output/plots", folders)
-create_folders("output/plots_svg", folders)
+create_folders("output/plots_pdf", folders)
 
 # Define datasets and other configurations
 tool_performance = {}
@@ -197,6 +197,7 @@ for idx_list, handles_list, fname in [(clean_all_idx, handles, "all"), (clean_st
     idx_name_list = [a for a, _ in idx_list]
     legend_ind = plt.legend(handles_list, idx_name_list, loc='upper center', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
     export_legend(legend_ind, "output/plots/legends/{}.png".format(fname))
+    export_legend(legend_ind, "output/plots_pdf/legends/{}.pdf".format(fname))
     plt.clf()
 
 # Generate tables for each dataset
@@ -257,7 +258,7 @@ for dataset in datasets:
     plt.yticks(ticks=plt.yticks()[0], labels=plt.yticks()[0].astype(int))
     plt.xticks(rotation=45, ha="right")
     plt.savefig("output/plots/buildtime/{}.png".format(dataset), bbox_inches='tight')
-    plt.savefig("output/plots_svg/buildtime/{}.svg".format(dataset), bbox_inches='tight')
+    plt.savefig("output/plots_pdf/buildtime/{}.pdf".format(dataset), bbox_inches='tight')
     plt.clf()
     # zoom
     fig, ax = plt.subplots()
@@ -280,7 +281,7 @@ for dataset in datasets:
     plt.yticks(ticks=plt.yticks()[0], labels=plt.yticks()[0].astype(int))
     plt.xticks(rotation=45, ha="right")
     plt.savefig("output/plots/buildtime/zoom/{}.png".format(dataset), bbox_inches='tight')
-    plt.savefig("output/plots_svg/buildtime/zoom/{}.svg".format(dataset), bbox_inches='tight')
+    plt.savefig("output/plots_pdf/buildtime/zoom/{}.pdf".format(dataset), bbox_inches='tight')
     plt.clf()
     # index and compressed index plots
     spacetime_indices = []
@@ -308,7 +309,7 @@ for dataset in datasets:
         plt.xticks(rotation=45, ha="right")
         root_to_file = "vector" if plot_compressed_indices else "index"
         plt.savefig("output/plots/{}/{}.png".format(root_to_file, dataset), bbox_inches='tight')
-        plt.savefig("output/plots_svg/{}/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
+        plt.savefig("output/plots_pdf/{}/{}.pdf".format(root_to_file, dataset), bbox_inches='tight')
         plt.clf()
 
         # space
@@ -322,7 +323,7 @@ for dataset in datasets:
         plt.xticks(rotation=45, ha="right")
         root_to_file = "vector" if plot_compressed_indices else "index"
         plt.savefig("output/plots/{}/space/{}.png".format(root_to_file, dataset), bbox_inches='tight')
-        plt.savefig("output/plots_svg/{}/space/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
+        plt.savefig("output/plots_pdf/{}/space/{}.pdf".format(root_to_file, dataset), bbox_inches='tight')
         plt.clf()
 
         # scan plots
@@ -338,7 +339,7 @@ for dataset in datasets:
             plt.xticks(rotation=45, ha="right")
             root_to_file = "vector/scan"
             plt.savefig("output/plots/{}/{}.png".format(root_to_file, dataset), bbox_inches='tight')
-            plt.savefig("output/plots_svg/{}/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
+            plt.savefig("output/plots_pdf/{}/{}.pdf".format(root_to_file, dataset), bbox_inches='tight')
             plt.clf()
 
         # pareto plots
@@ -366,14 +367,14 @@ for dataset in datasets:
             ax.set_xlabel('')
             legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
             export_legend(legend, "output/plots/legends/pareto_index.png")
-            export_legend(legend, "output/plots_svg/legends/pareto_index.png")
+            export_legend(legend, "output/plots_pdf/legends/pareto_index.pdf")
             ax.get_legend().remove()
         elif dataset == "friendster_50M_uint32" and plot_compressed_indices:
             ax.set_xlabel('')
             n_columns = 4
             legend = plt.legend(loc='upper right', bbox_to_anchor=(0.5, -0.05), framealpha=1, frameon=False, shadow=True, ncol=n_columns)
             export_legend(legend, "output/plots/legends/pareto_vector.png")
-            export_legend(legend, "output/plots_svg/legends/pareto_vector.png")
+            export_legend(legend, "output/plots_pdf/legends/pareto_vector.pdf")
             ax.get_legend().remove()
         pareto = pareto_frontier(to_pareto)
         x_pareto, y_pareto = zip(*pareto)
@@ -381,7 +382,7 @@ for dataset in datasets:
         root_to_file = "vector" if plot_compressed_indices else "index"
         ax.set_ylabel('ns per item', fontsize=13)
         ax.set_xlabel('Size (in MB)', fontsize=13)
-        plt.savefig("output/plots_svg/{}/pareto/{}.svg".format(root_to_file, dataset), bbox_inches='tight')
+        plt.savefig("output/plots_pdf/{}/pareto/{}.pdf".format(root_to_file, dataset), bbox_inches='tight')
         plt.savefig("output/plots/{}/pareto/{}.png".format(root_to_file, dataset), bbox_inches='tight')
         plt.clf()
 
@@ -443,7 +444,7 @@ for dataset in datasets:
     for j, i in enumerate(spacetime_plot_positions):
         ax2.text(i, space_to_plot[j]+(max(space_to_plot) / 4), space_to_plot[j], ha = 'center',rotation=45)
     ax2.invert_yaxis()
-    plt.savefig("output/plots_svg/spacetime/{}.svg".format(dataset), bbox_inches='tight')
+    plt.savefig("output/plots_pdf/spacetime/{}.pdf".format(dataset), bbox_inches='tight')
     plt.savefig("output/plots/spacetime/{}.png".format(dataset), bbox_inches='tight')
 
 # scaling plots
@@ -471,5 +472,5 @@ for dataset_label, dataset_s, dataset_l in [("books", "books_50M_uint64", "books
     plt.xticks(ind, indices)
     plt.xticks(rotation=45, ha="right")
     plt.savefig("output/plots/scaling_{}.png".format(dataset_label), bbox_inches='tight')
-    plt.savefig("output/plots_svg/scaling_{}.svg".format(dataset_label), bbox_inches='tight')
+    plt.savefig("output/plots_pdf/scaling_{}.pdf".format(dataset_label), bbox_inches='tight')
     plt.clf()
